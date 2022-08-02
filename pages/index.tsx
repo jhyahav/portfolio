@@ -4,16 +4,20 @@ import Image from "next/image";
 import styles from "../styles/Home.module.scss";
 import { Canvas } from "@react-three/fiber";
 import { ScrollControls, Stars } from "@react-three/drei";
+import Boxes from "../components/Boxes";
+import Path from "../components/Path";
 import Box from "../components/Box";
 import { Vector3 } from "three";
+import Intro from "../components/Intro";
 
 const Home: NextPage = () => {
   return (
     <main id="canvas_container">
       <Canvas>
         <ScrollControls distance={10}>
-          <Box initialPosition={new Vector3(1, 1, -10)} />
-          <Box initialPosition={new Vector3(7, 4, -3)} />
+          <Intro />
+          <Path />
+          <Box initialPosition={new Vector3(0, 120, -10)} focused={false} />
         </ScrollControls>
         <Stars
           radius={100}
@@ -26,7 +30,7 @@ const Home: NextPage = () => {
         />
 
         <ambientLight intensity={0.1} />
-        <directionalLight color={"red"} position={[0, 0, 5]} />
+        <directionalLight color={"blue"} position={[0, 0, 5]} />
       </Canvas>
     </main>
   );
