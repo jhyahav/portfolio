@@ -3,18 +3,25 @@
 import { Curve, Vector3 } from "three";
 
 export default class ModifiedCurve extends Curve<Vector3> {
+  scale: number;
+  constructor(scale = 70) {
+    super();
+
+    this.scale = scale;
+  }
+
   getPoint(t: number, optionalTarget = new Vector3()) {
     const point = optionalTarget;
 
-    t *= 2 * Math.PI;
+    const p = 2;
+    const q = 5;
 
-    const R = 20;
-    const s = 100;
+    t *= Math.PI * 2;
 
-    const x = -s * Math.sin(t);
-    const y = Math.cos(t) * (R + s * Math.cos(t));
-    const z = -Math.sin(t) * (R + s * Math.cos(t));
+    const x = (2 + Math.cos(q * t)) * Math.cos(p * t);
+    const y = (2 + Math.cos(q * t)) * Math.sin(p * t);
+    const z = Math.sin(q * t);
 
-    return point.set(x, y, z);
+    return point.set(x, y, z).multiplyScalar(this.scale);
   }
 }

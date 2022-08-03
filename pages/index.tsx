@@ -4,11 +4,9 @@ import Image from "next/image";
 import styles from "../styles/Home.module.scss";
 import { Canvas } from "@react-three/fiber";
 import { ScrollControls, Stars } from "@react-three/drei";
-import Boxes from "../components/Boxes";
 import Path from "../components/Path";
-import Box from "../components/Box";
-import { Vector3 } from "three";
 import Intro from "../components/Intro";
+import Star from "../components/Star";
 
 const Home: NextPage = () => {
   return (
@@ -17,11 +15,11 @@ const Home: NextPage = () => {
         <ScrollControls distance={10}>
           <Intro />
           <Path />
-          <Box initialPosition={new Vector3(0, 120, -10)} focused={false} />
+          <Star />
         </ScrollControls>
         <Stars
           radius={100}
-          depth={30}
+          depth={80}
           count={5000}
           factor={4}
           saturation={0}
