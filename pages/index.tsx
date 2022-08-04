@@ -27,8 +27,9 @@ const Home: NextPage = () => {
           speed={1.25}
         />
 
-        <ambientLight intensity={0.1} />
-        <directionalLight color={"blue"} position={[0, 0, 5]} />
+        <pointLight position={[25, 20, 50]} color={0xffffff} />
+        {/*<ambientLight intensity={1} />
+        <directionalLight color={"blue"} position={[0, 0, 5]} />*/}
       </Canvas>
     </main>
   );
