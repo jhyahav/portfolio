@@ -45,11 +45,12 @@ void main( void )
 	float radius		= 0.24 + brightness * 0.2;
 	float invRadius 	= 1.0/radius;
 	
-	vec3 orange			= vec3( 0.8, 0.65, 0.3 );
-	vec3 orangeRed		= vec3( 0.8, 0.35, 0.1 );
+	vec3 blue			= vec3( 0.3, 0.65, 0.8 );
+	vec3 lightBlue		= vec3( 0.1, 0.35, 0.8 );
 	float time		= iTime * 0.1;
-	float aspect	= iResolution.x/iResolution.y;
-	vec2 uv			= gl_FragCoord.xy / iResolution.xy;
+	float aspect	= 1.0; //iResolution.x/iResolution.y;  !!! NOTE EDIT HERE !!!
+	//vec2 uv			= (gl_FragCoord.xy / iResolution.xy) - 0.7;
+    vec2 uv = vUv; // iResolution.xy;
 	vec2 p 			= -0.5 + uv;
 	p.x *= aspect;
 
@@ -97,7 +98,7 @@ void main( void )
 	
 	float starGlow	= min( max( 1.0 - dist * ( 1.0 - brightness ), 0.0 ), 1.0 );
 	//gl_FragColor.rgb	= vec3( r );
-	gl_FragColor.rgb	= vec3( f * ( 0.75 + brightness * 0.3 ) * orange ) + starSphere + corona * orange + starGlow * orangeRed;
+	gl_FragColor.rgb	= vec3( f * ( 0.75 + brightness * 0.3 ) * blue ) + starSphere + corona * blue + starGlow * lightBlue;
 	gl_FragColor.a		= 1.0;
 }
 

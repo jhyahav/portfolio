@@ -20,6 +20,7 @@ export default function Path() {
           : modC.getPointAt(currentOffset);
 
       state.camera.lookAt(target);
+      //state.camera.lookAt(new Vector3(0, 0, 0));
       state.camera.position.lerp(target, 0.1);
       state.camera.updateProjectionMatrix();
       console.log(target.x, target.y, target.z);
