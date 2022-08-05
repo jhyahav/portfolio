@@ -1,5 +1,5 @@
-import { fragment } from "./../lib/shaders/fragment";
-import { vertex } from "./../lib/shaders/vertex";
+import { fragment } from "../lib/shaders/fragment";
+import { vertex } from "../lib/shaders/vertex";
 import {
   TextureLoader,
   Texture,
@@ -9,9 +9,18 @@ import {
   Vector2,
 } from "three";
 import { useFrame } from "@react-three/fiber";
-export default function Star() {
-  const resolution = new Vector3(1080, 720, 1);
-  const urls = ["/texture.jpg", "/noise.jpg"];
+export default function DyingStar({
+  x,
+  y,
+  z,
+  outerRadius,
+}: {
+  x: number;
+  y: number;
+  z: number;
+  outerRadius: number;
+}) {
+  const urls = ["/rock.webp", "/noise.jpg"];
   const loader = new TextureLoader();
   const textures: Array<Texture> = [];
   urls.forEach((url, i) => (textures[i] = loader.load(url)));
@@ -26,18 +35,16 @@ export default function Star() {
       value: textures[0],
     },
     iChannel1: { type: "t", value: textures[1] },
-    iResolution: { type: "vec3", value: resolution },
     uvScale: { type: "vec2", value: new Vector2(2.75, 2.0) },
   };
 
   useFrame((state, delta) => {
     uniforms.iTime.value += delta;
-    resolution.set(state.size.width, state.size.height, 1.0);
   });
 
   return (
-    <mesh position={[100, 100, 100]}>
-      <sphereBufferGeometry args={[500]} />
+    <mesh position={[x, y, z]}>
+      <sphereBufferGeometry args={[outerRadius]} />
       <shaderMaterial
         side={DoubleSide}
         uniforms={uniforms}

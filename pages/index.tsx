@@ -3,10 +3,10 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.scss";
 import { Canvas } from "@react-three/fiber";
-import { ScrollControls, Stars } from "@react-three/drei";
+import { ScrollControls, Sphere, Stars } from "@react-three/drei";
 import Path from "../components/Path";
 import Intro from "../components/Intro";
-import Star from "../components/Star";
+import DyingStar from "../components/DyingStar";
 
 const Home: NextPage = () => {
   return (
@@ -15,7 +15,11 @@ const Home: NextPage = () => {
         <ScrollControls distance={10}>
           <Intro />
           <Path />
-          <Star />
+          <DyingStar x={100} y={100} z={100} outerRadius={500} />
+          <mesh position={[20, 25, 50]}>
+            <sphereBufferGeometry args={[20]} />
+            <meshStandardMaterial />
+          </mesh>
         </ScrollControls>
         <Stars
           radius={100}
@@ -26,10 +30,12 @@ const Home: NextPage = () => {
           fade
           speed={1.25}
         />
-
-        {/*<pointLight position={[-200, -250, 0]} color={0x0000ff} />*/}
-        {/*<ambientLight intensity={1} color={0x0000ff} />*}
-        {/*<directionalLight color={"blue"} position={[0, 0, 5]} />*/}
+        {/*<pointLight
+          position={[-180, 100, 20]}
+          color={0x0000ff}
+          intensity={1000}
+          decay={2}/>*/}
+        <ambientLight intensity={1000} color={0x0000ff} />
       </Canvas>
     </main>
   );

@@ -3,7 +3,6 @@
 export const fragment: string = `
 
 uniform float iTime;
-uniform vec3 iResolution;
 uniform sampler2D iChannel0;
 uniform sampler2D iChannel1;
 
@@ -45,12 +44,11 @@ void main( void )
 	float radius		= 0.24 + brightness * 0.2;
 	float invRadius 	= 1.0/radius;
 	
-	vec3 blue			= vec3( 0.3, 0.65, 0.8 );
-	vec3 lightBlue		= vec3( 0.1, 0.35, 0.8 );
+	vec3 blue		= vec3( 0.3, 0.65, 0.8 );
+	vec3 lightBlue	= vec3( 0.1, 0.35, 0.8 );
 	float time		= iTime * 0.1;
-	float aspect	= 1.0; //iResolution.x/iResolution.y;  !!! NOTE EDIT HERE !!!
-	//vec2 uv			= (gl_FragCoord.xy / iResolution.xy) - 0.7;
-    vec2 uv = vUv.xy; // iResolution.xy;
+	float aspect	= 1.0;
+    vec2 uv         = vUv.xy;
 	vec2 p 			= -0.5 + uv;
 	p.x *= aspect;
 
@@ -59,8 +57,8 @@ void main( void )
 	float fVal2		= 1.0 - fade;
 	
 	float angle		= atan( p.x, p.y )/6.2832;
-	float dist		= 3.0 * length(p);
-	vec3 coord		= vec3( angle, dist, time * 0.1 );
+	float distance  = 3.0 * length(p);
+	vec3 coord		= vec3( angle, distance, time * 0.1 );
 	
 	float newTime1	= abs( snoise( coord + vec3( 0.0, -time * ( 0.35 + brightness * 0.001 ), time * 0.015 ), 15.0 ) );
 	float newTime2	= abs( snoise( coord + vec3( 0.0, -time * ( 0.15 + brightness * 0.001 ), time * 0.015 ), 45.0 ) );	
@@ -83,8 +81,8 @@ void main( void )
 	sp *= ( 2.0 - brightness );
   	float r = dot(sp,sp);
 	float f = (1.0-sqrt(abs(1.0-r)))/(r) + brightness * 0.5;
-	if( dist < radius ){
-		corona			*= pow( dist * invRadius, 24.0 );
+	if( distance < radius ){
+		corona			*= pow( distance * invRadius, 24.0 );
   		vec2 newUv;
  		newUv.x = sp.x*f;
   		newUv.y = sp.y*f;
@@ -96,12 +94,9 @@ void main( void )
 		starSphere		= texture( iChannel0, starUV ).rgb;
 	}
 	
-	float starGlow	= min( max( 1.0 - dist * ( 1.0 - brightness ), 0.0 ), 1.0 );
-	//gl_FragColor.rgb	= vec3( r );
+	float starGlow	    = min( max( 1.0 - distance * ( 1.0 - brightness ), 0.0 ), 1.0 );
 	gl_FragColor.rgb	= vec3( f * ( 0.75 + brightness * 0.3 ) * blue ) + starSphere + corona * blue + starGlow * lightBlue;
 	gl_FragColor.a		= 1.0;
 }
-
-
 
 `;
