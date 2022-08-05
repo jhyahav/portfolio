@@ -12,7 +12,7 @@ const Home: NextPage = () => {
   return (
     <main id="canvas_container">
       <Canvas>
-        <ScrollControls distance={15}>
+        <ScrollControls distance={10}>
           <Intro />
           <Path />
           <Star />
