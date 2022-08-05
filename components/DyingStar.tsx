@@ -22,6 +22,7 @@ export default function DyingStar({
 }) {
   const urls = ["/rock.webp", "/noise.jpg"];
   const loader = new TextureLoader();
+  // TODO: clean up loading using @react-three/fiber useLoader hook
   const textures: Array<Texture> = [];
   urls.forEach((url, i) => (textures[i] = loader.load(url)));
   textures.forEach((texture) => {
