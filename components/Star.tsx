@@ -27,7 +27,7 @@ export default function Star() {
     },
     iChannel1: { type: "t", value: textures[1] },
     iResolution: { type: "vec3", value: resolution },
-    uvScale: { type: "vec2", value: new Vector2(3.5, 7.0) },
+    uvScale: { type: "vec2", value: new Vector2(2.75, 2.0) },
   };
 
   useFrame((state, delta) => {
@@ -36,7 +36,7 @@ export default function Star() {
   });
 
   return (
-    <mesh position={[0, 0, 0]}>
+    <mesh position={[100, 100, 100]}>
       <sphereBufferGeometry args={[500]} />
       <shaderMaterial
         side={DoubleSide}

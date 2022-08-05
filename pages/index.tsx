@@ -12,14 +12,14 @@ const Home: NextPage = () => {
   return (
     <main id="canvas_container">
       <Canvas>
-        <ScrollControls distance={10}>
+        <ScrollControls distance={15}>
           <Intro />
           <Path />
           <Star />
         </ScrollControls>
         <Stars
           radius={100}
-          depth={80}
+          depth={85}
           count={5000}
           factor={4}
           saturation={0}
@@ -27,9 +27,9 @@ const Home: NextPage = () => {
           speed={1.25}
         />
 
-        <pointLight position={[25, 20, 50]} color={0xffffff} />
-        {/*<ambientLight intensity={1} />
-        <directionalLight color={"blue"} position={[0, 0, 5]} />*/}
+        {/*<pointLight position={[-200, -250, 0]} color={0x0000ff} />*/}
+        {/*<ambientLight intensity={1} color={0x0000ff} />*}
+        {/*<directionalLight color={"blue"} position={[0, 0, 5]} />*/}
       </Canvas>
     </main>
   );

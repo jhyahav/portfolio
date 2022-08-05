@@ -50,7 +50,7 @@ void main( void )
 	float time		= iTime * 0.1;
 	float aspect	= 1.0; //iResolution.x/iResolution.y;  !!! NOTE EDIT HERE !!!
 	//vec2 uv			= (gl_FragCoord.xy / iResolution.xy) - 0.7;
-    vec2 uv = vUv; // iResolution.xy;
+    vec2 uv = vUv.xy; // iResolution.xy;
 	vec2 p 			= -0.5 + uv;
 	p.x *= aspect;
 
@@ -59,7 +59,7 @@ void main( void )
 	float fVal2		= 1.0 - fade;
 	
 	float angle		= atan( p.x, p.y )/6.2832;
-	float dist		= length(p);
+	float dist		= 3.0 * length(p);
 	vec3 coord		= vec3( angle, dist, time * 0.1 );
 	
 	float newTime1	= abs( snoise( coord + vec3( 0.0, -time * ( 0.35 + brightness * 0.001 ), time * 0.015 ), 15.0 ) );
