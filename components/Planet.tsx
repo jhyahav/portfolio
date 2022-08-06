@@ -1,6 +1,6 @@
 import { useFrame, useLoader } from "@react-three/fiber";
 import { useRef } from "react";
-import { Mesh, TextureLoader } from "three";
+import { Mesh, TextureLoader, Vector3 } from "three";
 
 export default function Planet({
   x,
@@ -21,9 +21,10 @@ export default function Planet({
   const ref = useRef<Mesh>(null);
   useFrame((state, delta) => {
     if (ref.current) {
-      ref.current.rotation.z += 0.001;
-      ref.current.rotation.y += 0.001;
-      ref.current.position.x += 0.001;
+      //ref.current.rotation.z += 0.05;
+      //ref.current.rotation.y += 0.03;
+      //ref.current.position.x += 0.001;
+      ref.current.rotateOnAxis(new Vector3(0, 1, 0), Math.PI / 200);
     }
   });
   return (

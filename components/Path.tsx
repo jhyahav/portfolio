@@ -6,6 +6,9 @@ import { useState } from "react";
 
 // Prevents jittering, improves performance, does not damage smoothness of animation
 const EPSILON = 0.00001;
+// Note that lerp mutates vectors, so it's necessary to make copies
+const planetPosition = new Vector3(20, 25, 50);
+const starPosition = new Vector3(0, -100, 300);
 
 export default function Path() {
   const scroll = useScroll();
@@ -13,17 +16,14 @@ export default function Path() {
   useFrame((state, delta) => {
     if (Math.abs(currentOffset - scroll.offset) > EPSILON) {
       setOffset(scroll.offset);
-      const halfway = 0; //scroll.curve(0.5, 0.25);
-      const target =
-        halfway >= 0.0001
-          ? new Vector3(1, 1, 1)
-          : modC.getPointAt(currentOffset);
-
-      state.camera.lookAt(target);
-      //state.camera.lookAt(new Vector3(0, 0, 0));
-      state.camera.position.lerp(target, 0.1);
+      const position = modC.getPointAt(currentOffset);
+      const viewTarget = new Vector3()
+        .copy(planetPosition)
+        .lerp(new Vector3().copy(starPosition), scroll.range(0.15, 0.1));
+      state.camera.lookAt(viewTarget);
+      state.camera.position.lerp(position, 0.1);
       state.camera.updateProjectionMatrix();
-      console.log(target.x, target.y, target.z);
+      console.log(viewTarget.x, viewTarget.y, viewTarget.z);
     }
   });
 

@@ -14,6 +14,7 @@ specifiers:
   react-dom: 18.2.0
   sass: ^1.54.0
   three: ^0.143.0
+  three-stdlib: ^2.13.0
   typescript: 4.7.4
 
 dependencies:
@@ -25,6 +26,7 @@ dependencies:
   react-dom: 18.2.0_react@18.2.0
   sass: 1.54.0
   three: 0.143.0
+  three-stdlib: 2.13.0_three@0.143.0
 
 devDependencies:
   '@types/node': 18.6.3

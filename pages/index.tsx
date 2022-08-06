@@ -7,12 +7,17 @@ import { ScrollControls, Stars } from "@react-three/drei";
 import Path from "../components/Path";
 import Intro from "../components/Intro";
 import DyingStar from "../components/DyingStar";
+import SpaceStation from "../components/SpaceStation";
 import Planet from "../components/Planet";
+import { PerspectiveCamera, Vector3 } from "three";
 
 const Home: NextPage = () => {
+  const camera = new PerspectiveCamera();
+  camera.position.set(210, 0, 0);
+  camera.rotation.set(2.76597, 1.28992, -2.77942);
   return (
     <main id="canvas_container">
-      <Canvas>
+      <Canvas camera={camera}>
         <ScrollControls distance={10}>
           <Intro />
           <Path />
@@ -21,8 +26,17 @@ const Home: NextPage = () => {
             x={20}
             y={25}
             z={50}
-            radius={20}
+            radius={10}
             colorHex={0xff0011}
+            texturePath={"/rock.webp"}
+          />
+          <SpaceStation scale={0.25} />
+          <Planet
+            x={350}
+            y={-60}
+            z={520}
+            radius={40}
+            colorHex={0x00ff33}
             texturePath={"/rock.webp"}
           />
         </ScrollControls>
@@ -36,11 +50,11 @@ const Home: NextPage = () => {
           speed={1.25}
         />
         <pointLight
-          position={[0, -100, 200]}
-          color={0x0000ff}
+          position={[0, -1000, 3000]}
+          color={0x3333ff}
           intensity={100}
           decay={2}
-          distance={1000}
+          distance={10000}
         />
         <ambientLight intensity={0.5} color={0xffffff} />
       </Canvas>
