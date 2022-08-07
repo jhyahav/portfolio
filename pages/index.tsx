@@ -10,55 +10,66 @@ import DyingStar from "../components/DyingStar";
 import SpaceStation from "../components/SpaceStation";
 import Planet from "../components/Planet";
 import { PerspectiveCamera, Vector3 } from "three";
+import { Suspense } from "react";
 
 const Home: NextPage = () => {
   const camera = new PerspectiveCamera();
   camera.position.set(210, 0, 0);
   camera.rotation.set(2.76597, 1.28992, -2.77942);
   return (
-    <main id="canvas_container">
-      <Canvas camera={camera}>
-        <ScrollControls distance={10}>
-          <Intro />
-          <Path />
-          <DyingStar x={100} y={100} z={100} outerRadius={500} />
-          <Planet
-            x={20}
-            y={25}
-            z={50}
-            radius={10}
-            colorHex={0xff0011}
-            texturePath={"/rock.webp"}
-          />
-          <SpaceStation scale={0.25} />
-          <Planet
-            x={350}
-            y={-60}
-            z={520}
-            radius={40}
+    <Suspense fallback={<div>Add loader here...</div>}>
+      <main id="canvas_container">
+        <Canvas camera={camera}>
+          <ScrollControls distance={10}>
+            <Intro />
+            <Path />
+            <DyingStar x={100} y={100} z={100} outerRadius={1600} />
+            <Planet
+              x={20}
+              y={25}
+              z={50}
+              radius={10}
+              colorHex={0xff0011}
+              texturePath={"/rock.webp"}
+            />
+            <SpaceStation scale={0.125} />
+            <Planet
+              x={350}
+              y={-60}
+              z={520}
+              radius={40}
+              colorHex={0x00ff33}
+              texturePath={"/rock.webp"}
+            />
+            <Stars
+              radius={5}
+              depth={1300}
+              count={5000}
+              factor={30}
+              saturation={0}
+              fade
+              speed={1.25}
+            />
+            {/*<Planet
+            x={-275}
+            y={-1000}
+            z={1000}
+            radius={100}
             colorHex={0x00ff33}
             texturePath={"/rock.webp"}
+  />*/}
+          </ScrollControls>
+          <pointLight
+            position={[-300, -1600, 1600]}
+            color={0x3333ff}
+            intensity={100}
+            decay={2}
+            distance={10000}
           />
-        </ScrollControls>
-        <Stars
-          radius={100}
-          depth={85}
-          count={5000}
-          factor={4}
-          saturation={0}
-          fade
-          speed={1.25}
-        />
-        <pointLight
-          position={[0, -1000, 3000]}
-          color={0x3333ff}
-          intensity={100}
-          decay={2}
-          distance={10000}
-        />
-        <ambientLight intensity={0.5} color={0xffffff} />
-      </Canvas>
-    </main>
+          <ambientLight intensity={0.5} color={0xffffff} />
+        </Canvas>
+      </main>
+    </Suspense>
   );
 };
 

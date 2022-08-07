@@ -1,7 +1,7 @@
 import { useFrame, useLoader } from "@react-three/fiber";
 import { useRef } from "react";
 import { Mesh, TextureLoader, Vector3 } from "three";
-
+import React from "react";
 export default function Planet({
   x,
   y,
@@ -9,6 +9,7 @@ export default function Planet({
   radius,
   colorHex,
   texturePath,
+  children,
 }: {
   x: number;
   y: number;
@@ -16,21 +17,25 @@ export default function Planet({
   radius: number;
   colorHex: number;
   texturePath: string;
+  children?: React.ReactNode;
 }) {
   const texture = useLoader(TextureLoader, texturePath);
-  const ref = useRef<Mesh>(null);
+  const planetRef = useRef<Mesh>(null);
   useFrame((state, delta) => {
-    if (ref.current) {
-      //ref.current.rotation.z += 0.05;
-      //ref.current.rotation.y += 0.03;
-      //ref.current.position.x += 0.001;
-      ref.current.rotateOnAxis(new Vector3(0, 1, 0), Math.PI / 200);
+    if (planetRef.current) {
+      planetRef.current.rotateOnAxis(
+        new Vector3(64 / 635, -1, -(64 / 635)),
+        Math.PI / 200
+      );
     }
   });
   return (
-    <mesh position={[x, y, z]} ref={ref}>
-      <sphereBufferGeometry args={[radius]} />
-      <meshStandardMaterial map={texture} color={colorHex} />
-    </mesh>
+    <group position={[x, y, z]}>
+      <mesh ref={planetRef}>
+        <sphereBufferGeometry args={[radius]} />
+        <meshStandardMaterial map={texture} color={colorHex} />
+      </mesh>
+      {children}
+    </group>
   );
 }

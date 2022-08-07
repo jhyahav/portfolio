@@ -8,7 +8,7 @@ import { useState } from "react";
 const EPSILON = 0.00001;
 // Note that lerp mutates vectors, so it's necessary to make copies
 const planetPosition = new Vector3(20, 25, 50);
-const starPosition = new Vector3(0, -100, 300);
+const starPosition = new Vector3(-300, -1600, 1600);
 
 export default function Path() {
   const scroll = useScroll();
@@ -19,7 +19,7 @@ export default function Path() {
       const position = modC.getPointAt(currentOffset);
       const viewTarget = new Vector3()
         .copy(planetPosition)
-        .lerp(new Vector3().copy(starPosition), scroll.range(0.15, 0.1));
+        .lerp(new Vector3().copy(starPosition), scroll.range(0.15, 0.15, 0.05));
       state.camera.lookAt(viewTarget);
       state.camera.position.lerp(position, 0.1);
       state.camera.updateProjectionMatrix();
