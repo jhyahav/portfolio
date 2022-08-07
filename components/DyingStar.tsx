@@ -10,14 +10,10 @@ import {
 } from "three";
 import { useFrame } from "@react-three/fiber";
 export default function DyingStar({
-  x,
-  y,
-  z,
+  position,
   outerRadius,
 }: {
-  x: number;
-  y: number;
-  z: number;
+  position: Vector3;
   outerRadius: number;
 }) {
   const urls = ["/rock.webp", "/noise.jpg"];
@@ -44,7 +40,7 @@ export default function DyingStar({
   });
 
   return (
-    <mesh position={[x, y, z]}>
+    <mesh position={position}>
       <sphereBufferGeometry args={[outerRadius]} />
       <shaderMaterial
         side={DoubleSide}

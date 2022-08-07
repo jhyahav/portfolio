@@ -3,12 +3,12 @@ import { Vector3 } from "three";
 import { useFrame } from "@react-three/fiber";
 import ModifiedCurve from "../lib/ModifiedCurve";
 import { useState } from "react";
-
-// Prevents jittering, improves performance, does not damage smoothness of animation
-const EPSILON = 0.00001;
-// Note that lerp mutates vectors, so it's necessary to make copies
-const planetPosition = new Vector3(20, 25, 50);
-const starPosition = new Vector3(-300, -1600, 1600);
+import {
+  EPSILON,
+  getIntroPlanetPosition,
+  getStarPosition,
+  introScrollRange,
+} from "../constants";
 
 export default function Path() {
   const scroll = useScroll();
@@ -17,9 +17,10 @@ export default function Path() {
     if (Math.abs(currentOffset - scroll.offset) > EPSILON) {
       setOffset(scroll.offset);
       const position = modC.getPointAt(currentOffset);
-      const viewTarget = new Vector3()
-        .copy(planetPosition)
-        .lerp(new Vector3().copy(starPosition), scroll.range(0.15, 0.15, 0.05));
+      const viewTarget = getIntroPlanetPosition().lerp(
+        getStarPosition(),
+        introScrollRange(scroll)
+      );
       state.camera.lookAt(viewTarget);
       state.camera.position.lerp(position, 0.1);
       state.camera.updateProjectionMatrix();

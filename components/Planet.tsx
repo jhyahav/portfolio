@@ -3,17 +3,13 @@ import { useRef } from "react";
 import { Mesh, TextureLoader, Vector3 } from "three";
 import React from "react";
 export default function Planet({
-  x,
-  y,
-  z,
+  position,
   radius,
   colorHex,
   texturePath,
   children,
 }: {
-  x: number;
-  y: number;
-  z: number;
+  position: Vector3;
   radius: number;
   colorHex: number;
   texturePath: string;
@@ -30,7 +26,7 @@ export default function Planet({
     }
   });
   return (
-    <group position={[x, y, z]}>
+    <group position={position}>
       <mesh ref={planetRef}>
         <sphereBufferGeometry args={[radius]} />
         <meshStandardMaterial map={texture} color={colorHex} />

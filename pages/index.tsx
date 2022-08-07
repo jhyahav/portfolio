@@ -11,6 +11,8 @@ import SpaceStation from "../components/SpaceStation";
 import Planet from "../components/Planet";
 import { PerspectiveCamera, Vector3 } from "three";
 import { Suspense } from "react";
+import IntroPlanet from "../components/IntroPlanet";
+import { getStarPosition } from "../constants";
 
 const Home: NextPage = () => {
   const camera = new PerspectiveCamera();
@@ -21,22 +23,15 @@ const Home: NextPage = () => {
       <main id="canvas_container">
         <Canvas camera={camera}>
           <ScrollControls distance={10}>
-            <Intro />
             <Path />
-            <DyingStar x={100} y={100} z={100} outerRadius={1600} />
-            <Planet
-              x={20}
-              y={25}
-              z={50}
-              radius={10}
-              colorHex={0xff0011}
-              texturePath={"/rock.webp"}
+            <DyingStar
+              position={new Vector3(100, 100, 100)}
+              outerRadius={1600}
             />
+            <IntroPlanet />
             <SpaceStation scale={0.125} />
             <Planet
-              x={350}
-              y={-60}
-              z={520}
+              position={new Vector3(350, -60, 520)}
               radius={40}
               colorHex={0x00ff33}
               texturePath={"/rock.webp"}
@@ -50,17 +45,9 @@ const Home: NextPage = () => {
               fade
               speed={1.25}
             />
-            {/*<Planet
-            x={-275}
-            y={-1000}
-            z={1000}
-            radius={100}
-            colorHex={0x00ff33}
-            texturePath={"/rock.webp"}
-  />*/}
           </ScrollControls>
           <pointLight
-            position={[-300, -1600, 1600]}
+            position={getStarPosition()}
             color={0x3333ff}
             intensity={100}
             decay={2}
