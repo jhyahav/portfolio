@@ -12,16 +12,18 @@ export default function Intro() {
   });
   return (
     <Billboard
-      position={getIntroPlanetPosition().add(new Vector3(-12, -5, -70))}
+      position={getIntroPlanetPosition().add(new Vector3(-12, -5, -105))}
       visible={visible}
-      follow={true}
+      follow
     >
       <Text
+        color={"white"}
+        outlineWidth={0.3}
         fontSize={3}
-        outlineColor={"red"}
+        outlineColor={"black"}
         anchorX={"center"}
         anchorY={"top"}
-        textAlign={"center"}
+        textAlign={"justify"}
         maxWidth={60}
       >
         Hi, I'm Jonathan. Lorem ipsum dolor sit amet consectetur adipisicing

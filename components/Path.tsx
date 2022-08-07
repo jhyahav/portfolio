@@ -24,7 +24,6 @@ export default function Path() {
       state.camera.lookAt(viewTarget);
       state.camera.position.lerp(position, 0.1);
       state.camera.updateProjectionMatrix();
-      console.log(viewTarget.x, viewTarget.y, viewTarget.z);
     }
   });
 

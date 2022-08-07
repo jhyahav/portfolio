@@ -13,11 +13,12 @@ import { PerspectiveCamera, Vector3 } from "three";
 import { Suspense } from "react";
 import IntroPlanet from "../components/IntroPlanet";
 import { getStarPosition } from "../constants";
+import SceneLights from "../components/SceneLights";
 
 const Home: NextPage = () => {
   const camera = new PerspectiveCamera();
   camera.position.set(210, 0, 0);
-  camera.rotation.set(2.76597, 1.28992, -2.77942);
+  camera.rotation.set(2.873873, 1.115695, -2.9);
   return (
     <Suspense fallback={<div>Add loader here...</div>}>
       <main id="canvas_container">
@@ -46,14 +47,7 @@ const Home: NextPage = () => {
               speed={1.25}
             />
           </ScrollControls>
-          <pointLight
-            position={getStarPosition()}
-            color={0x3333ff}
-            intensity={100}
-            decay={2}
-            distance={10000}
-          />
-          <ambientLight intensity={0.5} color={0xffffff} />
+          <SceneLights />
         </Canvas>
       </main>
     </Suspense>
