@@ -6,6 +6,7 @@ import Planet from "../components/Planet";
 import { Vector3 } from "three";
 import IntroPlanet from "../components/IntroPlanet";
 import SceneLights from "../components/SceneLights";
+import { useEffect, useState } from "react";
 
 export default function MainSceneContents({
   overlayVisible,

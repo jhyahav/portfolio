@@ -5,8 +5,8 @@ Added optional chaining operators for geometries to avoid inexplicable runtime e
 */
 
 import * as THREE from "three";
-import React, { Suspense, useRef } from "react";
-import { useGLTF } from "@react-three/drei";
+import React, { Suspense, useRef, useState } from "react";
+import { useGLTF, useScroll } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
 import { useFrame } from "@react-three/fiber";
 
@@ -393,8 +393,11 @@ export default function SpaceStation(
 ) {
   const { nodes, materials } = useGLTF("/spaceStation.glb") as GLTFResult;
   const ref = useRef<THREE.Group>(null);
+  const [passedThreshold, setPassedThreshold] = useState(false);
+  const scroll = useScroll();
   useFrame((state, delta) => {
-    if (ref.current && props.launched) {
+    scroll.offset >= 0.01 && setPassedThreshold(true);
+    if (ref.current && props.launched && passedThreshold) {
       ref.current.position.x += 0.5;
       ref.current.position.z += 0.7;
       ref.current.rotateY(-Math.PI / 3000);

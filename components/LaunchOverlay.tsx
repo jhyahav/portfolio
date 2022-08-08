@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
+import disableScroll from "disable-scroll";
 export default function LaunchOverlay({
   setOverlayVisible,
   setWarpActive,
@@ -10,9 +11,12 @@ export default function LaunchOverlay({
   return (
     <div
       onClick={() => {
-        setOverlayVisible(false);
         setWarpActive(true);
-        setTimeout(() => setWarpActive(false), 10000);
+        setOverlayVisible(false);
+        setTimeout(() => {
+          setWarpActive(false);
+          disableScroll.off();
+        }, 10000);
       }}
       id={"overlay"}
     >

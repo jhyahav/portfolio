@@ -1,16 +1,11 @@
 import { Canvas } from "@react-three/fiber";
-import { Preload, ScrollControls, Stars } from "@react-three/drei";
-import Path from "../components/Path";
-import DyingStar from "../components/DyingStar";
-import SpaceStation from "../components/SpaceStation";
-import Planet from "../components/Planet";
-import { PerspectiveCamera, Vector3 } from "three";
-import { Suspense, useState } from "react";
-import IntroPlanet from "../components/IntroPlanet";
-import SceneLights from "../components/SceneLights";
+import { Preload } from "@react-three/drei";
+import { PerspectiveCamera } from "three";
+import { Suspense, useEffect } from "react";
 import Warp from "./Warp";
-import { getIntroPlanetPosition } from "../constants";
+import { getInitialPosition } from "../constants";
 import MainSceneContents from "./MainSceneContents";
+import disableScroll from "disable-scroll";
 
 export default function Scene({
   overlayVisible,
@@ -19,9 +14,12 @@ export default function Scene({
   overlayVisible: boolean;
   warpActive: boolean;
 }) {
+  useEffect(() => {
+    disableScroll.on();
+  }, []);
   const camera = new PerspectiveCamera();
   camera.position.set(210, 0, 0);
-  camera.lookAt(new Vector3(-200, -200, -300));
+  camera.lookAt(getInitialPosition());
   return (
     <Suspense fallback={<div>Add loader here...</div>}>
       <Canvas camera={camera}>

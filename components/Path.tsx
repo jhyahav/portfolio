@@ -5,6 +5,7 @@ import ModifiedCurve from "../lib/ModifiedCurve";
 import { useState } from "react";
 import {
   EPSILON,
+  getInitialPosition,
   getIntroPlanetPosition,
   getStarPosition,
   introScrollRange,
@@ -17,13 +18,18 @@ export default function Path() {
     if (Math.abs(currentOffset - scroll.offset) > EPSILON) {
       setOffset(scroll.offset);
       const position = modC.getPointAt(currentOffset);
-      const viewTarget = getIntroPlanetPosition().lerp(
+      const planetToStar = getIntroPlanetPosition().lerp(
         getStarPosition(),
         introScrollRange(scroll)
+      );
+      const viewTarget = getInitialPosition().lerp(
+        planetToStar.clone(),
+        scroll.range(0, 0.08)
       );
       state.camera.lookAt(viewTarget);
       state.camera.position.lerp(position, 0.1);
       state.camera.updateProjectionMatrix();
+      console.log(scroll.offset);
     }
   });
 
