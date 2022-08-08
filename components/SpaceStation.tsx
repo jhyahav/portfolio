@@ -389,12 +389,12 @@ type GLTFResult = GLTF & {
 };
 
 export default function SpaceStation(
-  props: JSX.IntrinsicElements["group"] & { overlayVisible: boolean }
+  props: JSX.IntrinsicElements["group"] & { launched: boolean }
 ) {
   const { nodes, materials } = useGLTF("/spaceStation.glb") as GLTFResult;
   const ref = useRef<THREE.Group>(null);
   useFrame((state, delta) => {
-    if (ref.current && !props.overlayVisible) {
+    if (ref.current && props.launched) {
       ref.current.position.x += 0.5;
       ref.current.position.z += 0.7;
       ref.current.rotateY(-Math.PI / 3000);

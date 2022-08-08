@@ -5,11 +5,17 @@ import Scene from "../components/Scene";
 
 const Home: NextPage = () => {
   const [overlayVisible, setOverlayVisible] = useState(true);
+  const [warpActive, setWarpActive] = useState(false);
   return (
     <>
-      {overlayVisible && <LaunchOverlay setVisible={setOverlayVisible} />}
+      {overlayVisible && (
+        <LaunchOverlay
+          setOverlayVisible={setOverlayVisible}
+          setWarpActive={setWarpActive}
+        />
+      )}
       <main>
-        <Scene overlayVisible={overlayVisible} />
+        <Scene overlayVisible={overlayVisible} warpActive={warpActive} />
       </main>
     </>
   );
