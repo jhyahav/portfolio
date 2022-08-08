@@ -26,7 +26,7 @@ export default function DyingStar({
     texture.wrapT = RepeatWrapping;
   });
   const uniforms = {
-    iTime: { type: "f", value: 0.1 },
+    iTime: { type: "f", value: 1 },
     iChannel0: {
       type: "t",
       value: textures[0],
