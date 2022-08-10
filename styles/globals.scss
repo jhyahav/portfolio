@@ -2,8 +2,9 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  color: white;
+  background-color: black;
+  font-family: VT323, monospace;
 }
 
 a {
@@ -16,13 +17,31 @@ a {
   scrollbar-width: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+.text_container {
+  //font-family: VT323, monospace;
+  font-size: 5vw;
+  text-align: center;
+
+  h1 {
+    display: block;
+    margin-bottom: 0;
   }
-  body {
-    color: white;
-    background: black;
+  //width: 100%;'
+
+  .danger {
+    color: rgb(255, 157, 157);
+  }
+
+  .warning_message {
+    font-size: 3vw;
+  }
+
+  .Typewriter__cursor {
+    display: none;
+  }
+
+  > div {
+    margin: 10vw;
   }
 }
 
@@ -44,4 +63,7 @@ canvas {
   height: 100vh;
   background-color: black;
   z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

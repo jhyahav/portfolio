@@ -18,7 +18,8 @@
     "react-dom": "18.2.0",
     "sass": "^1.54.0",
     "three": "^0.143.0",
-    "three-stdlib": "^2.13.0"
+    "three-stdlib": "^2.13.0",
+    "typewriter-effect": "^2.19.0"
   },
   "devDependencies": {
     "@types/node": "18.6.3",
