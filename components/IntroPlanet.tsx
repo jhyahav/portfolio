@@ -1,5 +1,5 @@
 import Planet from "./Planet";
-import Intro from "./Intro";
+import Intro from "./TextComponents/Intro";
 import { getIntroPlanetPosition } from "../constants";
 
 export default function IntroPlanet() {

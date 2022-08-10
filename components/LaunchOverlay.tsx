@@ -9,9 +9,11 @@ export default function LaunchOverlay({
   setWarpActive: Dispatch<SetStateAction<boolean>>;
 }) {
   const overlayRef = useRef<HTMLDivElement>(null);
+  // Focus on overlay div on mount so onKeyDown works properly
   useEffect(() => overlayRef.current?.focus(), []);
   const [launchEnabled, setLaunchEnabled] = useState(false);
   const launchHandler = () => {
+    // Disable launch until epilepsy warning has been properly displayed
     if (launchEnabled) {
       setWarpActive(true);
       setOverlayVisible(false);
@@ -21,6 +23,7 @@ export default function LaunchOverlay({
       }, 10000);
     }
   };
+  // TODO: add some nice colors/hover effects, maybe separate for each letter of name using sass mixin
   return (
     <div
       ref={overlayRef}

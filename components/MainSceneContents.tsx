@@ -6,7 +6,7 @@ import Planet from "../components/Planet";
 import { Vector3 } from "three";
 import IntroPlanet from "../components/IntroPlanet";
 import SceneLights from "../components/SceneLights";
-import { useEffect, useState } from "react";
+import ScrollTip from "./TextComponents/ScrollTip";
 
 export default function MainSceneContents({
   overlayVisible,
@@ -23,6 +23,7 @@ export default function MainSceneContents({
         {overlayVisible || warpActive || (
           <DyingStar position={new Vector3(100, 100, 100)} outerRadius={1600} />
         )}
+        <ScrollTip />
         <IntroPlanet />
         <SpaceStation scale={0.125} launched={enabled} />
         <Planet
