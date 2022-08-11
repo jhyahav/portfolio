@@ -21,6 +21,10 @@ a {
   //font-family: VT323, monospace;
   font-size: 5vw;
   text-align: center;
+  cursor: default;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
 
   h1 {
     display: block;
@@ -33,6 +37,16 @@ a {
 
   .warning_message {
     font-size: 3vw;
+  }
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  .instructions {
+    animation: blink 2s 3.5s step-start infinite;
   }
 
   .Typewriter__cursor {
@@ -53,7 +67,8 @@ main {
   width: 100%;
 }
 canvas {
-  min-height: 100vh;
+  height: 100vh;
+  width: 100vw;
 }
 
 #overlay {

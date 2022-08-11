@@ -1,5 +1,7 @@
-import { useFrame } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber";
 import { Suspense, useRef } from "react";
+import { Vector2 } from "three";
+import { getInitialPosition } from "../constants";
 import { warpFragment } from "../lib/shaders/warpFragment";
 import { warpVertex } from "../lib/shaders/warpVertex";
 
@@ -12,9 +14,11 @@ export default function Warp() {
     uniforms.iTime.value += delta;
   });
 
+  const { camera } = useThree();
+
   return (
     <Suspense fallback={<div id="overlay" />}>
-      <mesh>
+      <mesh position={camera.position.clone().lerp(getInitialPosition(), 0.1)}>
         <planeBufferGeometry args={[2, 2]} />
         <shaderMaterial
           vertexShader={warpVertex}

@@ -47,7 +47,9 @@ export default function LaunchOverlay({
               .typeString("<h1> Hi, I'm Jonathan. </h1>")
               .changeDelay(50)
               .pauseFor(500)
-              .typeString("<sp>PRESS ANY KEY or DOUBLE-CLICK anywhere!</sp>")
+              .typeString(
+                "<sp class='instructions'>PRESS ANY KEY or DOUBLE-CLICK anywhere!</sp>"
+              )
               .start();
           }}
         />
