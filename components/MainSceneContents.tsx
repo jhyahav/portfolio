@@ -7,6 +7,8 @@ import { Vector3 } from "three";
 import IntroPlanet from "../components/IntroPlanet";
 import SceneLights from "../components/SceneLights";
 import ScrollTip from "./TextComponents/ScrollTip";
+import Asteroid from "./Asteroid";
+import { getInitialPosition } from "../constants";
 
 export default function MainSceneContents({
   overlayVisible,
@@ -18,7 +20,7 @@ export default function MainSceneContents({
   const enabled = !(overlayVisible || warpActive);
   return (
     <group visible={enabled}>
-      <ScrollControls distance={10} enabled={enabled}>
+      <ScrollControls distance={10} damping={1} enabled={enabled}>
         <Path />
         {overlayVisible || warpActive || (
           <DyingStar position={new Vector3(100, 100, 100)} outerRadius={1600} />
@@ -31,6 +33,12 @@ export default function MainSceneContents({
           radius={40}
           colorHex={0x00ff33}
           texturePath={"/rock.webp"}
+        />
+        <Asteroid
+          position={getInitialPosition().lerp(new Vector3(210, 0, 0), 0.8)}
+          radius={10}
+          color={0xfffff}
+          rotation={new Vector3(0.001, 0.00002, 0.01)}
         />
         <Stars
           radius={5}
