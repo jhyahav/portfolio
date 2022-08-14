@@ -3,12 +3,13 @@ import Path from "../components/Path";
 import DyingStar from "../components/DyingStar";
 import SpaceStation from "../components/SpaceStation";
 import Planet from "../components/Planet";
-import { Vector3 } from "three";
+import { RepeatWrapping, TextureLoader, Vector3 } from "three";
 import IntroPlanet from "../components/IntroPlanet";
 import SceneLights from "../components/SceneLights";
 import ScrollTip from "./TextComponents/ScrollTip";
 import Asteroid from "./Asteroid";
 import { getInitialPosition } from "../constants";
+import { useLoader } from "@react-three/fiber";
 
 export default function MainSceneContents({
   overlayVisible,
@@ -18,6 +19,13 @@ export default function MainSceneContents({
   warpActive: boolean;
 }) {
   const enabled = !(overlayVisible || warpActive);
+  const [colorMap, displacementMap] = useLoader(TextureLoader, [
+    "/rock.webp",
+    "/example_displacement.jpg",
+  ]);
+  displacementMap.wrapS = RepeatWrapping;
+  displacementMap.wrapT = RepeatWrapping;
+
   return (
     <group visible={enabled}>
       <ScrollControls distance={10} damping={1} enabled={enabled}>
@@ -26,19 +34,21 @@ export default function MainSceneContents({
           <DyingStar position={new Vector3(100, 100, 100)} outerRadius={1600} />
         )}
         <ScrollTip />
-        <IntroPlanet />
+        <IntroPlanet colorMap={colorMap} />
         <SpaceStation scale={0.125} launched={enabled} />
         <Planet
           position={new Vector3(350, -60, 520)}
           radius={40}
           colorHex={0x00ff33}
-          texturePath={"/rock.webp"}
+          colorMap={colorMap}
         />
         <Asteroid
           position={getInitialPosition().lerp(new Vector3(210, 0, 0), 0.8)}
           radius={10}
           color={0xfffff}
           rotation={new Vector3(0.001, 0.00002, 0.01)}
+          colorMap={colorMap}
+          displacementMap={displacementMap}
         />
         <Stars
           radius={5}

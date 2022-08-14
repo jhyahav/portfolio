@@ -8,7 +8,7 @@ import {
   Vector3,
   Vector2,
 } from "three";
-import { useFrame } from "@react-three/fiber";
+import { useFrame, useLoader } from "@react-three/fiber";
 export default function DyingStar({
   position,
   outerRadius,
@@ -17,10 +17,7 @@ export default function DyingStar({
   outerRadius: number;
 }) {
   const urls = ["/rock.webp", "/noise.jpg"];
-  const loader = new TextureLoader();
-  // TODO: clean up loading using @react-three/fiber useLoader hook
-  const textures: Array<Texture> = [];
-  urls.forEach((url, i) => (textures[i] = loader.load(url)));
+  const textures = useLoader(TextureLoader, urls);
   textures.forEach((texture) => {
     texture.wrapS = RepeatWrapping;
     texture.wrapT = RepeatWrapping;

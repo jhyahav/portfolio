@@ -1,21 +1,22 @@
 import { useFrame, useLoader } from "@react-three/fiber";
 import { useRef } from "react";
-import { Mesh, TextureLoader, Vector3 } from "three";
+import { Mesh, Texture, TextureLoader, Vector3 } from "three";
 import React from "react";
 export default function Planet({
   position,
   radius,
   colorHex,
-  texturePath,
+  colorMap,
+  displacementMap,
   children,
 }: {
   position: Vector3;
   radius: number;
   colorHex: number;
-  texturePath: string;
+  colorMap?: Texture;
+  displacementMap?: Texture;
   children?: React.ReactNode;
 }) {
-  const texture = useLoader(TextureLoader, texturePath);
   const planetRef = useRef<Mesh>(null);
   useFrame((state, delta) => {
     if (planetRef.current) {
@@ -29,7 +30,11 @@ export default function Planet({
     <group position={position}>
       <mesh ref={planetRef}>
         <sphereBufferGeometry args={[radius]} />
-        <meshStandardMaterial map={texture} color={colorHex} />
+        <meshStandardMaterial
+          map={colorMap}
+          displacementMap={displacementMap}
+          color={colorHex}
+        />
       </mesh>
       {children}
     </group>
