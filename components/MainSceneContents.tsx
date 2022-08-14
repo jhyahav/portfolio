@@ -7,9 +7,8 @@ import { RepeatWrapping, TextureLoader, Vector3 } from "three";
 import IntroPlanet from "../components/IntroPlanet";
 import SceneLights from "../components/SceneLights";
 import ScrollTip from "./TextComponents/ScrollTip";
-import Asteroid from "./Asteroid";
-import { getInitialPosition } from "../constants";
 import { useLoader } from "@react-three/fiber";
+import AsteroidBelt from "./AsteroidBelt";
 
 export default function MainSceneContents({
   overlayVisible,
@@ -42,14 +41,16 @@ export default function MainSceneContents({
           colorHex={0x00ff33}
           colorMap={colorMap}
         />
-        <Asteroid
-          position={getInitialPosition().lerp(new Vector3(210, 0, 0), 0.8)}
+        {/* <Asteroid
+          position={new Vector3(-500, -800.5, 845)}
+          scale={new Vector3(1, 1.25, 0.87)}
           radius={10}
           color={0xfffff}
           rotation={new Vector3(0.001, 0.00002, 0.01)}
           colorMap={colorMap}
           displacementMap={displacementMap}
-        />
+        /> */}
+        <AsteroidBelt />
         <Stars
           radius={5}
           depth={1300}
