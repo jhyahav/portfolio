@@ -20,7 +20,6 @@ export default function Asteroid(props: AsteroidProps) {
       meshRef.current.rotateX(props.rotation.x);
       meshRef.current.rotateY(props.rotation.y);
       meshRef.current.rotateZ(props.rotation.z);
-      console.log(meshRef.current.position);
     }
   });
   return (
@@ -34,7 +33,8 @@ export default function Asteroid(props: AsteroidProps) {
         color={props.color}
         map={props.colorMap}
         displacementMap={props.displacementMap}
-        displacementScale={3}
+        displacementScale={2}
+        visible={true}
       />
     </Sphere>
   );
