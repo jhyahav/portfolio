@@ -9,14 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@react-three/drei": "^9.18.0",
-    "@react-three/fiber": "^8.2.2",
+    "@react-three/drei": "^9.22.6",
+    "@react-three/fiber": "^8.3.1",
     "@types/three": "^0.143.0",
     "disable-scroll": "^0.6.0",
     "next": "12.2.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "sass": "^1.54.0",
+    "sass": "^1.54.4",
     "three": "^0.143.0",
     "three-stdlib": "^2.13.0",
     "typewriter-effect": "^2.19.0"

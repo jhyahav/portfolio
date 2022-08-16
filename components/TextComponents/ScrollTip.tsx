@@ -6,7 +6,7 @@ import { useThree } from "@react-three/fiber";
 export default function ScrollTip() {
   const scrollRange = (scroll: ScrollControlsState) => scroll.range(0.0, 0.07);
   const { camera } = useThree();
-  const position = camera.position.clone().lerp(getInitialPosition(), 0.1);
+  const position = camera.position.clone().lerp(getInitialPosition(), 0.2);
   //FIXME: Could have issues with float on narrow screens. Check.
   return (
     <Float
@@ -18,6 +18,8 @@ export default function ScrollTip() {
         scrollRange={scrollRange}
         position={position}
         textContent={"Scroll up & down to navigate!"}
+        baseFontSize={10}
+        baseFontWidth={100}
       />
     </Float>
   );

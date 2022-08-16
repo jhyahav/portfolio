@@ -50,10 +50,6 @@ export default function AsteroidBelt() {
   );
 }
 
-// assumes inputs are integers
-const randInt = (max: number, min: number) =>
-  Math.floor(Math.random() * (max - min) + min);
-
 const generateAsteroids = (
   torus: Mesh,
   colorMaps?: Array<Texture>,
@@ -70,15 +66,19 @@ const generateAsteroids = (
     );
     const radius = randInt(MAX_RAD, MIN_RAD);
     const baseColor = randInt(MAX_RGB, MIN_RGB);
-    const tempname = baseColor.toString(16);
-    const color = parseInt(tempname + tempname + tempname, 16);
+    const baseColorStr = baseColor.toString(16);
+    const color = parseInt(baseColorStr + baseColorStr + baseColorStr, 16);
     const displacementMap = displacementMaps
       ? displacementMaps[randInt(displacementMaps.length, 0)]
       : undefined;
     const colorMap = colorMaps
       ? colorMaps[randInt(colorMaps.length, 0)]
       : undefined;
-    const rotation = undefined; // rotation really hurts performance
+    const rotation = new Vector3(
+      (Math.random() - 0.5) / 30,
+      (Math.random() - 0.5) / 30,
+      (Math.random() - 0.5) / 30
+    );
     props.push({
       position: position,
       scale: scale,
@@ -110,3 +110,7 @@ const wrap = (textureArr: Array<Texture>) => {
     texture.wrapT = RepeatWrapping;
   });
 };
+
+// assumes inputs are integers
+const randInt = (max: number, min: number) =>
+  Math.floor(Math.random() * (max - min) + min);

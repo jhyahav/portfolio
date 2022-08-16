@@ -7,28 +7,33 @@ import {
 import { useFrame, useThree } from "@react-three/fiber";
 import { useState, useEffect } from "react";
 import { Vector3 } from "three";
+
 const DEFAULT_VIEWPORT_WIDTH = 1080;
-const DEFAULT_FONT_SIZE = 3.5;
+const DEFAULT_FONT_SIZE = 5;
 const DEFAULT_TEXT_WIDTH = 40;
 
 export default function TextBillboard({
   scrollRange,
   position,
   textContent,
+  baseFontSize = DEFAULT_FONT_SIZE,
+  baseFontWidth = DEFAULT_TEXT_WIDTH,
 }: {
   scrollRange: (scroll: ScrollControlsState) => number;
   position: Vector3;
   textContent: String;
+  baseFontSize?: number;
+  baseFontWidth?: number;
 }) {
   const { size } = useThree();
-  const [fontSize, setFontSize] = useState(DEFAULT_FONT_SIZE);
-  const [maxTextWidth, setMaxTextWidth] = useState(DEFAULT_TEXT_WIDTH);
+  const [fontSize, setFontSize] = useState(baseFontSize);
+  const [maxTextWidth, setMaxTextWidth] = useState(baseFontWidth);
   const adjustSize = (original: number, width: number) =>
     (original * width) / DEFAULT_VIEWPORT_WIDTH;
   // TODO: test for height as well?
   useEffect(() => {
-    setFontSize(adjustSize(DEFAULT_FONT_SIZE, size.width));
-    setMaxTextWidth(adjustSize(DEFAULT_TEXT_WIDTH, size.width));
+    setFontSize(adjustSize(baseFontSize, size.width));
+    setMaxTextWidth(adjustSize(baseFontWidth, size.width));
   }, [size.width]);
   const scroll = useScroll();
   const [visible, setVisible] = useState(true);
