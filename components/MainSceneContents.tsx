@@ -41,15 +41,6 @@ export default function MainSceneContents({
           colorHex={0x00ff33}
           colorMap={colorMap}
         />
-        {/* <Asteroid
-          position={new Vector3(-500, -800.5, 845)}
-          scale={new Vector3(1, 1.25, 0.87)}
-          radius={10}
-          color={0xfffff}
-          rotation={new Vector3(0.001, 0.00002, 0.01)}
-          colorMap={colorMap}
-          displacementMap={displacementMap}
-        /> */}
         <AsteroidBelt />
         <Stars
           radius={5}

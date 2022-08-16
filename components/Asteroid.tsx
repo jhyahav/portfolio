@@ -16,10 +16,12 @@ export interface AsteroidProps {
 export default function Asteroid(props: AsteroidProps) {
   const meshRef = useRef<Mesh>(null);
   useFrame((state, delta) => {
-    if (meshRef.current && props.rotation) {
-      meshRef.current.rotateX(props.rotation.x);
-      meshRef.current.rotateY(props.rotation.y);
-      meshRef.current.rotateZ(props.rotation.z);
+    if (meshRef.current) {
+      if (props.rotation) {
+        meshRef.current.rotateX(props.rotation.x);
+        meshRef.current.rotateY(props.rotation.y);
+        meshRef.current.rotateZ(props.rotation.z);
+      }
     }
   });
   return (

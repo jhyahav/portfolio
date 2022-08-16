@@ -6,7 +6,7 @@ import { MeshSurfaceSampler } from "three-stdlib";
 import { getStarPosition } from "../constants";
 import Asteroid, { AsteroidProps } from "./Asteroid";
 
-const [COUNT, MIN_RAD, MAX_RAD] = [500, 1, 10];
+const [COUNT, MIN_RAD, MAX_RAD, MIN_RGB, MAX_RGB] = [500, 1, 10, 50, 200];
 
 export default function AsteroidBelt() {
   const [asteroids, setAsteroids] = useState<Array<JSX.Element> | undefined>();
@@ -64,21 +64,21 @@ const generateAsteroids = (
   for (let i = 0; i < COUNT; i++) {
     const position = positions[i];
     const scale = new Vector3(
-      1 + Math.random() / 2,
-      1 + Math.random() / 2,
-      1 + Math.random() / 2
+      1 + Math.random(),
+      1 + Math.random(),
+      1 + Math.random()
     );
     const radius = randInt(MAX_RAD, MIN_RAD);
-    //TODO: randomize colors
-    const color = 0x444444;
-    //FIXME: make sure taking the length and not (length-1) works fine. it should, since random() never returns 1.
+    const baseColor = randInt(MAX_RGB, MIN_RGB);
+    const tempname = baseColor.toString(16);
+    const color = parseInt(tempname + tempname + tempname, 16);
     const displacementMap = displacementMaps
       ? displacementMaps[randInt(displacementMaps.length, 0)]
       : undefined;
     const colorMap = colorMaps
       ? colorMaps[randInt(colorMaps.length, 0)]
       : undefined;
-    const rotation = new Vector3(0.001, 0, 0);
+    const rotation = undefined; // rotation really hurts performance
     props.push({
       position: position,
       scale: scale,
