@@ -33,7 +33,7 @@ export default function Asteroid(props: AsteroidProps) {
         color={props.color}
         map={props.colorMap}
         displacementMap={props.displacementMap}
-        displacementScale={2}
+        displacementScale={1.2}
         visible={true}
       />
     </Sphere>
