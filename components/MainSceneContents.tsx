@@ -9,6 +9,7 @@ import SceneLights from "../components/SceneLights";
 import ScrollTip from "./TextComponents/ScrollTip";
 import { useLoader } from "@react-three/fiber";
 import AsteroidBelt from "./AsteroidBelt";
+import TextImageComponents from "./TextComponents/TextImageComponents";
 
 export default function MainSceneContents({
   overlayVisible,
@@ -42,6 +43,7 @@ export default function MainSceneContents({
           colorMap={colorMap}
         />
         <AsteroidBelt />
+        <TextImageComponents />
         <Stars
           radius={5}
           depth={1300}

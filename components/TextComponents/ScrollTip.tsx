@@ -1,5 +1,5 @@
 import { Float, ScrollControlsState } from "@react-three/drei";
-import TextBillboard from "./TextBillboard";
+import TextImageBillboard from "./TextImageBillboard";
 import { getInitialPosition } from "../../constants";
 import { useThree } from "@react-three/fiber";
 
@@ -14,7 +14,7 @@ export default function ScrollTip() {
       floatingRange={[-0.0025, 0.0025]}
       floatIntensity={0.000025}
     >
-      <TextBillboard
+      <TextImageBillboard
         scrollRange={scrollRange}
         position={position}
         textContent={"Scroll up & down to navigate!"}
