@@ -30,6 +30,7 @@ export default function Path() {
       state.camera.position.lerp(position, 0.1);
       state.camera.updateProjectionMatrix();
     }
+    console.log(scroll.offset);
   });
 
   const modC = new ModifiedCurve();

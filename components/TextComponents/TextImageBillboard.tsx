@@ -5,7 +5,7 @@ import {
   Text,
   Image,
 } from "@react-three/drei";
-import { useFrame, useThree } from "@react-three/fiber";
+import { ThreeEvent, useFrame, useThree } from "@react-three/fiber";
 import { useState, useEffect } from "react";
 import { Vector3 } from "three";
 
@@ -17,6 +17,9 @@ export interface ImageProps {
   src: string;
   relativePosition: Vector3;
   scale: [number, number, number];
+  onClick?: (event: ThreeEvent<MouseEvent>) => void;
+  onHover?: (event: ThreeEvent<PointerEvent>) => void;
+  onUnhover?: (event: ThreeEvent<PointerEvent>) => void;
 }
 
 //TODO: resize image based on resolution, as implemented for text!
@@ -44,12 +47,39 @@ export default function TextImageBillboard({
   const { size } = useThree();
   const [fontSize, setFontSize] = useState(baseFontSize);
   const [maxTextWidth, setMaxTextWidth] = useState(baseFontWidth);
-  const adjustSize = (original: number, width: number) =>
-    (original * width) / DEFAULT_VIEWPORT_WIDTH;
+  const [adjustedImages, setAdjustedImages] = useState(images);
+  const [upperTextPosition, setUpperTextPosition] =
+    useState(textContentPosition);
+  const [lowerTextPosition, setLowerTextPosition] = useState(
+    bottomTextContentPosition
+  );
+
   // TODO: test for height as well?
   useEffect(() => {
     setFontSize(adjustSize(baseFontSize, size.width));
     setMaxTextWidth(adjustSize(baseFontWidth, size.width));
+    setUpperTextPosition(
+      textContentPosition && adjustVector(textContentPosition, size.width)
+    );
+    setLowerTextPosition(
+      bottomTextContentPosition &&
+        adjustVector(bottomTextContentPosition, size.width)
+    );
+    setAdjustedImages(
+      images?.map((image) => {
+        const newScale: [number, number, number] = [
+          adjustSize(image.scale[0], size.width),
+          adjustSize(image.scale[1], size.width),
+          image.scale[2],
+        ];
+        const newPosition = adjustVector(image.relativePosition, size.width);
+        return {
+          ...image,
+          relativePosition: newPosition,
+          scale: newScale,
+        };
+      })
+    );
   }, [size.width]);
   const scroll = useScroll();
   const [visible, setVisible] = useState(true);
@@ -86,12 +116,12 @@ export default function TextImageBillboard({
   return (
     <Billboard position={position} visible={visible} follow>
       <>
-        <Text {...textProps} position={textContentPosition}>
+        <Text {...textProps} position={upperTextPosition}>
           {textContent}
         </Text>
-        {images &&
-          images.length > 0 &&
-          images.map((image: ImageProps) => (
+        {adjustedImages &&
+          adjustedImages.length > 0 &&
+          adjustedImages.map((image: ImageProps) => (
             <Image
               position={image.relativePosition}
               //@ts-ignore
@@ -99,10 +129,14 @@ export default function TextImageBillboard({
               url={image.src}
               transparent
               zoom={1}
+              onClick={image.onClick}
+              onPointerOver={image.onHover}
+              onPointerOut={image.onUnhover}
+              key={image.src}
             />
           ))}
         {bottomTextContent && (
-          <Text {...textProps} position={bottomTextContentPosition}>
+          <Text {...textProps} position={lowerTextPosition}>
             {bottomTextContent}
           </Text>
         )}
@@ -110,3 +144,9 @@ export default function TextImageBillboard({
     </Billboard>
   );
 }
+
+const adjustSize = (original: number, width: number) =>
+  (original * width) / DEFAULT_VIEWPORT_WIDTH;
+
+const adjustVector = (vector: Vector3, width: number) =>
+  vector.clone().multiplyScalar(adjustSize(1, width));

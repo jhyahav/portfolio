@@ -12,7 +12,7 @@ export default function ScrollTip() {
     <Float
       speed={0.25}
       floatingRange={[-0.0025, 0.0025]}
-      floatIntensity={0.000025}
+      floatIntensity={0.00025}
     >
       <TextImageBillboard
         scrollRange={scrollRange}

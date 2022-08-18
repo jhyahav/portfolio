@@ -5,8 +5,8 @@ export default function SceneLights() {
     <>
       <pointLight
         position={getStarPosition()}
-        color={0x3333ff}
-        intensity={100}
+        color={0x7adeff}
+        intensity={20}
         decay={2}
         distance={10000}
       />
