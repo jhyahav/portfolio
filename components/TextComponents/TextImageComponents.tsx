@@ -19,7 +19,6 @@ export default function TextImageComponents() {
     scroll.range(0, 1);
   const futureTechScrollRange = (scroll: ScrollControlsState) =>
     scroll.range(0, 1);
-  const futureTechPosition = new Vector3(210, 0, 0);
   const teaScrollRange = (scroll: ScrollControlsState) => scroll.range(0, 1);
 
   const currentImages: ImageProps[] = [
@@ -64,28 +63,29 @@ export default function TextImageComponents() {
   const futureImages: ImageProps[] = [
     {
       src: "/GraphQL.svg",
-      scale: [10, 10, 1],
-      relativePosition: new Vector3(0, 0, 0),
-    },
-    {
-      src: "/PWA.svg",
-      scale: [10, 10, 1],
-      relativePosition: new Vector3(0, 0, 0),
-    },
-    {
-      src: "/Svelte.svg",
-      scale: [10, 10, 1],
-      relativePosition: new Vector3(0, 0, 0),
-    },
-    {
-      src: "/Tailwind.svg",
-      scale: [10, 10, 1],
-      relativePosition: new Vector3(0, 0, 0),
+      scale: [25, 25, 1],
+      relativePosition: new Vector3(-15, 30, 0),
     },
     {
       src: "/Tensorflow.svg",
-      scale: [10, 10, 1],
-      relativePosition: new Vector3(0, 0, 0),
+      scale: [25, 25.2, 1],
+      relativePosition: new Vector3(15, 30, 0),
+    },
+    {
+      src: "/Svelte.svg",
+      scale: [22.5, 26.7, 1],
+      relativePosition: new Vector3(-15, 0, 0),
+    },
+    {
+      src: "/Tailwind.svg",
+      scale: [30, 20, 1],
+      relativePosition: new Vector3(15, 0, 0),
+    },
+
+    {
+      src: "/PWA.svg",
+      scale: [56, 20, 1],
+      relativePosition: new Vector3(0, -30, 0),
     },
   ];
 
@@ -103,6 +103,9 @@ export default function TextImageComponents() {
       />
       <TextImageBillboard
         textContent={futureTechText}
+        textContentPosition={new Vector3(0, 55, 1)}
+        baseFontSize={9}
+        baseFontWidth={85}
         images={futureImages}
         position={getFutureTechPosition()}
         scrollRange={futureTechScrollRange}

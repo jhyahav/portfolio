@@ -396,7 +396,7 @@ export default function SpaceStation(
   const [passedThreshold, setPassedThreshold] = useState(false);
   const scroll = useScroll();
   useFrame((state, delta) => {
-    scroll.offset >= 0.01 && setPassedThreshold(true);
+    scroll.offset >= 0.008 && setPassedThreshold(true);
     if (ref.current && props.launched && passedThreshold) {
       ref.current.position.x += 0.5;
       ref.current.position.z += 0.7;
