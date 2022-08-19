@@ -9,7 +9,8 @@ import SceneLights from "../components/SceneLights";
 import ScrollTip from "./TextComponents/ScrollTip";
 import { useLoader } from "@react-three/fiber";
 import AsteroidBelt from "./AsteroidBelt";
-import TextImageComponents from "./TextComponents/TextImageComponents";
+import ImageComponents from "./TextComponents/ImageComponents";
+import ExperienceAndHobbies from "./TextComponents/ExperienceAndHobbies";
 
 export default function MainSceneContents({
   overlayVisible,
@@ -28,7 +29,7 @@ export default function MainSceneContents({
 
   return (
     <group visible={enabled}>
-      <ScrollControls distance={10} damping={1} enabled={enabled}>
+      <ScrollControls distance={20} damping={1} enabled={enabled}>
         <Path />
         {overlayVisible || warpActive || (
           <DyingStar position={new Vector3(100, 100, 100)} outerRadius={1600} />
@@ -43,7 +44,8 @@ export default function MainSceneContents({
           colorMap={colorMap}
         />
         <AsteroidBelt />
-        <TextImageComponents />
+        <ImageComponents />
+        <ExperienceAndHobbies />
         <Stars
           radius={5}
           depth={1300}

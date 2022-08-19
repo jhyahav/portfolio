@@ -1,6 +1,6 @@
 import Planet from "./Planet";
 import Intro from "./TextComponents/Intro";
-import { getIntroPlanetPosition } from "../constants";
+import { getIntroPlanetPosition } from "../lib/constants";
 import { Texture } from "three";
 
 export default function IntroPlanet({

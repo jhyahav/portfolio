@@ -3,7 +3,7 @@ import { Preload } from "@react-three/drei";
 import { PerspectiveCamera } from "three";
 import { Suspense, useEffect } from "react";
 import Warp from "./Warp";
-import { getInitialPosition } from "../constants";
+import { getInitialPosition } from "../lib/constants";
 import MainSceneContents from "./MainSceneContents";
 import disableScroll from "disable-scroll";
 

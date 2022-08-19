@@ -1,4 +1,4 @@
-import { getStarPosition } from "../constants";
+import { getStarPosition } from "../lib/constants";
 
 export default function SceneLights() {
   return (

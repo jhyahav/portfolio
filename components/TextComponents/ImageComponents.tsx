@@ -1,11 +1,21 @@
 import { ScrollControlsState } from "@react-three/drei";
 import { Vector3 } from "three";
 import {
+  contactScrollRange,
+  contactVisible,
+  currentTechScrollRange,
+  currentVisible,
+  futureTechScrollRange,
+  futureVisible,
+  getContactPosition,
   getCurrentTechPosition,
   getFutureTechPosition,
   getTeaPosition,
-} from "../../constants";
+  teaScrollRange,
+  teaVisible,
+} from "../../lib/constants";
 import {
+  contactText,
   currentTechText,
   futureTechText,
   teaTextLower,
@@ -14,12 +24,17 @@ import {
 import TextImageBillboard from "./TextImageBillboard";
 import { ImageProps } from "./TextImageBillboard";
 
-export default function TextImageComponents() {
-  const currentTechScrollRange = (scroll: ScrollControlsState) =>
-    scroll.range(0, 1);
-  const futureTechScrollRange = (scroll: ScrollControlsState) =>
-    scroll.range(0, 1);
-  const teaScrollRange = (scroll: ScrollControlsState) => scroll.range(0, 1);
+export default function ImageComponents() {
+  // const currentTechScrollRange = (scroll: ScrollControlsState) =>
+  //   scroll.range(0, 1);
+  // const futureTechScrollRange = (scroll: ScrollControlsState) =>
+  //   scroll.range(0, 1);
+  // const teaScrollRange = (scroll: ScrollControlsState) => scroll.range(0, 1);
+
+  const hoverProps = {
+    onHover: () => (document.body.style.cursor = "pointer"),
+    onUnhover: () => (document.body.style.cursor = "default"),
+  };
 
   const currentImages: ImageProps[] = [
     {
@@ -89,6 +104,24 @@ export default function TextImageComponents() {
     },
   ];
 
+  const contactImages: ImageProps[] = [
+    {
+      src: "/LinkedIn.png",
+      scale: [25, 25, 1],
+      relativePosition: new Vector3(-15, 0, 0),
+      onClick: () =>
+        window.open("https://www.linkedin.com/in/jhyahav/", "_blank"),
+      ...hoverProps,
+    },
+    {
+      src: "/GitHub.svg",
+      scale: [25, 25, 1],
+      relativePosition: new Vector3(15, 0, 0),
+      onClick: () => window.open("https://github.com/jhyahav", "_blank"),
+      ...hoverProps,
+    },
+  ];
+
   return (
     <>
       <TextImageBillboard
@@ -97,7 +130,7 @@ export default function TextImageComponents() {
         baseFontWidth={75}
         images={currentImages}
         position={getCurrentTechPosition()}
-        scrollRange={currentTechScrollRange}
+        scrollVisible={currentVisible}
         baseFontSize={15}
         key={"current"}
       />
@@ -108,7 +141,7 @@ export default function TextImageComponents() {
         baseFontWidth={85}
         images={futureImages}
         position={getFutureTechPosition()}
-        scrollRange={futureTechScrollRange}
+        scrollVisible={futureVisible}
         key={"future"}
       />
       <TextImageBillboard
@@ -120,16 +153,27 @@ export default function TextImageComponents() {
             scale: [110, 50, 1],
             relativePosition: new Vector3(0, 0, -1),
             onClick: () => window.open("https://teafor.me/products/", "_blank"),
-            onHover: () => (document.body.style.cursor = "pointer"),
-            onUnhover: () => (document.body.style.cursor = "default"),
+            // onHover: () => (document.body.style.cursor = "pointer"),
+            // onUnhover: () => (document.body.style.cursor = "default"),
+            ...hoverProps,
           },
         ]}
         position={getTeaPosition()}
-        scrollRange={teaScrollRange}
+        scrollVisible={teaVisible}
         bottomTextContent={teaTextLower}
         bottomTextContentPosition={new Vector3(0, -25, 0)}
         baseFontWidth={110}
         baseFontSize={5}
+        key={"tea"}
+      />
+      <TextImageBillboard
+        textContent={contactText}
+        textContentPosition={new Vector3(0, 32, 1)}
+        images={contactImages}
+        position={getContactPosition()}
+        // FIXME: add appropriate scrollRange
+        scrollVisible={contactVisible}
+        key={"contact"}
       />
     </>
   );

@@ -3,29 +3,67 @@ import { Vector3 } from "three";
 import { useFrame } from "@react-three/fiber";
 import ModifiedCurve from "../lib/ModifiedCurve";
 import { useState } from "react";
-import {
-  EPSILON,
-  getInitialPosition,
-  getIntroPlanetPosition,
-  getStarPosition,
-  introScrollRange,
-} from "../constants";
+import * as constants from "../lib/constants";
+import { start } from "repl";
 
 export default function Path() {
   const scroll = useScroll();
   const [currentOffset, setOffset] = useState(0);
   useFrame((state, delta) => {
-    if (Math.abs(currentOffset - scroll.offset) > EPSILON) {
+    if (Math.abs(currentOffset - scroll.offset) > constants.EPSILON) {
       setOffset(scroll.offset);
       const position = modC.getPointAt(currentOffset);
-      const planetToStar = getIntroPlanetPosition().lerp(
-        getStarPosition(),
-        introScrollRange(scroll)
-      );
-      const viewTarget = getInitialPosition().lerp(
-        planetToStar.clone(),
-        scroll.range(0, 0.08)
-      );
+
+      const initToIntro = constants
+        .getInitialPosition()
+        .lerp(
+          constants.getIntroPlanetPosition(),
+          constants.initScrollRange(scroll)
+        );
+      const introToStar = initToIntro
+        .clone()
+        .lerp(constants.getStarPosition(), constants.introScrollRange(scroll));
+      const starToCurrentTech = introToStar
+        .clone()
+        .lerp(
+          constants.getCurrentTechPosition(),
+          constants.currentTechScrollRange(scroll)
+        );
+
+      const currentToFuture = starToCurrentTech
+        .clone()
+        .lerp(
+          constants.getFutureTechPosition(),
+          constants.futureTechScrollRange(scroll)
+        );
+
+      const futureToTea = currentToFuture
+        .clone()
+        .lerp(constants.getTeaPosition(), constants.teaScrollRange(scroll));
+
+      const teaToExperience = futureToTea
+        .clone()
+        .lerp(
+          constants.getExperiencePosition(),
+          constants.experienceScrollRange(scroll)
+        );
+
+      const experienceToHobbies = teaToExperience
+        .clone()
+        .lerp(
+          constants.getHobbiesPosition(),
+          constants.hobbiesScrollRange(scroll)
+        );
+
+      const hobbiesToContact = experienceToHobbies
+        .clone()
+        .lerp(
+          constants.getContactPosition(),
+          constants.contactScrollRange(scroll)
+        );
+
+      const viewTarget = hobbiesToContact;
+
       state.camera.lookAt(viewTarget);
       state.camera.position.lerp(position, 0.1);
       state.camera.updateProjectionMatrix();

@@ -7,6 +7,8 @@ import {
   RepeatWrapping,
   Vector3,
   Vector2,
+  FrontSide,
+  BackSide,
 } from "three";
 import { useFrame, useLoader } from "@react-three/fiber";
 export default function DyingStar({
@@ -40,7 +42,7 @@ export default function DyingStar({
     <mesh position={position}>
       <sphereBufferGeometry args={[outerRadius]} />
       <shaderMaterial
-        side={DoubleSide}
+        side={BackSide}
         uniforms={uniforms}
         vertexShader={vertex}
         fragmentShader={fragment}

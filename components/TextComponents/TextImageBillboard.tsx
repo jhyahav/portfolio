@@ -10,8 +10,8 @@ import { useState, useEffect } from "react";
 import { Vector3 } from "three";
 
 const DEFAULT_VIEWPORT_WIDTH = 1080;
-const DEFAULT_FONT_SIZE = 5;
-const DEFAULT_TEXT_WIDTH = 40;
+const DEFAULT_FONT_SIZE = 10;
+const DEFAULT_TEXT_WIDTH = 120;
 
 export interface ImageProps {
   src: string;
@@ -24,7 +24,7 @@ export interface ImageProps {
 
 //TODO: resize image based on resolution, as implemented for text!
 export default function TextImageBillboard({
-  scrollRange,
+  scrollVisible,
   position,
   textContent,
   textContentPosition,
@@ -34,7 +34,7 @@ export default function TextImageBillboard({
   baseFontSize = DEFAULT_FONT_SIZE,
   baseFontWidth = DEFAULT_TEXT_WIDTH,
 }: {
-  scrollRange: (scroll: ScrollControlsState) => number;
+  scrollVisible: (scroll: ScrollControlsState) => boolean;
   position: Vector3;
   textContent: string;
   textContentPosition?: Vector3;
@@ -83,8 +83,9 @@ export default function TextImageBillboard({
   }, [size.width]);
   const scroll = useScroll();
   const [visible, setVisible] = useState(true);
+  // FIXME: performance optimization: replace this with useEffect
   useFrame((state, delta) => {
-    setVisible(scrollRange(scroll) < 0.5);
+    setVisible(scrollVisible(scroll));
   });
   const textProps: {
     color: string;
@@ -129,8 +130,8 @@ export default function TextImageBillboard({
               url={image.src}
               transparent
               zoom={1}
-              onClick={image.onClick}
-              onPointerOver={image.onHover}
+              onClick={visible ? image.onClick : undefined}
+              onPointerOver={visible ? image.onHover : undefined}
               onPointerOut={image.onUnhover}
               key={image.src}
             />

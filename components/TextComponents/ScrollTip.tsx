@@ -1,10 +1,9 @@
 import { Float, ScrollControlsState } from "@react-three/drei";
 import TextImageBillboard from "./TextImageBillboard";
-import { getInitialPosition } from "../../constants";
+import { getInitialPosition, initVisible } from "../../lib/constants";
 import { useThree } from "@react-three/fiber";
 
 export default function ScrollTip() {
-  const scrollRange = (scroll: ScrollControlsState) => scroll.range(0.0, 0.07);
   const { camera } = useThree();
   const position = camera.position.clone().lerp(getInitialPosition(), 0.2);
   //FIXME: Could have issues with float on narrow screens. Check.
@@ -15,7 +14,7 @@ export default function ScrollTip() {
       floatIntensity={0.00025}
     >
       <TextImageBillboard
-        scrollRange={scrollRange}
+        scrollVisible={initVisible}
         position={position}
         textContent={"Scroll up & down to navigate!"}
         baseFontSize={10}

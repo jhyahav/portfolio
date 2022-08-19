@@ -1,7 +1,7 @@
 import { useFrame, useThree } from "@react-three/fiber";
 import { Suspense, useRef } from "react";
 import { Vector2 } from "three";
-import { getInitialPosition } from "../constants";
+import { getInitialPosition } from "../lib/constants";
 import { warpFragment } from "../lib/shaders/warpFragment";
 import { warpVertex } from "../lib/shaders/warpVertex";
 

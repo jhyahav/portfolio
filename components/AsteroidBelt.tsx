@@ -3,7 +3,7 @@ import { useFrame, useLoader } from "@react-three/fiber";
 import { useEffect, useRef, useState } from "react";
 import { Mesh, RepeatWrapping, Texture, TextureLoader, Vector3 } from "three";
 import { MeshSurfaceSampler } from "three-stdlib";
-import { getStarPosition } from "../constants";
+import { getStarPosition } from "../lib/constants";
 import Asteroid, { AsteroidProps } from "./Asteroid";
 
 const [COUNT, MIN_RAD, MAX_RAD, MIN_RGB, MAX_RGB] = [500, 1, 10, 50, 200];
