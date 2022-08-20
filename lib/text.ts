@@ -19,4 +19,4 @@ export const hobbiesText =
   "Aside from computer science, I'm interested in biology, history, and philosophy. In my free time, I enjoy reading, exercising, cooking, playing piano, tasting tea & wine, and traveling.";
 
 // add links here?
-export const contactText = "Want to know more? Drop me a line.";
+export const contactText = "Want to find out more? Drop me a line.";

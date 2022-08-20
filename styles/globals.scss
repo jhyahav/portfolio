@@ -5,6 +5,8 @@ body {
   color: white;
   background-color: black;
   font-family: VT323, monospace;
+  overflow: hidden;
+  max-height: 100vh;
 }
 
 a {
