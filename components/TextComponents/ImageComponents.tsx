@@ -83,7 +83,7 @@ export default function ImageComponents() {
     },
     {
       src: "/Tensorflow.svg",
-      scale: [25, 25.2, 1],
+      scale: [25, 25.5, 1],
       relativePosition: new Vector3(15, 30, 0),
     },
     {
@@ -93,7 +93,7 @@ export default function ImageComponents() {
     },
     {
       src: "/Tailwind.svg",
-      scale: [30, 20, 1],
+      scale: [31, 20, 1],
       relativePosition: new Vector3(15, 0, 0),
     },
 
@@ -171,7 +171,6 @@ export default function ImageComponents() {
         textContentPosition={new Vector3(0, 32, 1)}
         images={contactImages}
         position={getContactPosition()}
-        // FIXME: add appropriate scrollRange
         scrollVisible={contactVisible}
         key={"contact"}
       />
