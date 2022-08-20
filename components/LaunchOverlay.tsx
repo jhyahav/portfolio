@@ -20,7 +20,7 @@ export default function LaunchOverlay({
       setTimeout(() => {
         setWarpActive(false);
         disableScroll.off();
-      }, 10000);
+      }, 5000);
     }
   };
   // TODO: add some nice colors/hover effects, maybe separate for each letter of name using sass mixin
