@@ -16,12 +16,16 @@ export default function ExperienceAndHobbies() {
     <>
       <TextImageBillboard
         textContent={otherExperienceText}
+        baseFontSize={20}
+        baseFontWidth={260}
         position={getExperiencePosition()}
         scrollVisible={experienceVisible}
         key={"other"}
       />
       <TextImageBillboard
         textContent={hobbiesText}
+        baseFontSize={15}
+        baseFontWidth={140}
         position={getHobbiesPosition()}
         scrollVisible={hobbiesVisible}
         key={"hobbies"}

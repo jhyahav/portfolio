@@ -137,8 +137,8 @@ export default function ImageComponents() {
       <TextImageBillboard
         textContent={futureTechText}
         textContentPosition={new Vector3(0, 55, 1)}
-        baseFontSize={9}
-        baseFontWidth={85}
+        //baseFontSize={15}
+        // baseFontWidth={85}
         images={futureImages}
         position={getFutureTechPosition()}
         scrollVisible={futureVisible}

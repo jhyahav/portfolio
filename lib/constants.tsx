@@ -20,11 +20,11 @@ export const [
   () => new Vector3(20, 25, 90),
   () => new Vector3(-300, -1600, 1600),
   () => new Vector3(-300, -200, 50),
-  () => new Vector3(200, -100, 150),
-  () => new Vector3(10, 60, 0),
-  () => new Vector3(0, 150, 0),
-  () => new Vector3(-50, -200, 100),
-  () => new Vector3(0, -15, -30),
+  () => new Vector3(150, -175, 225),
+  () => new Vector3(10, 60, -100),
+  () => new Vector3(0, 200, -25),
+  () => new Vector3(-50, -150, 175),
+  () => new Vector3(0, -15, 100),
 ];
 
 export const [
@@ -60,9 +60,9 @@ export const [
   (scroll: ScrollControlsState) => scroll.visible(0, 0.08),
   (scroll: ScrollControlsState) => scroll.visible(0, 0.2),
   (scroll: ScrollControlsState) => scroll.visible(0.25, 0.2),
-  (scroll: ScrollControlsState) => scroll.visible(0.4, 0.25),
-  (scroll: ScrollControlsState) => scroll.visible(0.57, 0.15),
-  (scroll: ScrollControlsState) => scroll.visible(0.7, 0.17),
+  (scroll: ScrollControlsState) => scroll.visible(0.4, 0.22),
+  (scroll: ScrollControlsState) => scroll.visible(0.57, 0.12),
+  (scroll: ScrollControlsState) => scroll.visible(0.69, 0.17),
   (scroll: ScrollControlsState) => scroll.visible(0.84, 0.1),
   (scroll: ScrollControlsState) => scroll.visible(0.91, 1),
 ];
