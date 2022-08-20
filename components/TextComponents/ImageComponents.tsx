@@ -80,7 +80,7 @@ export default function ImageComponents() {
       relativePosition: new Vector3(-15, 0, 0),
     },
     {
-      src: "/Tailwind.svg",
+      src: "/tailwind.svg",
       scale: [31, 20, 1],
       relativePosition: new Vector3(15, 0, 0),
     },
