@@ -79,7 +79,14 @@ export default function TextImageBillboard({
         };
       })
     );
-  }, [size.width]);
+  }, [
+    size.width,
+    baseFontSize,
+    baseFontWidth,
+    bottomTextContentPosition,
+    textContentPosition,
+    images,
+  ]);
   const scroll = useScroll();
   const [visible, setVisible] = useState(true);
   useFrame((state, delta) => {

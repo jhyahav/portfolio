@@ -29,6 +29,7 @@ export default function AsteroidBelt() {
         generateAsteroids(torusRef.current, colorMaps, displacementMaps)
       );
     }
+    //FIXME: should not use ref as dependency
   }, [torusRef.current, colorMaps, displacementMaps]);
   useFrame((state, delta) => {
     if (torusRef.current) {
