@@ -1,6 +1,6 @@
-import { useFrame, useLoader } from "@react-three/fiber";
+import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
-import { Mesh, Texture, TextureLoader, Vector3 } from "three";
+import { Mesh, Texture, Vector3 } from "three";
 import React from "react";
 export default function Planet({
   position,

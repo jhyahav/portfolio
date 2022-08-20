@@ -1,12 +1,10 @@
 import { useFrame, useThree } from "@react-three/fiber";
 import { Suspense, useRef } from "react";
-import { Vector2 } from "three";
 import { getInitialPosition } from "../lib/constants";
 import { warpFragment } from "../lib/shaders/warpFragment";
 import { warpVertex } from "../lib/shaders/warpVertex";
 
 export default function Warp() {
-  const ref = useRef(null);
   const uniforms = {
     iTime: { type: "f", value: 2 },
   };

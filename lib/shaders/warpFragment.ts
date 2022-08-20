@@ -1,4 +1,4 @@
-// Based on https://www.shadertoy.com/view/4tjSDt
+// Based on "Warp Speed 2" by David Hoskins,  https://www.shadertoy.com/view/4tjSDt
 
 export const warpFragment = `
 uniform float iTime;

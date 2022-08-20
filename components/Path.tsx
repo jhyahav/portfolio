@@ -1,10 +1,8 @@
 import { useScroll } from "@react-three/drei";
-import { Vector3 } from "three";
 import { useFrame } from "@react-three/fiber";
-import ModifiedCurve from "../lib/ModifiedCurve";
 import { useState } from "react";
 import * as constants from "../lib/constants";
-import { start } from "repl";
+import ModifiedCurve from "../lib/ModifiedCurve";
 
 export default function Path() {
   const scroll = useScroll();

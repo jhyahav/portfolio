@@ -1,16 +1,13 @@
+import { useFrame, useLoader } from "@react-three/fiber";
+import {
+  BackSide,
+  RepeatWrapping,
+  TextureLoader,
+  Vector2,
+  Vector3,
+} from "three";
 import { fragment } from "../lib/shaders/fragment";
 import { vertex } from "../lib/shaders/vertex";
-import {
-  TextureLoader,
-  Texture,
-  DoubleSide,
-  RepeatWrapping,
-  Vector3,
-  Vector2,
-  FrontSide,
-  BackSide,
-} from "three";
-import { useFrame, useLoader } from "@react-three/fiber";
 export default function DyingStar({
   position,
   outerRadius,

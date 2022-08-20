@@ -1,4 +1,4 @@
-// Based on https://www.shadertoy.com/view/4dXGR4
+// Based on "Main Sequence Star" by flight404, https://www.shadertoy.com/view/4dXGR4
 
 export const fragment: string = `
 

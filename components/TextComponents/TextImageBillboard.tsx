@@ -1,12 +1,12 @@
 import {
   Billboard,
-  ScrollControlsState,
-  useScroll,
-  Text,
   Image,
+  ScrollControlsState,
+  Text,
+  useScroll,
 } from "@react-three/drei";
 import { ThreeEvent, useFrame, useThree } from "@react-three/fiber";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Vector3 } from "three";
 
 const DEFAULT_VIEWPORT_WIDTH = 1080;
@@ -22,7 +22,6 @@ export interface ImageProps {
   onUnhover?: (event: ThreeEvent<PointerEvent>) => void;
 }
 
-//TODO: resize image based on resolution, as implemented for text!
 export default function TextImageBillboard({
   scrollVisible,
   position,
@@ -83,10 +82,10 @@ export default function TextImageBillboard({
   }, [size.width]);
   const scroll = useScroll();
   const [visible, setVisible] = useState(true);
-  // FIXME: performance optimization: replace this with useEffect
   useFrame((state, delta) => {
     setVisible(scrollVisible(scroll));
   });
+
   const textProps: {
     color: string;
     outlineWidth: number;

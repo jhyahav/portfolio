@@ -1,17 +1,12 @@
-import { ScrollControlsState } from "@react-three/drei";
 import { Vector3 } from "three";
 import {
-  contactScrollRange,
   contactVisible,
-  currentTechScrollRange,
   currentVisible,
-  futureTechScrollRange,
   futureVisible,
   getContactPosition,
   getCurrentTechPosition,
   getFutureTechPosition,
   getTeaPosition,
-  teaScrollRange,
   teaVisible,
 } from "../../lib/constants";
 import {
@@ -21,16 +16,9 @@ import {
   teaTextLower,
   teaTextUpper,
 } from "../../lib/text";
-import TextImageBillboard from "./TextImageBillboard";
-import { ImageProps } from "./TextImageBillboard";
+import TextImageBillboard, { ImageProps } from "./TextImageBillboard";
 
 export default function ImageComponents() {
-  // const currentTechScrollRange = (scroll: ScrollControlsState) =>
-  //   scroll.range(0, 1);
-  // const futureTechScrollRange = (scroll: ScrollControlsState) =>
-  //   scroll.range(0, 1);
-  // const teaScrollRange = (scroll: ScrollControlsState) => scroll.range(0, 1);
-
   const hoverProps = {
     onHover: () => (document.body.style.cursor = "pointer"),
     onUnhover: () => (document.body.style.cursor = "default"),

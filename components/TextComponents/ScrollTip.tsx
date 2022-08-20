@@ -6,7 +6,6 @@ import { useThree } from "@react-three/fiber";
 export default function ScrollTip() {
   const { camera } = useThree();
   const position = camera.position.clone().lerp(getInitialPosition(), 0.2);
-  //FIXME: Could have issues with float on narrow screens. Check.
   return (
     <Float
       speed={0.25}

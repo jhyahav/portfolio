@@ -1,11 +1,8 @@
-import { ScrollControlsState } from "@react-three/drei";
 import { Vector3 } from "three";
 import {
-  experienceScrollRange,
   experienceVisible,
   getExperiencePosition,
   getHobbiesPosition,
-  hobbiesScrollRange,
   hobbiesVisible,
 } from "../../lib/constants";
 import { hobbiesText, otherExperienceText } from "../../lib/text";
