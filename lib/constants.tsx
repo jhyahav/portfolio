@@ -24,7 +24,7 @@ export const [
   () => new Vector3(10, 60, -80),
   () => new Vector3(0, 200, -25),
   () => new Vector3(-50, -200, 450),
-  () => new Vector3(0, -25, 80),
+  () => new Vector3(0, -35, 80),
 ];
 
 export const [

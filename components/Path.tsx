@@ -8,7 +8,11 @@ export default function Path() {
   const scroll = useScroll();
   const [currentOffset, setOffset] = useState(0);
   useFrame((state, delta) => {
-    if (Math.abs(currentOffset - scroll.offset) > constants.EPSILON) {
+    if (
+      Math.abs(currentOffset - scroll.offset) > constants.EPSILON ||
+      scroll.offset > constants.EPSILON ||
+      scroll.offset > 1 - constants.EPSILON
+    ) {
       setOffset(scroll.offset);
       const position = modC.getPointAt(currentOffset);
 
