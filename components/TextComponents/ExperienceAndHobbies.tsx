@@ -1,4 +1,5 @@
 import { ScrollControlsState } from "@react-three/drei";
+import { Vector3 } from "three";
 import {
   experienceScrollRange,
   experienceVisible,
@@ -16,6 +17,7 @@ export default function ExperienceAndHobbies() {
     <>
       <TextImageBillboard
         textContent={otherExperienceText}
+        textContentPosition={new Vector3(0, 60, 0)}
         baseFontSize={20}
         baseFontWidth={260}
         position={getExperiencePosition()}
@@ -24,8 +26,8 @@ export default function ExperienceAndHobbies() {
       />
       <TextImageBillboard
         textContent={hobbiesText}
-        baseFontSize={15}
-        baseFontWidth={140}
+        baseFontSize={20}
+        baseFontWidth={260}
         position={getHobbiesPosition()}
         scrollVisible={hobbiesVisible}
         key={"hobbies"}

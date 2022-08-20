@@ -107,16 +107,16 @@ export default function ImageComponents() {
   const contactImages: ImageProps[] = [
     {
       src: "/LinkedIn.png",
-      scale: [25, 25, 1],
-      relativePosition: new Vector3(-15, 0, 0),
+      scale: [40, 40, 1],
+      relativePosition: new Vector3(-30, 0, 0),
       onClick: () =>
         window.open("https://www.linkedin.com/in/jhyahav/", "_blank"),
       ...hoverProps,
     },
     {
       src: "/GitHub.svg",
-      scale: [25, 25, 1],
-      relativePosition: new Vector3(15, 0, 0),
+      scale: [40, 40, 1],
+      relativePosition: new Vector3(30, 0, 0),
       onClick: () => window.open("https://github.com/jhyahav", "_blank"),
       ...hoverProps,
     },
@@ -168,7 +168,9 @@ export default function ImageComponents() {
       />
       <TextImageBillboard
         textContent={contactText}
-        textContentPosition={new Vector3(0, 32, 1)}
+        baseFontSize={12}
+        baseFontWidth={180}
+        textContentPosition={new Vector3(0, 35, 1)}
         images={contactImages}
         position={getContactPosition()}
         scrollVisible={contactVisible}
