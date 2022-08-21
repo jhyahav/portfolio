@@ -6,7 +6,7 @@ import ModifiedCurve from "../lib/ModifiedCurve";
 
 export default function Path() {
   const scroll = useScroll();
-  const [currentOffset, setOffset] = useState(0.0001);
+  const [currentOffset, setOffset] = useState(constants.EPSILON);
   useFrame((state, delta) => {
     if (scroll.offset < constants.EPSILON) {
       scroll.offset = constants.EPSILON;

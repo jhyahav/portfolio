@@ -135,6 +135,7 @@ export default function ImageComponents() {
       <TextImageBillboard
         textContent={teaTextUpper}
         textContentPosition={new Vector3(0, 35, 0)}
+        // TODO: add indication that this is clickable
         images={[
           {
             src: "/teaforme.png",
