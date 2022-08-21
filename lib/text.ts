@@ -13,10 +13,9 @@ export const teaTextLower =
   "Built responsively with Next.js, Firebase, Google Cloud Functions, and Puppeteer, it makes browsing and comparing specialty tea from niche vendors effortless.";
 
 export const otherExperienceText =
-  "I speak English and Hebrew natively. I've been learning German for eight years, and I have a basic grasp of Portuguese. I also have an extensive background in tech analysis, through which I've honed my creativity and my skills in analysis, presentation and technical writing.";
+  "I speak English and Hebrew natively. I've been learning German for eight years, and I have a basic grasp of Portuguese. I also have an extensive background in tech analysis, through which I've honed my creativity and my research, presentation and technical writing skills.";
 
 export const hobbiesText =
-  "Aside from computer science, I'm interested in biology, history, and philosophy. In my free time, I enjoy reading, exercising, cooking, playing piano, tasting tea & wine, and traveling.";
+  "Aside from computer science, I'm interested in biology, history, and philosophy. In my free time, I enjoy reading, working out, cooking, playing piano, tasting tea & wine, and traveling.";
 
-// add links here?
 export const contactText = "Want to find out more? Drop me a line.";

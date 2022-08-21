@@ -29,7 +29,6 @@ export default function MainSceneContents({
 
   return (
     <group visible={enabled}>
-      {/* FIXME: weird scrolling behavior at when offset is 1; scroll becomes enabled on mobile and stuff breaks  */}
       <ScrollControls distance={10} damping={0.5} enabled={enabled}>
         <Path />
         {overlayVisible || warpActive || (
