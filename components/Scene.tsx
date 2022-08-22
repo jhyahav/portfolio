@@ -22,15 +22,15 @@ export default function Scene({
   camera.lookAt(getInitialPosition());
   return (
     // TODO: add a loader!!!
-    <Suspense fallback={<div>Add loader here...</div>}>
-      <Canvas camera={camera}>
-        <Preload all />
-        {warpActive && <Warp />}
-        <MainSceneContents
-          overlayVisible={overlayVisible}
-          warpActive={warpActive}
-        />
-      </Canvas>
-    </Suspense>
+    // <Suspense fallback={<div>Add loader here...</div>}>
+    <Canvas camera={camera}>
+      <Preload all />
+      {warpActive && <Warp />}
+      <MainSceneContents
+        overlayVisible={overlayVisible}
+        warpActive={warpActive}
+      />
+    </Canvas>
+    // </Suspense>
   );
 }

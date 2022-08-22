@@ -29,8 +29,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 ### Built With
 
-- [![Next][next.js]][next-url]
-- [![React][react.js]][react-url]
+<div align="center">
+[![Three][three.js]][three-url] [![Next][next.js]][next-url] [![React][react.js]][react-url]
+</div>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -65,3 +66,5 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [next-url]: https://nextjs.org/
 [react.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [react-url]: https://reactjs.org/
+[three.js]: https://img.shields.io/badge/three.js-FFFFFF?style=for-the-badge&logo=threedotjs&logoColor=black
+[three-url]: https://threejs.org/

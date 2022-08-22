@@ -15,15 +15,15 @@ export default function Warp() {
   const { camera } = useThree();
 
   return (
-    <Suspense fallback={<div id="overlay" />}>
-      <mesh position={camera.position.clone().lerp(getInitialPosition(), 0.1)}>
-        <planeBufferGeometry args={[2, 2]} />
-        <shaderMaterial
-          vertexShader={warpVertex}
-          fragmentShader={warpFragment}
-          uniforms={uniforms}
-        />
-      </mesh>
-    </Suspense>
+    // <Suspense fallback={<div id="overlay" />}>
+    <mesh position={camera.position.clone().lerp(getInitialPosition(), 0.1)}>
+      <planeBufferGeometry args={[2, 2]} />
+      <shaderMaterial
+        vertexShader={warpVertex}
+        fragmentShader={warpFragment}
+        uniforms={uniforms}
+      />
+    </mesh>
+    // </Suspense>
   );
 }
