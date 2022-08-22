@@ -7,13 +7,13 @@
 <br />
 <div align="center">
   <a href="https://github.com/jhyahav/portfolio">
-    <img src="/logo.svg" alt="jhyahav logo" width="80" height="80">
+    <img src="/jhyahav/portfolio/blob/main/public/android-chrome-512x512.png" alt="jhyahav logo" width="80" height="80">
   </a>
 
 <h3 align="center">jhyahav's portfolio</h3>
 
   <p align="center">
-    project_description
+    Jonathan Yahav's portfolio site, built with React and Three.js.
   </p>
 </div>
 
@@ -57,7 +57,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/jhyahav/
-[product-screenshot]: /screenshot.png
+[product-screenshot]: /jhyahav/portfolio/blob/main/public/screenshot.png
 [next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [next-url]: https://nextjs.org/
 [react.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB

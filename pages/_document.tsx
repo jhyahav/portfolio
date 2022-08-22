@@ -3,7 +3,7 @@ import { Html, Head, Main, NextScript } from "next/document";
 const about = "about me - jhyahav";
 const description =
   "Jonathan Yahav's portfolio site, built with React and Three.js.";
-const icon = "/logo.svg";
+const icon = "/logo.png";
 
 export default function Document() {
   return (
