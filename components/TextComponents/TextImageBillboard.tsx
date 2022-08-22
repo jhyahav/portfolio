@@ -53,7 +53,6 @@ export default function TextImageBillboard({
     bottomTextContentPosition
   );
 
-  // TODO: test for height as well?
   useEffect(() => {
     setFontSize(adjustSize(baseFontSize, size.width));
     setMaxTextWidth(adjustSize(baseFontWidth, size.width));
