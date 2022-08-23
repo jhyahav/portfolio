@@ -23,7 +23,7 @@
 
 [![screenshot of jhyahav's portfolio][product-screenshot]](https://jhyahav.vercel.app/)
 
-The goal of this project was to create a beautiful, performant, fully responsive and interactive 3D site that showcases my experience and skills while keeping it all short and sweet. I created a little solar system, binding the camera to user scrolling to enable realistic movement while panning between sections of my biography. The project includes a realistic dying star, a randomly-generated asteroid belt with a wide variety of different features, several planets, and a number of text and image billboards. The camera follows a curve, focusing on the relevant element at each stage. I made extensive use of custom shaders and Drei's ScrollControls (see <a href="#acknowledgements">Acknowledgements</a>), as well as custom displacement maps.
+The goal of this project was to create a beautiful, performant, fully responsive and interactive 3D site that showcases my experience and skills while keeping it all short and sweet. I created a little solar system, binding the camera to user scrolling to enable realistic movement while panning between sections of my biography. The project includes a realistic dying star, a randomly-generated asteroid belt with a wide variety of different features, several planets, and a number of text and image billboards. The camera follows a curve, focusing on the relevant element at each stage. I made extensive use of custom shaders and drei's ScrollControls (see <a href="#acknowledgments">Acknowledgments</a>), as well as custom displacement maps.
 
 ### Performance
 
@@ -50,8 +50,6 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- ACKNOWLEDGMENTS -->
 
 ## Acknowledgments
-
-<a name="acknowledgments"></a>
 
 - This project wouldn't have been possible without [react-three-fiber](https://github.com/pmndrs/react-three-fiber) and [drei](https://github.com/pmndrs/drei).
 - The custom shader materials in the project are based on fragment shaders from [Shadertoy](https://www.shadertoy.com/):
