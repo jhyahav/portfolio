@@ -11,6 +11,7 @@ export interface AsteroidProps {
   rotation?: Vector3;
   colorMap?: Texture;
   displacementMap?: Texture;
+  roughness?: number;
 }
 
 export default function Asteroid(props: AsteroidProps) {
@@ -35,8 +36,9 @@ export default function Asteroid(props: AsteroidProps) {
         color={props.color}
         map={props.colorMap}
         displacementMap={props.displacementMap}
-        displacementScale={1.2}
+        displacementScale={0.4 * props.radius}
         visible={true}
+        roughness={props.roughness}
       />
     </Sphere>
   );

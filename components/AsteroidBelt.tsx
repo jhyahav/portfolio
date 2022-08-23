@@ -15,7 +15,8 @@ export default function AsteroidBelt() {
   // initialize maps
   const colorMaps = useLoader(TextureLoader, ["/rock.webp"]);
   const displacementMaps = useLoader(TextureLoader, [
-    "/example_displacement.jpg",
+    "/displacement1.png",
+    "/displacement3.png",
   ]);
   wrap(colorMaps);
   wrap(displacementMaps);
@@ -75,6 +76,7 @@ const generateAsteroids = (
     const colorMap = colorMaps
       ? colorMaps[randInt(colorMaps.length, 0)]
       : undefined;
+    const roughness = Math.random() / 2 + 0.5;
     const rotation = new Vector3(
       (Math.random() - 0.5) / 30,
       (Math.random() - 0.5) / 30,
@@ -87,6 +89,7 @@ const generateAsteroids = (
       color: color,
       colorMap: colorMap,
       displacementMap: displacementMap,
+      roughness: roughness,
       rotation: rotation,
     });
   }
@@ -105,7 +108,7 @@ const generatePositions = (mesh: Mesh) => {
   return positions;
 };
 
-const wrap = (textureArr: Array<Texture>) => {
+export const wrap = (textureArr: Array<Texture>) => {
   textureArr.forEach((texture: Texture) => {
     texture.wrapS = RepeatWrapping;
     texture.wrapT = RepeatWrapping;

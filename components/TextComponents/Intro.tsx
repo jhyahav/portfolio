@@ -9,7 +9,7 @@ export default function Intro() {
       scrollVisible={introVisible}
       baseFontSize={5}
       baseFontWidth={40}
-      position={getIntroPlanetPosition().add(new Vector3(-12, -5, -105))}
+      position={getIntroPlanetPosition().add(new Vector3(-10, -5, -100))}
       textContent={introText}
     />
   );

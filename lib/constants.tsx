@@ -15,6 +15,8 @@ export const [
   getExperiencePosition,
   getHobbiesPosition,
   getContactPosition,
+  getCreamPlanetPosition,
+  getGasPlanetPosition,
 ] = [
   () => new Vector3(-250, -260, -300),
   () => new Vector3(20, 25, 90),
@@ -25,6 +27,8 @@ export const [
   () => new Vector3(0, 200, -25),
   () => new Vector3(-50, -200, 450),
   () => new Vector3(0, -35, 80),
+  () => new Vector3(700, -140, 1400),
+  () => new Vector3(0, 200, -1200),
 ];
 
 export const [

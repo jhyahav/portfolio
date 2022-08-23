@@ -8,6 +8,7 @@ export default function Planet({
   colorHex,
   colorMap,
   displacementMap,
+  displacementScale,
   children,
 }: {
   position: Vector3;
@@ -15,6 +16,7 @@ export default function Planet({
   colorHex: number;
   colorMap?: Texture;
   displacementMap?: Texture;
+  displacementScale?: number;
   children?: React.ReactNode;
 }) {
   const planetRef = useRef<Mesh>(null);
@@ -33,6 +35,7 @@ export default function Planet({
         <meshStandardMaterial
           map={colorMap}
           displacementMap={displacementMap}
+          displacementScale={displacementScale}
           color={colorHex}
         />
       </mesh>

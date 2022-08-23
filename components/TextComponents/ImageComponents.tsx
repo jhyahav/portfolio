@@ -27,68 +27,68 @@ export default function ImageComponents() {
   const currentImages: ImageProps[] = [
     {
       src: "/Firebase.svg",
-      scale: [20, 27, 1],
-      relativePosition: new Vector3(-30, 30, 0),
+      scale: [30, 40.5, 1],
+      relativePosition: new Vector3(-45, 45, 0),
     },
     {
       src: "/GoogleCloud.svg",
-      scale: [25, 20, 1],
-      relativePosition: new Vector3(0, 30, 0),
+      scale: [37.5, 30, 1],
+      relativePosition: new Vector3(0, 45, 0),
     },
     {
       src: "/React.svg",
-      scale: [22.5, 20, 1],
-      relativePosition: new Vector3(30, 30, 0),
+      scale: [33.75, 30, 1],
+      relativePosition: new Vector3(45, 45, 0),
     },
     {
       src: "/Sass.svg",
-      scale: [27, 20, 1],
-      relativePosition: new Vector3(-30, 0, 0),
+      scale: [40.5, 30, 1],
+      relativePosition: new Vector3(-45, 0, 0),
     },
     {
       src: "/Typescript.svg",
-      scale: [25, 25, 1],
+      scale: [37.5, 37.5, 1],
       relativePosition: new Vector3(0, 0, 0),
     },
     {
       src: "/Threejs.svg",
-      scale: [21, 22, 1],
-      relativePosition: new Vector3(30, 0, 0),
+      scale: [31.5, 33, 1],
+      relativePosition: new Vector3(45, 0, 0),
     },
 
     {
       src: "/Nextjs.svg",
-      scale: [45, 25, 1],
-      relativePosition: new Vector3(0, -30, 0),
+      scale: [67.5, 37.5, 1],
+      relativePosition: new Vector3(0, -45, 0),
     },
   ];
 
   const futureImages: ImageProps[] = [
     {
       src: "/GraphQL.svg",
-      scale: [25, 25, 1],
-      relativePosition: new Vector3(-15, 30, 0),
+      scale: [37.5, 37.5, 1],
+      relativePosition: new Vector3(-22.5, 45, 0),
     },
     {
       src: "/Tensorflow.svg",
-      scale: [25, 25.5, 1],
-      relativePosition: new Vector3(15, 30, 0),
+      scale: [37.5, 38.25, 1],
+      relativePosition: new Vector3(22.5, 45, 0),
     },
     {
       src: "/Svelte.svg",
-      scale: [22.5, 26.7, 1],
-      relativePosition: new Vector3(-15, 0, 0),
+      scale: [33.75, 40.05, 1],
+      relativePosition: new Vector3(-22.5, 0, 0),
     },
     {
       src: "/tailwind.svg",
-      scale: [31, 20, 1],
-      relativePosition: new Vector3(15, 0, 0),
+      scale: [46.5, 30, 1],
+      relativePosition: new Vector3(22.5, 0, 0),
     },
 
     {
       src: "/PWA.svg",
-      scale: [56, 20, 1],
-      relativePosition: new Vector3(0, -30, 0),
+      scale: [84, 30, 1],
+      relativePosition: new Vector3(0, -45, 0),
     },
   ];
 
@@ -114,19 +114,19 @@ export default function ImageComponents() {
     <>
       <TextImageBillboard
         textContent={currentTechText}
-        textContentPosition={new Vector3(0, 65, 1)}
-        baseFontWidth={75}
+        textContentPosition={new Vector3(0, 90, 1)}
+        baseFontWidth={113}
         images={currentImages}
         position={getCurrentTechPosition()}
         scrollVisible={currentVisible}
-        baseFontSize={15}
+        baseFontSize={22.5}
         key={"current"}
       />
       <TextImageBillboard
         textContent={futureTechText}
-        textContentPosition={new Vector3(0, 55, 1)}
-        //baseFontSize={15}
-        // baseFontWidth={85}
+        textContentPosition={new Vector3(0, 80, 1)}
+        baseFontSize={15}
+        baseFontWidth={180}
         images={futureImages}
         position={getFutureTechPosition()}
         scrollVisible={futureVisible}
@@ -142,8 +142,6 @@ export default function ImageComponents() {
             scale: [110, 50, 1],
             relativePosition: new Vector3(0, 0, -1),
             onClick: () => window.open("https://teafor.me/products/", "_blank"),
-            // onHover: () => (document.body.style.cursor = "pointer"),
-            // onUnhover: () => (document.body.style.cursor = "default"),
             ...hoverProps,
           },
         ]}

@@ -23,9 +23,17 @@
 
 [![screenshot of jhyahav's portfolio][product-screenshot]](https://jhyahav.vercel.app/)
 
-The goal of this project was to create a beautiful, performant, fully responsive and interactive 3D site that showcases my experience and skills while keeping it all short and sweet. I created a little solar system, binding the camera to user scrolling to enable realistic movement while panning between sections of my biography.
+The goal of this project was to create a beautiful, performant, fully responsive and interactive 3D site that showcases my experience and skills while keeping it all short and sweet. I created a little solar system, binding the camera to user scrolling to enable realistic movement while panning between sections of my biography. The project includes a realistic dying star, a randomly-generated asteroid belt with a wide variety of different features, several planets, and a number of text and image billboards. The camera follows a curve, focusing on the relevant element at each stage. I made extensive use of custom shaders and Drei's ScrollControls (see <a href="#acknowledgements">Acknowledgements</a>), as well as custom displacement maps.
 
-### Built With
+### Performance
+
+Please note that performance may not be ideal on particularly large screens. In general, performance tests on various devices yielded good results, but YMMV depending on your GPU.
+
+### Accessibility
+
+As mentioned on the site itself, the project (specifically the warp animation after initial landing) includes flashing effects that may not be suitable for users with photosensitive epilepsy. Due to the nature of the animation used, the site may also be unsuitable for users with motion sensitivities. I plan on improving accessibility using [react-three-a11y](https://github.com/pmndrs/react-three-a11y) in the near future.
+
+### Built with
 
 [![Three][three.js]][three-url] [![Next][next.js]][next-url] [![React][react.js]][react-url]
 
@@ -43,19 +51,23 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## Acknowledgments
 
+<a name="acknowledgments"></a>
+
 - This project wouldn't have been possible without [react-three-fiber](https://github.com/pmndrs/react-three-fiber) and [drei](https://github.com/pmndrs/drei).
 - The custom shader materials in the project are based on fragment shaders from [Shadertoy](https://www.shadertoy.com/):
   - [Main Sequence Star](https://www.shadertoy.com/view/4dXGR4) by flight404
   - [Warp Speed 2](https://www.shadertoy.com/view/4tjSDt) by David Hoskins
+- Camera movement path based on curve from [Three.js examples](https://github.com/mrdoob/three.js/blob/master/examples/jsm/curves/CurveExtras.js).
 - [3D model of ISS](https://solarsystem.nasa.gov/resources/2378/international-space-station-3d-model/) by NASA
 - [GLTF -> React Three Fiber](https://gltf.pmnd.rs/)
 - Favicon and logo created with [favicon.io](https://favicon.io/).
+- Some planet color maps were taken from [Solar System Scope](https://www.solarsystemscope.com/textures/).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 
-[license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
+[license-url]: https://github.com/jhyahav/portfolio/blob/master/LICENSE.txt
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/jhyahav/

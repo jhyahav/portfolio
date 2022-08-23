@@ -16,6 +16,8 @@ export default function IntroPlanet({
       radius={10}
       colorHex={0xff0011}
       colorMap={colorMap}
+      displacementMap={displacementMap}
+      displacementScale={5}
     >
       <Intro />
     </Planet>
