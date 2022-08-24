@@ -21,7 +21,8 @@ export default function MainSceneContents({
 
   return (
     <group visible={enabled}>
-      <ScrollControls distance={10} damping={0.5} enabled={enabled}>
+      {/* distance can be increased to accommodate additional sections */}
+      <ScrollControls distance={25} damping={2} enabled={enabled}>
         <Path />
         {overlayVisible || warpActive || (
           <DyingStar position={new Vector3(100, 100, 100)} outerRadius={1600} />
