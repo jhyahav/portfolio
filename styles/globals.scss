@@ -38,7 +38,7 @@ a {
   }
 
   .warning_message {
-    font-size: 3vw;
+    font-size: max(3vw, 2.5vh);
   }
 
   @keyframes blink {

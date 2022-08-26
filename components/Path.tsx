@@ -27,17 +27,21 @@ export default function Path() {
           constants.getIntroPlanetPosition(),
           constants.initScrollRange(scroll)
         );
-      const introToStar = initToIntro
-        .clone()
-        .lerp(constants.getStarPosition(), constants.introScrollRange(scroll));
-      const starToCurrentTech = introToStar
+      const introToCurrent = initToIntro
         .clone()
         .lerp(
           constants.getCurrentTechPosition(),
+          constants.introScrollRange(scroll)
+        );
+
+      const currentToOtherTech = introToCurrent
+        .clone()
+        .lerp(
+          constants.getOtherTechPosition(),
           constants.currentTechScrollRange(scroll)
         );
 
-      const currentToFuture = starToCurrentTech
+      const currentToFuture = currentToOtherTech
         .clone()
         .lerp(
           constants.getFutureTechPosition(),
@@ -52,7 +56,7 @@ export default function Path() {
         .clone()
         .lerp(
           constants.getExperiencePosition(),
-          constants.experienceScrollRange(scroll)
+          constants.pastProjectsScrollRange(scroll)
         );
 
       const experienceToHobbies = teaToExperience

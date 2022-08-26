@@ -1,18 +1,11 @@
 import { Vector3 } from "three";
-import {
-  contactVisible,
-  currentVisible,
-  futureVisible,
-  getContactPosition,
-  getCurrentTechPosition,
-  getFutureTechPosition,
-  getTeaPosition,
-  teaVisible,
-} from "../../lib/constants";
+import * as constants from "../../lib/constants";
 import {
   contactText,
   currentTechText,
   futureTechText,
+  otherTechText,
+  pastProjectsText,
   teaTextLower,
   teaTextUpper,
 } from "../../lib/text";
@@ -60,6 +53,24 @@ export default function ImageComponents() {
       src: "/Nextjs.svg",
       scale: [67.5, 37.5, 1],
       relativePosition: new Vector3(0, -45, 0),
+    },
+  ];
+
+  const otherImages: ImageProps[] = [
+    {
+      src: "/C_Logo.png",
+      scale: [66, 75, 1],
+      relativePosition: new Vector3(-40, 0, 0),
+    },
+    {
+      src: "/Java.svg",
+      scale: [40, 75, 1],
+      relativePosition: new Vector3(40, 0, 0),
+    },
+    {
+      src: "/Python.svg",
+      scale: [70, 75, 1],
+      relativePosition: new Vector3(0, -90, 0),
     },
   ];
 
@@ -117,19 +128,31 @@ export default function ImageComponents() {
         textContentPosition={new Vector3(0, 90, 1)}
         baseFontWidth={113}
         images={currentImages}
-        position={getCurrentTechPosition()}
-        scrollVisible={currentVisible}
+        position={constants.getCurrentTechPosition()}
+        scrollVisible={constants.currentVisible}
         baseFontSize={22.5}
         key={"current"}
       />
+
+      <TextImageBillboard
+        textContent={otherTechText}
+        textContentPosition={new Vector3(0, 70, 1)}
+        baseFontSize={22.5}
+        baseFontWidth={300}
+        images={otherImages}
+        position={constants.getOtherTechPosition()}
+        scrollVisible={constants.otherVisible}
+        key={"otherTech"}
+      />
+
       <TextImageBillboard
         textContent={futureTechText}
         textContentPosition={new Vector3(0, 80, 1)}
         baseFontSize={15}
         baseFontWidth={180}
         images={futureImages}
-        position={getFutureTechPosition()}
-        scrollVisible={futureVisible}
+        position={constants.getFutureTechPosition()}
+        scrollVisible={constants.futureVisible}
         key={"future"}
       />
       <TextImageBillboard
@@ -145,22 +168,33 @@ export default function ImageComponents() {
             ...hoverProps,
           },
         ]}
-        position={getTeaPosition()}
-        scrollVisible={teaVisible}
+        position={constants.getTeaPosition()}
+        scrollVisible={constants.teaVisible}
         bottomTextContent={teaTextLower}
         bottomTextContentPosition={new Vector3(0, -25, 0)}
         baseFontWidth={110}
         baseFontSize={5}
         key={"tea"}
       />
+
+      <TextImageBillboard
+        textContent={pastProjectsText}
+        textContentPosition={new Vector3(0, 60, 0)}
+        baseFontSize={20}
+        baseFontWidth={260}
+        position={constants.getExperiencePosition()}
+        scrollVisible={constants.pastProjectsVisible}
+        key={"other"}
+      />
+
       <TextImageBillboard
         textContent={contactText}
         baseFontSize={12}
         baseFontWidth={180}
         textContentPosition={new Vector3(0, 35, 1)}
         images={contactImages}
-        position={getContactPosition()}
-        scrollVisible={contactVisible}
+        position={constants.getContactPosition()}
+        scrollVisible={constants.contactVisible}
         key={"contact"}
       />
     </>
