@@ -69,7 +69,7 @@ export const [
   (scroll: ScrollControlsState) => scroll.visible(0.16, 0.13),
   (scroll: ScrollControlsState) => scroll.visible(0.29, 0.2),
   (scroll: ScrollControlsState) => scroll.visible(0.42, 0.22),
-  (scroll: ScrollControlsState) => scroll.visible(0.57, 0.12),
+  (scroll: ScrollControlsState) => scroll.visible(0.57, 0.15),
   (scroll: ScrollControlsState) => scroll.visible(0.69, 0.17),
   (scroll: ScrollControlsState) => scroll.visible(0.84, 0.155),
   (scroll: ScrollControlsState) => scroll.visible(0.91, 1),

@@ -44,6 +44,7 @@ export default function TextImageBillboard({
   baseFontWidth?: number;
 }) {
   const { size } = useThree();
+  const adjustor = Math.max(size.width, size.height);
   const [fontSize, setFontSize] = useState(baseFontSize);
   const [maxTextWidth, setMaxTextWidth] = useState(baseFontWidth);
   const [adjustedImages, setAdjustedImages] = useState(images);
@@ -54,23 +55,23 @@ export default function TextImageBillboard({
   );
 
   useEffect(() => {
-    setFontSize(adjustSize(baseFontSize, size.width));
+    setFontSize(adjustSize(baseFontSize, adjustor));
     setMaxTextWidth(adjustSize(baseFontWidth, size.width));
     setUpperTextPosition(
-      textContentPosition && adjustVector(textContentPosition, size.width)
+      textContentPosition && adjustVector(textContentPosition, adjustor)
     );
     setLowerTextPosition(
       bottomTextContentPosition &&
-        adjustVector(bottomTextContentPosition, size.width)
+        adjustVector(bottomTextContentPosition, adjustor)
     );
     setAdjustedImages(
       images?.map((image) => {
         const newScale: [number, number, number] = [
-          adjustSize(image.scale[0], size.width),
-          adjustSize(image.scale[1], size.width),
+          adjustSize(image.scale[0], adjustor),
+          adjustSize(image.scale[1], adjustor),
           image.scale[2],
         ];
-        const newPosition = adjustVector(image.relativePosition, size.width);
+        const newPosition = adjustVector(image.relativePosition, adjustor);
         return {
           ...image,
           relativePosition: newPosition,
@@ -80,6 +81,7 @@ export default function TextImageBillboard({
     );
   }, [
     size.width,
+    size.height,
     baseFontSize,
     baseFontWidth,
     bottomTextContentPosition,
