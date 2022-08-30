@@ -103,6 +103,14 @@ export default function ImageComponents() {
     },
   ];
 
+  const pastProjectImages: ImageProps[] = [
+    {
+      src: "/coacss.png",
+      scale: [110, 80, 1],
+      relativePosition: new Vector3(0, 0, 0),
+    },
+  ];
+
   const contactImages: ImageProps[] = [
     {
       src: "/LinkedIn.png",
@@ -158,7 +166,6 @@ export default function ImageComponents() {
       <TextImageBillboard
         textContent={teaTextUpper}
         textContentPosition={new Vector3(0, 30, 0)}
-        // TODO: add indication that this is clickable
         images={[
           {
             src: "/teaforme.png",
@@ -180,6 +187,7 @@ export default function ImageComponents() {
       <TextImageBillboard
         textContent={pastProjectsText}
         textContentPosition={new Vector3(0, 60, 0)}
+        images={pastProjectImages}
         baseFontSize={20}
         baseFontWidth={260}
         position={constants.getExperiencePosition()}

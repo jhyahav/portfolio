@@ -1,14 +1,24 @@
 import { Html, Head, Main, NextScript } from "next/document";
+import { introText } from "../lib/text";
 
-const about = "about me - jhyahav";
+const about = "Jonathan Yahav - About me";
 const description =
-  "Jonathan Yahav's portfolio site, built with React and Three.js.";
+  "Hi, I'm Jonathan. Welcome to my portfolio site!" + introText;
 const icon = "/logo.png";
 
 export default function Document() {
   return (
     <Html>
       <Head>
+        <html lang="en" />
+        <meta charSet="utf-8" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        />
+        <meta name="robots" content="index" />
+        <meta name="description" content={description} />
+        <meta name="googlebot" content="notranslate" />
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:creator" content="Jonathan Yahav" />
         <meta name="twitter:site" content={about} />
