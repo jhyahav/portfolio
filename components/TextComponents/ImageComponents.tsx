@@ -157,7 +157,7 @@ export default function ImageComponents() {
       />
       <TextImageBillboard
         textContent={teaTextUpper}
-        textContentPosition={new Vector3(0, 35, 0)}
+        textContentPosition={new Vector3(0, 30, 0)}
         // TODO: add indication that this is clickable
         images={[
           {
@@ -173,7 +173,7 @@ export default function ImageComponents() {
         bottomTextContent={teaTextLower}
         bottomTextContentPosition={new Vector3(0, -25, 0)}
         baseFontWidth={110}
-        baseFontSize={5}
+        baseFontSize={4}
         key={"tea"}
       />
 

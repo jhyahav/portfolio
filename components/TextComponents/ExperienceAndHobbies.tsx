@@ -3,7 +3,6 @@ import { hobbiesText } from "../../lib/text";
 import TextImageBillboard from "./TextImageBillboard";
 
 export default function ExperienceAndHobbies() {
-  //const tempScroll = (scroll: ScrollControlsState) => scroll.range(0, 1);
   return (
     <>
       <TextImageBillboard
@@ -13,6 +12,7 @@ export default function ExperienceAndHobbies() {
         position={getHobbiesPosition()}
         scrollVisible={hobbiesVisible}
         key={"hobbies"}
+        wrapText
       />
     </>
   );

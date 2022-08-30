@@ -9,7 +9,10 @@ import { ThreeEvent, useFrame, useThree } from "@react-three/fiber";
 import { useEffect, useState } from "react";
 import { Vector3 } from "three";
 
+// The width based on which all default sizes are defined and adjustments are calculated.
 const DEFAULT_VIEWPORT_WIDTH = 1080;
+// Images and text will not be rescaled past this point. This prevents wacky behavior on large screens.
+const MAX_VIEWPORT_WIDTH = 1700;
 const DEFAULT_FONT_SIZE = 10;
 const DEFAULT_TEXT_WIDTH = 120;
 
@@ -32,6 +35,7 @@ export default function TextImageBillboard({
   bottomTextContentPosition,
   baseFontSize = DEFAULT_FONT_SIZE,
   baseFontWidth = DEFAULT_TEXT_WIDTH,
+  wrapText = false,
 }: {
   scrollVisible: (scroll: ScrollControlsState) => boolean;
   position: Vector3;
@@ -42,9 +46,11 @@ export default function TextImageBillboard({
   bottomTextContentPosition?: Vector3;
   baseFontSize?: number;
   baseFontWidth?: number;
+  wrapText?: boolean;
 }) {
   const { size } = useThree();
-  const adjustor = Math.max(size.width, size.height);
+  const width = Math.min(size.width, MAX_VIEWPORT_WIDTH);
+  const adjustor = wrapText ? Math.max(width, size.height) : width;
   const [fontSize, setFontSize] = useState(baseFontSize);
   const [maxTextWidth, setMaxTextWidth] = useState(baseFontWidth);
   const [adjustedImages, setAdjustedImages] = useState(images);
