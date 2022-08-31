@@ -1,11 +1,11 @@
-import { ImageProps } from "./../TextComponents/TextImageBillboard";
 import { ThreeEvent } from "@react-three/fiber";
 import { useState } from "react";
 import GalleryControls from "./GalleryControls";
 import GalleryContents from "./GalleryContents";
 import { Vector3 } from "three";
 
-export interface GalleryImageProps extends ImageProps {
+export interface GalleryImageProps {
+  src: string;
   onClick: (event: ThreeEvent<MouseEvent>) => void;
   onHover: (event: ThreeEvent<PointerEvent>) => void;
   onUnhover: (event: ThreeEvent<PointerEvent>) => void;
@@ -22,11 +22,8 @@ export default function Gallery({
   width: number;
   height: number;
 }) {
-  const [currentIndex, setCurrentIndex] = useState(1);
-  const [prevIndex, setPrevIndex] = useState(0);
-  //TODO: add me
-  //const [currentWidth, setCurrentWidth] = useState();
-
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [prevIndex, setPrevIndex] = useState(2);
   return (
     <group position={position}>
       <GalleryContents

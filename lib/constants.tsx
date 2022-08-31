@@ -40,7 +40,7 @@ export const [
   currentTechScrollRange,
   futureTechScrollRange,
   teaScrollRange,
-  pastProjectsScrollRange,
+  otherProjectsScrollRange,
   hobbiesScrollRange,
   contactScrollRange,
 ] = [
@@ -61,7 +61,7 @@ export const [
   otherVisible,
   futureVisible,
   teaVisible,
-  pastProjectsVisible,
+  otherProjectsVisible,
   hobbiesVisible,
   contactVisible,
 ] = [

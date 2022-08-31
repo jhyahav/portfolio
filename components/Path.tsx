@@ -56,7 +56,7 @@ export default function Path() {
         .clone()
         .lerp(
           constants.getExperiencePosition(),
-          constants.pastProjectsScrollRange(scroll)
+          constants.otherProjectsScrollRange(scroll)
         );
 
       const experienceToHobbies = teaToExperience

@@ -5,7 +5,7 @@ import {
   currentTechText,
   futureTechText,
   otherTechText,
-  pastProjectsText,
+  otherProjectsText,
   teaTextLower,
   teaTextUpper,
 } from "../../lib/text";
@@ -104,25 +104,19 @@ export default function ImageComponents() {
     },
   ];
 
-  const pastProjectImages: GalleryImageProps[] = [
+  const otherProjectImages: GalleryImageProps[] = [
     {
       src: "/coacss.png",
-      scale: [1, 1, 1],
-      relativePosition: new Vector3(0, 0, 0),
       onClick: () => {},
       ...hoverProps,
     },
     {
       src: "/jchat.png",
-      scale: [1, 1, 1],
-      relativePosition: new Vector3(0, 0, 0),
       onClick: () => {},
       ...hoverProps,
     },
     {
-      src: "screenshot1.png",
-      scale: [1, 1, 1],
-      relativePosition: new Vector3(0, 0, 0),
+      src: "/screenshot2.png",
       onClick: () => {},
       ...hoverProps,
     },
@@ -202,20 +196,20 @@ export default function ImageComponents() {
       />
 
       <TextImageBillboard
-        textContent={pastProjectsText}
-        textContentPosition={new Vector3(0, 60, 0)}
-        images={pastProjectImages}
-        baseFontSize={20}
-        baseFontWidth={260}
+        textContent={otherProjectsText}
+        textContentPosition={new Vector3(0, 66, 0)}
+        baseFontSize={12}
+        baseFontWidth={100}
         position={constants.getExperiencePosition()}
-        scrollVisible={constants.pastProjectsVisible}
+        scrollVisible={constants.otherProjectsVisible}
         key={"other"}
       >
         <Gallery
           position={new Vector3(0, 0, 0)}
-          imageProps={pastProjectImages}
+          imageProps={otherProjectImages}
+          //  width + height are dummy props here, overwritten by TextImageBillboard
           width={100}
-          height={100}
+          height={80}
         />
       </TextImageBillboard>
 
