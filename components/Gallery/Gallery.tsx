@@ -1,10 +1,9 @@
 import { ImageProps } from "./../TextComponents/TextImageBillboard";
-import { ThreeEvent, useFrame } from "@react-three/fiber";
-import { useEffect, useState } from "react";
+import { ThreeEvent } from "@react-three/fiber";
+import { useState } from "react";
 import GalleryControls from "./GalleryControls";
 import GalleryContents from "./GalleryContents";
 import { Vector3 } from "three";
-import { EPSILON } from "../../lib/constants";
 
 export interface GalleryImageProps extends ImageProps {
   onClick: (event: ThreeEvent<MouseEvent>) => void;
@@ -28,22 +27,6 @@ export default function Gallery({
   //TODO: add me
   //const [currentWidth, setCurrentWidth] = useState();
 
-  useEffect(() => {
-    console.log(currentIndex);
-    console.log(prevIndex);
-  }, [currentIndex, prevIndex]);
-
-  // useFrame((state, delta) => {
-  //   if (
-  //     Math.ceil(state.clock.elapsedTime) % 2 === 0 &&
-  //     Math.round(state.clock.elapsedTime) - state.clock.elapsedTime < EPSILON
-  //   ) {
-  //     setPrevIndex(currentIndex);
-  //     setCurrentIndex((currentIndex + 1) % imageProps.length);
-  //     console.log(state.clock.elapsedTime);
-  //   }
-  // });
-
   return (
     <group position={position}>
       <GalleryContents
@@ -51,7 +34,7 @@ export default function Gallery({
       />
       <GalleryControls
         imageCount={imageProps.length}
-        {...{ currentIndex, setCurrentIndex, setPrevIndex }}
+        {...{ currentIndex, setCurrentIndex, setPrevIndex, width }}
       />
     </group>
   );

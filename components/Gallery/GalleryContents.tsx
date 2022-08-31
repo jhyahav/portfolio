@@ -1,6 +1,7 @@
+import { Text } from "@react-three/drei";
 import { useFrame, useLoader } from "@react-three/fiber";
 import { useEffect, useMemo, useRef } from "react";
-import { ShaderMaterial, Texture, TextureLoader } from "three";
+import { ShaderMaterial, TextureLoader } from "three";
 import { galleryFragment } from "../../lib/shaders/galleryFragment";
 import { galleryVertex } from "../../lib/shaders/galleryVertex";
 import { GalleryImageProps } from "./Gallery";
@@ -25,12 +26,8 @@ export default function GalleryContents({
     imageProps.map((imageProps) => imageProps.src)
   );
 
-  // const uniforms = {
-  //   uFirstImage: { type: "t", value: textures[prevIndex] },
-  //   uSecondImage: { type: "t", value: textures[currentIndex] },
-  //   uInterpolation: { type: "f", value: 0 },
-  // };
-
+  /*This is essential in making the shader work properly in a case like this.
+    Serious issues occur when uniforms aren't memoized (because of how react-three/fiber works).*/
   const uniforms = useMemo(() => {
     return {
       uFirstImage: { type: "t", value: textures[prevIndex] },
@@ -39,19 +36,10 @@ export default function GalleryContents({
     };
   }, []);
 
-  useEffect(() => {
-    console.log("Changed");
-  }, [uniforms]);
-
-  // TODO: check using treeshaking w/ extend API!
-
   useFrame((state, delta) => {
     if (ref.current) {
       const inter = ref.current.uniforms.uInterpolation.value;
       ref.current.uniforms.uInterpolation.value += (1 - inter) * 0.1;
-      ref.current.uniforms.uFirstImage.value = textures[prevIndex];
-      ref.current.uniforms.uSecondImage.value = textures[currentIndex];
-      //console.log(inter);
     }
   });
 
@@ -61,28 +49,24 @@ export default function GalleryContents({
       ref.current.uniforms.uFirstImage.value = textures[prevIndex];
       ref.current.uniforms.uSecondImage.value = textures[currentIndex];
     }
-    // console.log(
-    //   ref.current?.uniforms.uSecondImage.value,
-    //   ref.current?.uniforms.uFirstImage.value,
-    //   ref.current?.uniforms.uInterpolation.value
-    // );
   }, [currentIndex, prevIndex]);
 
   return (
-    <mesh
-      onClick={imageProps[currentIndex].onClick}
-      onPointerOver={imageProps[currentIndex].onHover}
-      onPointerOut={imageProps[currentIndex].onUnhover}
-    >
-      <planeBufferGeometry args={[width, height]} />
-      <shaderMaterial
-        ref={ref}
-        uniforms={uniforms}
-        needsUpdate={true}
-        uniformsNeedUpdate={true}
-        vertexShader={galleryVertex}
-        fragmentShader={galleryFragment}
-      />
-    </mesh>
+    <group>
+      <mesh
+        onClick={imageProps[currentIndex].onClick}
+        onPointerOver={imageProps[currentIndex].onHover}
+        onPointerOut={imageProps[currentIndex].onUnhover}
+      >
+        <planeBufferGeometry args={[width, height]} />
+        <shaderMaterial
+          ref={ref}
+          uniforms={uniforms}
+          vertexShader={galleryVertex}
+          fragmentShader={galleryFragment}
+        />
+      </mesh>
+      <Text>...</Text>
+    </group>
   );
 }
