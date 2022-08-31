@@ -36,6 +36,7 @@ export default function TextImageBillboard({
   baseFontSize = DEFAULT_FONT_SIZE,
   baseFontWidth = DEFAULT_TEXT_WIDTH,
   wrapText = false,
+  children,
 }: {
   scrollVisible: (scroll: ScrollControlsState) => boolean;
   position: Vector3;
@@ -47,6 +48,7 @@ export default function TextImageBillboard({
   baseFontSize?: number;
   baseFontWidth?: number;
   wrapText?: boolean;
+  children?: React.ReactNode;
 }) {
   const { size } = useThree();
   const width = Math.min(size.width, MAX_VIEWPORT_WIDTH);
@@ -133,7 +135,9 @@ export default function TextImageBillboard({
         <Text {...textProps} position={upperTextPosition}>
           {textContent}
         </Text>
-        {adjustedImages &&
+        {children}
+        {!children &&
+          adjustedImages &&
           adjustedImages.length > 0 &&
           adjustedImages.map((image: ImageProps) => (
             <Image

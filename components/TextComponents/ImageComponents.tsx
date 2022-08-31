@@ -9,6 +9,7 @@ import {
   teaTextLower,
   teaTextUpper,
 } from "../../lib/text";
+import Gallery, { GalleryImageProps } from "../Gallery/Gallery";
 import TextImageBillboard, { ImageProps } from "./TextImageBillboard";
 
 export default function ImageComponents() {
@@ -103,11 +104,27 @@ export default function ImageComponents() {
     },
   ];
 
-  const pastProjectImages: ImageProps[] = [
+  const pastProjectImages: GalleryImageProps[] = [
     {
       src: "/coacss.png",
-      scale: [110, 80, 1],
+      scale: [1, 1, 1],
       relativePosition: new Vector3(0, 0, 0),
+      onClick: () => {},
+      ...hoverProps,
+    },
+    {
+      src: "/jchat.png",
+      scale: [1, 1, 1],
+      relativePosition: new Vector3(0, 0, 0),
+      onClick: () => {},
+      ...hoverProps,
+    },
+    {
+      src: "screenshot1.png",
+      scale: [1, 1, 1],
+      relativePosition: new Vector3(0, 0, 0),
+      onClick: () => {},
+      ...hoverProps,
     },
   ];
 
@@ -193,7 +210,14 @@ export default function ImageComponents() {
         position={constants.getExperiencePosition()}
         scrollVisible={constants.pastProjectsVisible}
         key={"other"}
-      />
+      >
+        <Gallery
+          position={new Vector3(0, 0, 0)}
+          imageProps={pastProjectImages}
+          width={100}
+          height={100}
+        />
+      </TextImageBillboard>
 
       <TextImageBillboard
         textContent={contactText}

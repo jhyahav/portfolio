@@ -12,10 +12,6 @@ export default function Document() {
       <Head>
         <html lang="en" />
         <meta charSet="utf-8" />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
-        />
         <meta name="robots" content="index" />
         <meta name="description" content={description} />
         <meta name="googlebot" content="notranslate" />
