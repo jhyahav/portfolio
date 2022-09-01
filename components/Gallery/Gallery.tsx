@@ -3,7 +3,7 @@ import { useState } from "react";
 import GalleryControls from "./GalleryControls";
 import GalleryContents from "./GalleryContents";
 import { Vector3 } from "three";
-
+import disableScroll from "disable-scroll";
 export interface GalleryImageProps {
   src: string;
   onClick: (event: ThreeEvent<MouseEvent>) => void;
@@ -32,6 +32,7 @@ export default function Gallery({
       position={position}
       onPointerUp={(e) => {
         setPointerDown(false);
+        disableScroll.off();
       }}
       onPointerMove={(e) => {
         setPointerCurrent(e.point.x);
@@ -40,14 +41,14 @@ export default function Gallery({
         console.log("cancel");
         setPointerDown(false);
         setPointerCurrent(e.point.x);
+        disableScroll.off();
       }}
-      // onPointerMissed={(e) => {
-      //   console.log(e.clientX);
-      // }}
+      onPointerOut={() => disableScroll.off()}
       onPointerDown={(e) => {
         setPointerDown(true);
         setPointerStart(e.point.x);
         setPointerCurrent(e.point.x);
+        disableScroll.on();
       }}
     >
       <GalleryContents
