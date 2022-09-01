@@ -24,14 +24,47 @@ export default function Gallery({
 }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [prevIndex, setPrevIndex] = useState(2);
+  const [pointerDown, setPointerDown] = useState(false);
+  const [pointerStart, setPointerStart] = useState<number>();
+  const [pointerCurrent, setPointerCurrent] = useState<number>();
   return (
-    <group position={position}>
+    <group
+      position={position}
+      onPointerUp={(e) => {
+        setPointerDown(false);
+      }}
+      onPointerMove={(e) => {
+        setPointerCurrent(e.point.x);
+      }}
+      onPointerCancel={(e) => {
+        console.log("cancel");
+        setPointerDown(false);
+        setPointerCurrent(e.point.x);
+      }}
+      // onPointerMissed={(e) => {
+      //   console.log(e.clientX);
+      // }}
+      onPointerDown={(e) => {
+        setPointerDown(true);
+        setPointerStart(e.point.x);
+        setPointerCurrent(e.point.x);
+      }}
+    >
       <GalleryContents
         {...{ width, height, imageProps, currentIndex, prevIndex }}
       />
       <GalleryControls
         imageCount={imageProps.length}
-        {...{ currentIndex, setCurrentIndex, setPrevIndex, width }}
+        {...{
+          currentIndex,
+          setCurrentIndex,
+          setPrevIndex,
+          width,
+          pointerDown,
+          setPointerDown,
+          pointerStart,
+          pointerCurrent,
+        }}
       />
     </group>
   );

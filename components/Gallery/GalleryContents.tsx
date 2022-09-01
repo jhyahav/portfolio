@@ -66,6 +66,7 @@ export default function GalleryContents({
           fragmentShader={galleryFragment}
         />
       </mesh>
+      {/* TODO: add text overlays */}
       <Text>...</Text>
     </group>
   );

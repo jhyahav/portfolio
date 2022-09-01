@@ -36,6 +36,7 @@ export default function Planets() {
         position={getCreamPlanetPosition()}
         radius={60}
         colorHex={0xfffdd0}
+        rotationSpeed={0.2}
         colorMap={rockColorMap2}
         displacementMap={displacementMap1}
         displacementScale={3}
@@ -44,6 +45,7 @@ export default function Planets() {
         position={getGasPlanetPosition()}
         radius={100}
         colorHex={0x0055aa}
+        rotationSpeed={0.7}
         colorMap={gasColorMap}
       />
     </>

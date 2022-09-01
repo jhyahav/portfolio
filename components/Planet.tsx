@@ -6,6 +6,7 @@ export default function Planet({
   position,
   radius,
   colorHex,
+  rotationSpeed = 1,
   colorMap,
   displacementMap,
   displacementScale,
@@ -14,6 +15,7 @@ export default function Planet({
   position: Vector3;
   radius: number;
   colorHex: number;
+  rotationSpeed?: number;
   colorMap?: Texture;
   displacementMap?: Texture;
   displacementScale?: number;
@@ -24,7 +26,7 @@ export default function Planet({
     if (planetRef.current) {
       planetRef.current.rotateOnAxis(
         new Vector3(64 / 635, -1, -(64 / 635)),
-        Math.PI / 200
+        (Math.PI / 200) * rotationSpeed
       );
     }
   });

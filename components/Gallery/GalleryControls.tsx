@@ -1,5 +1,5 @@
 import { Image } from "@react-three/drei";
-import { Dispatch, SetStateAction, useRef } from "react";
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import { Mesh, Vector3 } from "three";
 
 export default function GalleryControls({
@@ -8,12 +8,20 @@ export default function GalleryControls({
   setCurrentIndex,
   setPrevIndex,
   width,
+  pointerDown,
+  setPointerDown,
+  pointerStart,
+  pointerCurrent,
 }: {
   imageCount: number;
   currentIndex: number;
   setCurrentIndex: Dispatch<SetStateAction<number>>;
   setPrevIndex: Dispatch<SetStateAction<number>>;
   width: number;
+  pointerDown: boolean;
+  setPointerDown: Dispatch<SetStateAction<boolean>>;
+  pointerStart?: number;
+  pointerCurrent?: number;
 }) {
   const rightRef = useRef<Mesh>(null);
   const leftRef = useRef<Mesh>(null);
@@ -23,13 +31,27 @@ export default function GalleryControls({
     setCurrentIndex((imageCount + direction) % imageCount);
   };
 
-  //TODO: add handlers for arrow keys, button clicks and mobile swipes
+  //TODO: add handlers for arrow keys
 
   const handleHover = (ref: typeof rightRef, active: boolean) => {
     document.body.style.cursor = active ? "pointer" : "default";
     //@ts-ignore
     ref.current.material.color.set(active ? 0x999999 : 0xffffff);
   };
+
+  useEffect(() => {
+    if (pointerDown && pointerStart && pointerCurrent) {
+      const delta = pointerStart - pointerCurrent;
+      if (delta < -(width / 3)) {
+        setIndices(currentIndex + 1);
+        setPointerDown(false);
+      }
+      if (delta > width / 3) {
+        setIndices(currentIndex - 1);
+        setPointerDown(false);
+      }
+    }
+  }, [pointerDown, pointerStart, pointerCurrent]);
 
   return (
     <>
