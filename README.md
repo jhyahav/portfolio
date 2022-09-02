@@ -60,6 +60,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 - [GLTF -> React Three Fiber](https://gltf.pmnd.rs/)
 - Favicon and logo created with [favicon.io](https://favicon.io/).
 - Some planet color maps were taken from [Solar System Scope](https://www.solarsystemscope.com/textures/).
+- Font and icons courtesy of [Google Fonts](https://fonts.google.com/).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

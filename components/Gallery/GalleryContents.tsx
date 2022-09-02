@@ -1,4 +1,4 @@
-import { Text, Image } from "@react-three/drei";
+import { Text, Image, Sparkles } from "@react-three/drei";
 import { useFrame, useLoader } from "@react-three/fiber";
 import {
   Dispatch,
@@ -8,25 +8,26 @@ import {
   useRef,
   useState,
 } from "react";
-import {
-  MeshStandardMaterial,
-  ShaderMaterial,
-  TextureLoader,
-  Vector3,
-} from "three";
+import { ShaderMaterial, TextureLoader, Vector3 } from "three";
+import { EPSILON } from "../../lib/constants";
 import { galleryFragment } from "../../lib/shaders/galleryFragment";
 import { galleryVertex } from "../../lib/shaders/galleryVertex";
+import { hoverProps } from "../TextComponents/ImageProps";
 import { baseTextProps } from "../TextComponents/TextImageBillboard";
 import { GalleryImageProps } from "./Gallery";
 
 const MAX_OPACITY = 0.8;
-
+const MAX_INFO_SCALE = 1 / 7;
+const ICON_SCALE = 1 / 8;
+const MIN_INFO_SCALE = 1 / 9;
 export default function GalleryContents({
   width,
   height,
   imageProps,
   currentIndex,
   prevIndex,
+  overlayFadingIn,
+  setOverlayFadingIn,
   setOverlayFadingOut,
   overlayFadingOut,
 }: {
@@ -35,14 +36,16 @@ export default function GalleryContents({
   imageProps: GalleryImageProps[];
   currentIndex: number;
   prevIndex: number;
+  overlayFadingIn: boolean;
+  setOverlayFadingIn: Dispatch<SetStateAction<boolean>>;
   overlayFadingOut: boolean;
   setOverlayFadingOut: Dispatch<SetStateAction<boolean>>;
 }) {
-  const [overlayFadingIn, setOverlayFadingIn] = useState(false);
   const [overlayOpacity, setOverlayOpacity] = useState(0);
+  const [infoClicked, setInfoClicked] = useState(false);
+  const [infoScale, setInfoScale] = useState(ICON_SCALE);
+  const [infoGrowing, setInfoGrowing] = useState(true);
   const imageMaterialRef = useRef<ShaderMaterial>(null);
-  const overlayMaterialRef = useRef<MeshStandardMaterial>(null);
-  const textRef = useRef<typeof Text>(null);
   const textures = useLoader(
     TextureLoader,
     imageProps.map((imageProps) => imageProps.src)
@@ -58,6 +61,7 @@ export default function GalleryContents({
     };
   }, []);
 
+  // Part of interpolation management during transition.
   useFrame((state, delta) => {
     if (imageMaterialRef.current) {
       const inter = imageMaterialRef.current.uniforms.uInterpolation.value;
@@ -77,9 +81,11 @@ export default function GalleryContents({
   }, [currentIndex, prevIndex]);
 
   const overlayTextProps = {
-    outlineWidth: width / 180,
+    outlineWidth: width / 160,
     fontSize: width / 16,
     maxWidth: 0.9 * width,
+    fillOpacity: overlayOpacity / MAX_OPACITY,
+    outlineOpacity: overlayOpacity / MAX_OPACITY,
     ...baseTextProps,
   };
 
@@ -96,12 +102,26 @@ export default function GalleryContents({
     }
   });
 
+  useFrame((state, delta) => {
+    //FIXME: info grows huge/disappears when browser is minimized.
+    if (!infoClicked) {
+      infoGrowing
+        ? infoScale >= MAX_INFO_SCALE
+          ? setInfoGrowing(false)
+          : setInfoScale(infoScale + delta / 25)
+        : infoScale <= MIN_INFO_SCALE
+        ? setInfoGrowing(true)
+        : setInfoScale(infoScale - delta / 25);
+    } else {
+      setInfoScale(ICON_SCALE);
+    }
+  });
+
   return (
     <group>
       <mesh
         onPointerOver={imageProps[currentIndex].onHover}
         onPointerOut={imageProps[currentIndex].onUnhover}
-        onPointerDown={() => setOverlayFadingIn(true)}
       >
         <planeBufferGeometry args={[width, height]} />
         <shaderMaterial
@@ -111,32 +131,64 @@ export default function GalleryContents({
           fragmentShader={galleryFragment}
         />
       </mesh>
-      <mesh onPointerDown={() => setOverlayFadingOut(true)}>
+      <mesh>
         <planeBufferGeometry args={[width, height]} />
         <meshStandardMaterial
-          ref={overlayMaterialRef}
           transparent
           color={0x000000}
           opacity={overlayOpacity}
         />
-        <Text
-          ref={textRef}
-          fillOpacity={overlayOpacity / MAX_OPACITY}
-          outlineOpacity={overlayOpacity / MAX_OPACITY}
-          {...overlayTextProps}
-          position={new Vector3(0, height * 0.45, 1)}
-        >
+        <Text {...overlayTextProps} position={new Vector3(0, height * 0.3, 1)}>
           {imageProps[currentIndex].description}
         </Text>
         <Image
-          url="/GitHub.svg"
-          // onClick={imageProps[currentIndex].onClick}
+          url="/close.svg"
           opacity={overlayOpacity / MAX_OPACITY}
-          scale={height / 8}
-          onClick={() => console.log("GitHub")}
+          visible={overlayOpacity > EPSILON}
+          scale={height * ICON_SCALE}
+          onClick={() => setOverlayFadingOut(true)}
+          onPointerOver={hoverProps.onHover}
+          onPointerOut={hoverProps.onUnhover}
           transparent
-          position={new Vector3(0.42 * width, -0.4 * height, 1)}
+          position={new Vector3(0.42 * width, 0.35 * height, 1)}
         />
+        <Image
+          url="/info.svg"
+          opacity={1 - overlayOpacity / MAX_OPACITY}
+          visible={overlayOpacity < 1 - EPSILON}
+          scale={height * infoScale}
+          onClick={() => {
+            setOverlayFadingIn(true);
+            setInfoClicked(true);
+          }}
+          onPointerOver={hoverProps.onHover}
+          onPointerOut={hoverProps.onUnhover}
+          transparent
+          position={new Vector3(0.42 * width, 0.348 * height, 1)}
+        />
+
+        <group
+          onClick={imageProps[currentIndex].onClick}
+          onPointerOver={hoverProps.onHover}
+          onPointerOut={hoverProps.onUnhover}
+          visible={overlayOpacity > EPSILON}
+        >
+          <Text
+            {...overlayTextProps}
+            fontSize={width / 25}
+            outlineWidth={width / 250}
+            position={new Vector3(0.23 * width, -0.378 * height, 1)}
+          >
+            view source code
+          </Text>
+          <Image
+            url="/GitHub.svg"
+            opacity={overlayOpacity / MAX_OPACITY}
+            scale={height / 8}
+            transparent
+            position={new Vector3(0.42 * width, -0.4 * height, 1)}
+          />
+        </group>
       </mesh>
     </group>
   );

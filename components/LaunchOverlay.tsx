@@ -36,12 +36,12 @@ export default function LaunchOverlay({
         <TypewriterComponent
           onInit={(typewriter) => {
             typewriter
-              .changeDelay(10)
+              .changeDelay(1)
               .typeString(
-                "<span class='warning_message'><strong class='danger'>⚠️WARNING: </strong>This site contains flashing effects that may be unsuitable for users with photosensitive epilepsy.</strong></span>"
+                "<span class='warning_message'>⚠️ This site contains effects that may be unsuitable for users with  epilepsy or motion sensitivity. An accessible version is available at <a href='/plaintext' class='blue'>jhyahav.vercel.app/plaintext</a>. </span>"
               )
-              .pauseFor(3500)
-              .deleteAll(0.01)
+              .pauseFor(3000)
+              .deleteAll(0.0001)
               .callFunction(() => setLaunchEnabled(true))
               .changeDelay("natural")
               .typeString("<h1> Hi, I'm Jonathan. </h1>")

@@ -5,9 +5,10 @@ import {
   Text,
   useScroll,
 } from "@react-three/drei";
-import { ThreeEvent, useFrame, useThree } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber";
 import { cloneElement, ReactElement, useEffect, useState } from "react";
 import { Vector3 } from "three";
+import { ImageProps } from "./ImageProps";
 
 // The width based on which all default sizes are defined and adjustments are calculated.
 const DEFAULT_VIEWPORT_WIDTH = 1080;
@@ -38,15 +39,6 @@ export const baseTextProps: {
   textAlign: "justify",
   font: "/VT323-Regular.ttf",
 };
-
-export interface ImageProps {
-  src: string;
-  relativePosition: Vector3;
-  scale: [number, number, number];
-  onClick?: (event: ThreeEvent<MouseEvent>) => void;
-  onHover?: (event: ThreeEvent<PointerEvent>) => void;
-  onUnhover?: (event: ThreeEvent<PointerEvent>) => void;
-}
 
 export default function TextImageBillboard({
   scrollVisible,

@@ -9,9 +9,9 @@ import {
   teaTextLower,
   teaTextUpper,
 } from "../../lib/text";
-import Gallery, { GalleryImageProps } from "../Gallery/Gallery";
+import Gallery from "../Gallery/Gallery";
 import * as imageProps from "./ImageProps";
-import TextImageBillboard, { ImageProps } from "./TextImageBillboard";
+import TextImageBillboard from "./TextImageBillboard";
 
 export default function ImageComponents() {
   return (

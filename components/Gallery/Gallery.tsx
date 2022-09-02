@@ -7,8 +7,8 @@ import disableScroll from "disable-scroll";
 export interface GalleryImageProps {
   src: string;
   onClick: (event: ThreeEvent<MouseEvent>) => void;
-  onHover: (event: ThreeEvent<PointerEvent>) => void;
-  onUnhover: (event: ThreeEvent<PointerEvent>) => void;
+  onHover?: (event: ThreeEvent<PointerEvent>) => void;
+  onUnhover?: (event: ThreeEvent<PointerEvent>) => void;
   description?: string;
 }
 export default function Gallery({
@@ -27,6 +27,7 @@ export default function Gallery({
   const [pointerDown, setPointerDown] = useState(false);
   const [pointerStart, setPointerStart] = useState<number>();
   const [pointerCurrent, setPointerCurrent] = useState<number>();
+  const [overlayFadingIn, setOverlayFadingIn] = useState(false);
   const [overlayFadingOut, setOverlayFadingOut] = useState(false);
 
   return (
@@ -59,6 +60,8 @@ export default function Gallery({
           imageProps,
           currentIndex,
           prevIndex,
+          overlayFadingIn,
+          setOverlayFadingIn,
           overlayFadingOut,
           setOverlayFadingOut,
         }}
@@ -74,6 +77,7 @@ export default function Gallery({
           setPointerDown,
           pointerStart,
           pointerCurrent,
+          setOverlayFadingIn,
           setOverlayFadingOut,
         }}
       />

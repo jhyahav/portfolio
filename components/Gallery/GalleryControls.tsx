@@ -16,6 +16,7 @@ export default function GalleryControls({
   setPointerDown,
   pointerStart,
   pointerCurrent,
+  setOverlayFadingIn,
   setOverlayFadingOut,
 }: {
   imageCount: number;
@@ -25,6 +26,7 @@ export default function GalleryControls({
   width: number;
   pointerDown: boolean;
   setPointerDown: Dispatch<SetStateAction<boolean>>;
+  setOverlayFadingIn: Dispatch<SetStateAction<boolean>>;
   setOverlayFadingOut: Dispatch<SetStateAction<boolean>>;
   pointerStart?: number;
   pointerCurrent?: number;
@@ -49,7 +51,7 @@ export default function GalleryControls({
     setTimeout(() => {
       setPrevIndex(currentIndex);
       setCurrentIndex((imageCount + direction) % imageCount);
-    }, 300);
+    }, 200);
   };
 
   const handleHover = (ref: typeof rightRef, active: boolean) => {
@@ -66,11 +68,14 @@ export default function GalleryControls({
       if (delta < -(width / 4)) {
         setIndices(currentIndex + 1);
         setPointerDown(false);
+        return;
       }
       if (delta > width / 4) {
         setIndices(currentIndex - 1);
         setPointerDown(false);
+        return;
       }
+      // setOverlayFadingIn(true);
     }
   }, [pointerDown, pointerStart, pointerCurrent]);
 

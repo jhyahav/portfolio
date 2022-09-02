@@ -1,11 +1,20 @@
+import { ThreeEvent } from "@react-three/fiber";
 import { Vector3 } from "three";
 import { GalleryImageProps } from "../Gallery/Gallery";
-import { ImageProps } from "./TextImageBillboard";
 
-const hoverProps = {
+export const hoverProps = {
   onHover: () => (document.body.style.cursor = "pointer"),
   onUnhover: () => (document.body.style.cursor = "default"),
 };
+
+export interface ImageProps {
+  src: string;
+  relativePosition: Vector3;
+  scale: [number, number, number];
+  onClick?: (event: ThreeEvent<MouseEvent>) => void;
+  onHover?: (event: ThreeEvent<PointerEvent>) => void;
+  onUnhover?: (event: ThreeEvent<PointerEvent>) => void;
+}
 
 export const currentImages: ImageProps[] = [
   {
@@ -106,21 +115,22 @@ export const teaImages: ImageProps[] = [
 export const otherProjectImages: GalleryImageProps[] = [
   {
     src: "/coacss.png",
-    onClick: () => {},
+    onClick: () => window.open("https://github.com/jhyahav/coacss", "_blank"),
     description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis enim ratione odit optio magnam dignissimos adipisci dolorum nisi sunt iste. Est, libero sequi. Minima voluptatum autem vero non, earum repellat.`,
-    ...hoverProps,
-  },
+    // ...hoverProps,
+  }, //TODO: add blog post image and link to it!
   {
     src: "/jchat.png",
-    onClick: () => {},
+    onClick: () => window.open("https://github.com/jhyahav/j-chat", "_blank"),
     description: "Second image",
-    ...hoverProps,
+    // ...hoverProps,
   },
   {
     src: "/screenshot2.png",
-    onClick: () => {},
+    onClick: () =>
+      window.open("https://github.com/jhyahav/portfolio", "_blank"),
     description: "Third image",
-    ...hoverProps,
+    // ...hoverProps,
   },
 ];
 
