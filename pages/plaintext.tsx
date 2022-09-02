@@ -22,7 +22,7 @@ const PlainText: NextPage = () => {
         <title>Jonathan Yahav - About me</title>
       </Head>
       <main>
-        <h1>Hi, I'm Jonathan.</h1>
+        <h1>Hi, I&apos;m Jonathan.</h1>
         <p>{textSections.introText}</p>
         <div>
           <p>{textSections.currentTechText}</p>
