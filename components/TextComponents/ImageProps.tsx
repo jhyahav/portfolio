@@ -107,16 +107,19 @@ export const otherProjectImages: GalleryImageProps[] = [
   {
     src: "/coacss.png",
     onClick: () => {},
+    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis enim ratione odit optio magnam dignissimos adipisci dolorum nisi sunt iste. Est, libero sequi. Minima voluptatum autem vero non, earum repellat.`,
     ...hoverProps,
   },
   {
     src: "/jchat.png",
     onClick: () => {},
+    description: "Second image",
     ...hoverProps,
   },
   {
     src: "/screenshot2.png",
     onClick: () => {},
+    description: "Third image",
     ...hoverProps,
   },
 ];

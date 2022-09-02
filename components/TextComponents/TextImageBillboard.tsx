@@ -17,6 +17,28 @@ const DEFAULT_FONT_SIZE = 10;
 const DEFAULT_TEXT_WIDTH = 120;
 const GALLERY_RATIO = 11;
 
+export const baseTextProps: {
+  color: string;
+  outlineColor: string;
+  anchorX: number | "center" | "left" | "right";
+  anchorY:
+    | number
+    | "top"
+    | "bottom"
+    | "middle"
+    | "top-baseline"
+    | "bottom-baseline";
+  textAlign?: "center" | "left" | "right" | "justify";
+  font: string;
+} = {
+  color: "white",
+  outlineColor: "black",
+  anchorX: "center",
+  anchorY: "top",
+  textAlign: "justify",
+  font: "/VT323-Regular.ttf",
+};
+
 export interface ImageProps {
   src: string;
   relativePosition: Vector3;
@@ -103,33 +125,13 @@ export default function TextImageBillboard({
     setVisible(scrollVisible(scroll));
   });
 
-  const textProps: {
-    color: string;
-    outlineWidth: number;
-    fontSize: number;
-    outlineColor: string;
-    anchorX: number | "center" | "left" | "right";
-    anchorY:
-      | number
-      | "top"
-      | "bottom"
-      | "middle"
-      | "top-baseline"
-      | "bottom-baseline";
-    textAlign?: "center" | "left" | "right" | "justify";
-    maxWidth: number;
-    font: string;
-  } = {
-    color: "white",
+  const textProps = {
     outlineWidth: fontSize * 0.1,
     fontSize: fontSize,
-    outlineColor: "black",
-    anchorX: "center",
-    anchorY: "top",
-    textAlign: "justify",
     maxWidth: maxTextWidth,
-    font: "/VT323-Regular.ttf",
+    ...baseTextProps,
   };
+
   return (
     <Billboard position={position} visible={visible} follow>
       <>

@@ -27,6 +27,8 @@ export default function Gallery({
   const [pointerDown, setPointerDown] = useState(false);
   const [pointerStart, setPointerStart] = useState<number>();
   const [pointerCurrent, setPointerCurrent] = useState<number>();
+  const [overlayFadingOut, setOverlayFadingOut] = useState(false);
+
   return (
     <group
       position={position}
@@ -38,7 +40,6 @@ export default function Gallery({
         setPointerCurrent(e.point.x);
       }}
       onPointerCancel={(e) => {
-        console.log("cancel");
         setPointerDown(false);
         setPointerCurrent(e.point.x);
         disableScroll.off();
@@ -52,7 +53,15 @@ export default function Gallery({
       }}
     >
       <GalleryContents
-        {...{ width, height, imageProps, currentIndex, prevIndex }}
+        {...{
+          width,
+          height,
+          imageProps,
+          currentIndex,
+          prevIndex,
+          overlayFadingOut,
+          setOverlayFadingOut,
+        }}
       />
       <GalleryControls
         imageCount={imageProps.length}
@@ -65,6 +74,7 @@ export default function Gallery({
           setPointerDown,
           pointerStart,
           pointerCurrent,
+          setOverlayFadingOut,
         }}
       />
     </group>
