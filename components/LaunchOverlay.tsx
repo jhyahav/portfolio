@@ -31,6 +31,7 @@ export default function LaunchOverlay({
       onDoubleClick={launchHandler}
       onKeyDown={launchHandler}
       id={"overlay"}
+      aria-label="Warning: this site contains effects that may be unsuitable for users with epilepsy or motion sensitivity. The text content of the site may not be compatible with some screen readers. An accessible version is available at j h yahav.vercel.app/accessible"
     >
       <div className="text_container">
         <TypewriterComponent
@@ -38,7 +39,7 @@ export default function LaunchOverlay({
             typewriter
               .changeDelay(1)
               .typeString(
-                "<span class='warning_message'>⚠️ This site contains effects that may be unsuitable for users with  epilepsy or motion sensitivity. An accessible version is available at <a href='/plaintext' class='blue'>jhyahav.vercel.app/plaintext</a>. </span>"
+                "<span class='warning_message'>⚠️ This site contains effects that may be unsuitable for users with epilepsy or motion sensitivity. An accessible version is available at <a href='/accessible' class='blue'>jhyahav.vercel.app/accessible</a>. </span>"
               )
               .pauseFor(3000)
               .deleteAll(0.0001)
@@ -48,7 +49,7 @@ export default function LaunchOverlay({
               .changeDelay(50)
               .pauseFor(500)
               .typeString(
-                "<sp class='instructions'>PRESS ANY KEY or DOUBLE-CLICK anywhere!</sp>"
+                "<span class='instructions'>PRESS ANY KEY or DOUBLE-CLICK anywhere!</span>"
               )
               .start();
           }}

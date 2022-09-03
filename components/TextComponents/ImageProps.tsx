@@ -116,13 +116,18 @@ export const otherProjectImages: GalleryImageProps[] = [
   {
     src: "/coacss.png",
     onClick: () => window.open("https://github.com/jhyahav/coacss", "_blank"),
-    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis enim ratione odit optio magnam dignissimos adipisci dolorum nisi sunt iste. Est, libero sequi. Minima voluptatum autem vero non, earum repellat.`,
-    // ...hoverProps,
-  }, //TODO: add blog post image and link to it!
+    description: `COACSS is a responsive social blogging web app that leverages the power of Next.js, using a combination of rendering methods to strike a perfect balance between performance and user experience. Authentication, posts and images are managed with Firebase.`,
+  },
+  {
+    src: "/blog_post.png",
+    onClick: () => window.open("https://github.com/jhyahav/coacss", "_blank"),
+    description: `COACSS is open to everyone, but I mostly use it as a personal blogging platform. Visit the site to see some of my blog posts.`,
+  },
   {
     src: "/jchat.png",
     onClick: () => window.open("https://github.com/jhyahav/j-chat", "_blank"),
-    description: "Second image",
+    description:
+      "j-chat is a simple responsive live group chat web app. It was one of the first web apps I built with Firebase and React. It supports both left-to-right and right-to-left text, as well as emojis.",
     // ...hoverProps,
   },
   {

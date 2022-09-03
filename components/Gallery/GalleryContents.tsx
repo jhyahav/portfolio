@@ -102,16 +102,16 @@ export default function GalleryContents({
     }
   });
 
-  useFrame((state, delta) => {
-    //FIXME: info grows huge/disappears when browser is minimized.
+  // Handles animation of info icon before first click. useFrame causes problems when the window is minimized.
+  useEffect(() => {
     if (!infoClicked) {
       infoGrowing
         ? infoScale >= MAX_INFO_SCALE
           ? setInfoGrowing(false)
-          : setInfoScale(infoScale + delta / 25)
+          : setInfoScale(infoScale + 1 / 13000)
         : infoScale <= MIN_INFO_SCALE
         ? setInfoGrowing(true)
-        : setInfoScale(infoScale - delta / 25);
+        : setInfoScale(infoScale - 1 / 13000);
     } else {
       setInfoScale(ICON_SCALE);
     }
@@ -138,13 +138,12 @@ export default function GalleryContents({
           color={0x000000}
           opacity={overlayOpacity}
         />
-        <Text {...overlayTextProps} position={new Vector3(0, height * 0.3, 1)}>
+        <Text {...overlayTextProps} position={new Vector3(0, height * 0.27, 1)}>
           {imageProps[currentIndex].description}
         </Text>
         <Image
           url="/close.svg"
           opacity={overlayOpacity / MAX_OPACITY}
-          visible={overlayOpacity > EPSILON}
           scale={height * ICON_SCALE}
           onClick={() => setOverlayFadingOut(true)}
           onPointerOver={hoverProps.onHover}
@@ -164,12 +163,18 @@ export default function GalleryContents({
           onPointerOver={hoverProps.onHover}
           onPointerOut={hoverProps.onUnhover}
           transparent
-          position={new Vector3(0.42 * width, 0.348 * height, 1)}
+          position={new Vector3(0.42 * width, 0.348 * height, 2)}
         />
 
         <group
-          onClick={imageProps[currentIndex].onClick}
-          onPointerOver={hoverProps.onHover}
+          onClick={
+            overlayOpacity > EPSILON
+              ? imageProps[currentIndex].onClick
+              : undefined
+          }
+          onPointerOver={
+            overlayOpacity > EPSILON ? hoverProps.onHover : undefined
+          }
           onPointerOut={hoverProps.onUnhover}
           visible={overlayOpacity > EPSILON}
         >

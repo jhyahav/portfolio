@@ -77,7 +77,6 @@ export default function Gallery({
           setPointerDown,
           pointerStart,
           pointerCurrent,
-          setOverlayFadingIn,
           setOverlayFadingOut,
         }}
       />

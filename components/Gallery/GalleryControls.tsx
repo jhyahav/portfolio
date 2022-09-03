@@ -16,7 +16,6 @@ export default function GalleryControls({
   setPointerDown,
   pointerStart,
   pointerCurrent,
-  setOverlayFadingIn,
   setOverlayFadingOut,
 }: {
   imageCount: number;
@@ -26,7 +25,6 @@ export default function GalleryControls({
   width: number;
   pointerDown: boolean;
   setPointerDown: Dispatch<SetStateAction<boolean>>;
-  setOverlayFadingIn: Dispatch<SetStateAction<boolean>>;
   setOverlayFadingOut: Dispatch<SetStateAction<boolean>>;
   pointerStart?: number;
   pointerCurrent?: number;
@@ -56,9 +54,10 @@ export default function GalleryControls({
 
   const handleHover = (ref: typeof rightRef, active: boolean) => {
     document.body.style.cursor = active ? "pointer" : "default";
-    // prettier-ignore
     // @ts-ignore
-    ref.current?.material.color.set(active ? BUTTON_HOVER_HEX : BUTTON_INACTIVE_HEX);
+    ref.current?.material.color.set(
+      active ? BUTTON_HOVER_HEX : BUTTON_INACTIVE_HEX
+    );
   };
 
   // Handles gestures/pointer events, mainly for touch devices.
@@ -75,7 +74,6 @@ export default function GalleryControls({
         setPointerDown(false);
         return;
       }
-      // setOverlayFadingIn(true);
     }
   }, [pointerDown, pointerStart, pointerCurrent]);
 

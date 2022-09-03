@@ -77,6 +77,11 @@ canvas {
   overscroll-behavior: none;
 }
 
+.blue {
+  color: rgb(67, 67, 253);
+  text-decoration: underline;
+}
+
 #overlay {
   position: fixed;
   width: 100%;

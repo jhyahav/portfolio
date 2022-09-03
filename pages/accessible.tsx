@@ -1,12 +1,12 @@
 import { NextPage } from "next";
 import Image from "next/image";
 import Head from "next/head";
-import * as textSections from "./../lib/text";
-import * as images from "./../components/TextComponents/ImageProps";
+import * as textSections from "../lib/text";
+import * as images from "../components/TextComponents/ImageProps";
 import { ImageProps } from "../components/TextComponents/ImageProps";
 import { GalleryImageProps } from "../components/Gallery/Gallery";
 
-const PlainText: NextPage = () => {
+const Accessible: NextPage = () => {
   // destructure imageProp arrays and take their respective sources
   const [current, other, future, tea, otherProjects, contact] = [
     images.currentImages,
@@ -41,7 +41,7 @@ const PlainText: NextPage = () => {
   );
 };
 
-export default PlainText;
+export default Accessible;
 
 const ImageGroup = ({
   width,
