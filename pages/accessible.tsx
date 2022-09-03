@@ -4,7 +4,7 @@ import Head from "next/head";
 import * as textSections from "../lib/text";
 import * as images from "../components/TextComponents/ImageProps";
 import { ImageProps } from "../components/TextComponents/ImageProps";
-import { GalleryImageProps } from "../components/Gallery/Gallery";
+import { GalleryImageProps } from "../components/TextComponents/ImageProps";
 
 const Accessible: NextPage = () => {
   // destructure imageProp arrays and take their respective sources
@@ -41,6 +41,8 @@ const Accessible: NextPage = () => {
   );
 };
 
+//TODO: complete Accessible page.
+
 export default Accessible;
 
 const ImageGroup = ({
@@ -55,13 +57,7 @@ const ImageGroup = ({
   return (
     <>
       {imageSources.map((src) => (
-        <Image
-          src={src}
-          width={100}
-          height={100}
-          alt={getFileName(src)}
-          key={src}
-        />
+        <Image {...{ src, width, height }} alt={getFileName(src)} key={src} />
       ))}
     </>
   );

@@ -14,7 +14,7 @@ import { galleryFragment } from "../../lib/shaders/galleryFragment";
 import { galleryVertex } from "../../lib/shaders/galleryVertex";
 import { hoverProps } from "../TextComponents/ImageProps";
 import { baseTextProps } from "../TextComponents/TextImageBillboard";
-import { GalleryImageProps } from "./Gallery";
+import { GalleryImageProps } from "../TextComponents/ImageProps";
 
 const MAX_OPACITY = 0.8;
 const MAX_INFO_SCALE = 1 / 7;
@@ -108,10 +108,10 @@ export default function GalleryContents({
       infoGrowing
         ? infoScale >= MAX_INFO_SCALE
           ? setInfoGrowing(false)
-          : setInfoScale(infoScale + 1 / 13000)
+          : setInfoScale(infoScale + 1 / 25000)
         : infoScale <= MIN_INFO_SCALE
         ? setInfoGrowing(true)
-        : setInfoScale(infoScale - 1 / 13000);
+        : setInfoScale(infoScale - 1 / 25000);
     } else {
       setInfoScale(ICON_SCALE);
     }
@@ -166,6 +166,19 @@ export default function GalleryContents({
           position={new Vector3(0.42 * width, 0.348 * height, 2)}
         />
 
+        {/* UX: check if people understand that info button is clickable without explicit text prompt.
+         <Text
+          {...baseTextProps}
+          fontSize={width / 30}
+          position={new Vector3(0.3 * width, 0.37 * height, 2)}
+          outlineWidth={width / 400}
+          outlineColor={0xffffff}
+          color={0xaaaaaa}
+          visible={!infoClicked}
+        >
+          Click me!
+        </Text> */}
+
         <group
           onClick={
             overlayOpacity > EPSILON
@@ -173,10 +186,16 @@ export default function GalleryContents({
               : undefined
           }
           onPointerOver={
-            overlayOpacity > EPSILON ? hoverProps.onHover : undefined
+            overlayOpacity > EPSILON &&
+            imageProps[currentIndex].onClick != undefined
+              ? hoverProps.onHover
+              : undefined
           }
           onPointerOut={hoverProps.onUnhover}
-          visible={overlayOpacity > EPSILON}
+          visible={
+            overlayOpacity > EPSILON &&
+            imageProps[currentIndex].onClick != undefined
+          }
         >
           <Text
             {...overlayTextProps}

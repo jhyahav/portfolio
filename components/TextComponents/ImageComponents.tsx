@@ -81,8 +81,9 @@ export default function ImageComponents() {
 
       <TextImageBillboard
         textContent={contactText}
+        textAlign={"center"}
         baseFontSize={12}
-        baseFontWidth={180}
+        baseFontWidth={190}
         textContentPosition={new Vector3(0, 35, 1)}
         images={imageProps.contactImages}
         position={constants.getContactPosition()}

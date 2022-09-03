@@ -8,6 +8,9 @@ import {
 } from "three";
 import { fragment } from "../lib/shaders/fragment";
 import { vertex } from "../lib/shaders/vertex";
+
+//TODO: FIXME: bufferGeometry aliases have been deprecated. Remove all of them!
+
 export default function DyingStar({
   position,
   outerRadius,

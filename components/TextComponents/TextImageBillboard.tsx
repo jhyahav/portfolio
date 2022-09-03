@@ -44,6 +44,7 @@ export default function TextImageBillboard({
   scrollVisible,
   position,
   textContent,
+  textAlign,
   textContentPosition,
   images,
   bottomTextContent,
@@ -56,6 +57,7 @@ export default function TextImageBillboard({
   scrollVisible: (scroll: ScrollControlsState) => boolean;
   position: Vector3;
   textContent: string;
+  textAlign?: "center" | "left" | "right" | "justify";
   textContentPosition?: Vector3;
   images?: ImageProps[];
   bottomTextContent?: string;
@@ -118,10 +120,11 @@ export default function TextImageBillboard({
   });
 
   const textProps = {
+    ...baseTextProps,
     outlineWidth: fontSize * 0.1,
     fontSize: fontSize,
     maxWidth: maxTextWidth,
-    ...baseTextProps,
+    textAlign: textAlign,
   };
 
   return (

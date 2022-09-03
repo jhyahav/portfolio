@@ -4,13 +4,8 @@ import GalleryControls from "./GalleryControls";
 import GalleryContents from "./GalleryContents";
 import { Vector3 } from "three";
 import disableScroll from "disable-scroll";
-export interface GalleryImageProps {
-  src: string;
-  onClick: (event: ThreeEvent<MouseEvent>) => void;
-  onHover?: (event: ThreeEvent<PointerEvent>) => void;
-  onUnhover?: (event: ThreeEvent<PointerEvent>) => void;
-  description?: string;
-}
+import { GalleryImageProps } from "../TextComponents/ImageProps";
+
 export default function Gallery({
   imageProps,
   position,

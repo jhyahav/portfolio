@@ -10,7 +10,6 @@ export const futureTechText = "Tech I'd love to learn";
 export const teaTextUpper =
   "My main project at the moment (besides studying) is teafor.me:";
 
-// maybe link to puppeteer
 export const teaTextLower =
   "Built responsively with Next.js, Firebase, Google Cloud Functions, and Puppeteer, it makes browsing and comparing specialty tea from niche vendors effortless.";
 
@@ -19,4 +18,21 @@ export const otherProjectsText = "Other projects";
 export const hobbiesText = `I speak English and Hebrew natively. I've been learning German for eight years, and I have a basic grasp of Portuguese. I also have an extensive background in tech analysis, through which I've honed my creativity and my research, presentation and technical writing skills.
 Aside from computer science, I'm interested in medicine, history, and philosophy. In my free time, I enjoy reading, working out, cooking, playing piano, tasting tea & wine, and traveling.`;
 
-export const contactText = "Want to find out more? Drop me a line.";
+export const contactText = `Want to find out more and
+keep up with future projects? 
+Follow me or drop me a line.`;
+
+export const coacssText =
+  "COACSS is a responsive social blogging web app that leverages the power of Next.js, using a combination of rendering methods to strike a perfect balance between performance and user experience. Authentication, posts and images are managed with Firebase.";
+
+export const blogPostText =
+  "COACSS is open to everyone, but I mostly use it as a personal blogging platform. Visit the site to see some of my blog posts.";
+
+export const jchatText =
+  "j-chat is a simple responsive live group chat web app. It was one of the first web apps I built with Firebase and React. It supports both left-to-right and right-to-left text, as well as emojis.";
+
+export const portfolioText =
+  "My goal in taking on this portfolio project was to create a beautiful, performant, fully responsive and interactive 3D site that showcases my experience and skills while keeping it all short and sweet. Built with R3F, drei and Next.js.";
+
+export const smallerProjectsText =
+  "I've also done some smaller projects as assignments, tools, or experiments. Some examples are a cost tracker using the Google Billing API and implementations of complex data structures. You can find a few such projects on my GitHub profile, and details on the rest are availble upon request.";
