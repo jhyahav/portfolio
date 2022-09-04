@@ -18,7 +18,7 @@ export default function Gallery({
   height: number;
 }) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [prevIndex, setPrevIndex] = useState(2);
+  const [prevIndex, setPrevIndex] = useState(0);
   const [pointerDown, setPointerDown] = useState(false);
   const [pointerStart, setPointerStart] = useState<number>();
   const [pointerCurrent, setPointerCurrent] = useState<number>();

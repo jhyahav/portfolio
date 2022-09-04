@@ -5,8 +5,14 @@ import * as textSections from "../lib/text";
 import * as images from "../components/TextComponents/ImageProps";
 import { ImageProps } from "../components/TextComponents/ImageProps";
 import { GalleryImageProps } from "../components/TextComponents/ImageProps";
+import { useEffect } from "react";
 
 const Accessible: NextPage = () => {
+  // Add accessible class to enable scrolling on this page
+  useEffect(() => {
+    document.querySelector("body")?.classList.add("accessible");
+  });
+
   // destructure imageProp arrays and take their respective sources
   const [current, other, future, tea, otherProjects, contact] = [
     images.currentImages,
@@ -24,7 +30,32 @@ const Accessible: NextPage = () => {
       <main>
         <h1>Hi, I&apos;m Jonathan.</h1>
         <p>{textSections.introText}</p>
-        <div>
+        <AccessibleSection
+          text={textSections.currentTechText}
+          imageSources={current}
+          width={100}
+          height={100}
+        />
+        <AccessibleSection
+          text={textSections.otherTechText}
+          imageSources={other}
+          width={100}
+          height={100}
+        />
+        <AccessibleSection
+          text={textSections.futureTechText}
+          imageSources={future}
+          width={100}
+          height={100}
+        />
+        <AccessibleSection
+          text={textSections.teaTextUpper}
+          lowerText={textSections.teaTextLower}
+          imageSources={tea}
+          width={1000}
+          height={1000}
+        />
+        {/* <div>
           <p>{textSections.currentTechText}</p>
           <ImageGroup imageSources={current} width={100} height={100} />
         </div>
@@ -35,7 +66,7 @@ const Accessible: NextPage = () => {
         <div>
           <p>{textSections.futureTechText}</p>
           <ImageGroup imageSources={future} width={100} height={100} />
-        </div>
+        </div> */}
       </main>
     </>
   );
@@ -44,6 +75,30 @@ const Accessible: NextPage = () => {
 //TODO: complete Accessible page.
 
 export default Accessible;
+
+const AccessibleSection = ({
+  text,
+  lowerText,
+  imageSources,
+  width,
+  height,
+}: {
+  text: string;
+  lowerText?: string;
+  imageSources?: string[];
+  width?: number;
+  height?: number;
+}) => {
+  return (
+    <section key={text}>
+      <p>{text}</p>
+      {imageSources && width && height && (
+        <ImageGroup imageSources={imageSources} width={width} height={height} />
+      )}
+      {lowerText && <p>{lowerText}</p>}
+    </section>
+  );
+};
 
 const ImageGroup = ({
   width,
