@@ -3,24 +3,35 @@ import disableScroll from "disable-scroll";
 import TypewriterComponent from "typewriter-effect";
 export default function LaunchOverlay({
   setOverlayVisible,
+  warpActive,
   setWarpActive,
+  canvasLoaded,
 }: {
   setOverlayVisible: Dispatch<SetStateAction<boolean>>;
+  warpActive: boolean;
   setWarpActive: Dispatch<SetStateAction<boolean>>;
+  canvasLoaded: boolean;
 }) {
   const overlayRef = useRef<HTMLDivElement>(null);
   // Focus on overlay div on mount so onKeyDown works properly
   useEffect(() => overlayRef.current?.focus(), []);
+
   const [launchEnabled, setLaunchEnabled] = useState(false);
-  const launchHandler = () => {
-    // Disable launch until epilepsy warning has been properly displayed
-    if (launchEnabled) {
-      setWarpActive(true);
-      setOverlayVisible(false);
+
+  useEffect(() => {
+    if (canvasLoaded && launchEnabled && warpActive) {
+      // Disable launch until epilepsy warning has been properly displayed
       setTimeout(() => {
         setWarpActive(false);
         disableScroll.off();
       }, 5000);
+    }
+  }, [canvasLoaded, launchEnabled, warpActive]);
+
+  const launchHandler = () => {
+    if (launchEnabled) {
+      setWarpActive(true);
+      setOverlayVisible(false);
     }
   };
   // TODO: add some nice colors/hover effects, maybe separate for each letter of name using sass mixin
