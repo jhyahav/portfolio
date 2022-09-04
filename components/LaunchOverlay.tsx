@@ -1,16 +1,11 @@
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
-import disableScroll from "disable-scroll";
 import TypewriterComponent from "typewriter-effect";
 export default function LaunchOverlay({
   setOverlayVisible,
-  warpActive,
   setWarpActive,
-  canvasLoaded,
 }: {
   setOverlayVisible: Dispatch<SetStateAction<boolean>>;
-  warpActive: boolean;
   setWarpActive: Dispatch<SetStateAction<boolean>>;
-  canvasLoaded: boolean;
 }) {
   const overlayRef = useRef<HTMLDivElement>(null);
   // Focus on overlay div on mount so onKeyDown works properly
@@ -18,17 +13,8 @@ export default function LaunchOverlay({
 
   const [launchEnabled, setLaunchEnabled] = useState(false);
 
-  useEffect(() => {
-    if (canvasLoaded && launchEnabled && warpActive) {
-      // Disable launch until epilepsy warning has been properly displayed
-      setTimeout(() => {
-        setWarpActive(false);
-        disableScroll.off();
-      }, 5000);
-    }
-  }, [canvasLoaded, launchEnabled, warpActive]);
-
   const launchHandler = () => {
+    // Disable launch until epilepsy warning has been properly displayed
     if (launchEnabled) {
       setWarpActive(true);
       setOverlayVisible(false);

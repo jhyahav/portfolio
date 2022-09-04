@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { useEffect, useState, useTransition } from "react";
+import { useState } from "react";
 import LaunchOverlay from "../components/LaunchOverlay";
 import Scene from "../components/Scene";
 
@@ -13,7 +13,6 @@ export async function getStaticProps() {
 const Home: NextPage = () => {
   const [overlayVisible, setOverlayVisible] = useState(true);
   const [warpActive, setWarpActive] = useState(false);
-  const [canvasLoaded, setCanvasLoaded] = useState(false);
 
   return (
     <>
@@ -28,15 +27,17 @@ const Home: NextPage = () => {
         <LaunchOverlay
           {...{
             setOverlayVisible,
-            warpActive,
             setWarpActive,
-            canvasLoaded,
           }}
         />
       )}
       <main>
         <Scene
-          {...{ overlayVisible, warpActive, canvasLoaded, setCanvasLoaded }}
+          {...{
+            overlayVisible,
+            warpActive,
+            setWarpActive,
+          }}
         />
       </main>
     </>

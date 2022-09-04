@@ -10,31 +10,26 @@ import disableScroll from "disable-scroll";
 export default function Scene({
   overlayVisible,
   warpActive,
-  canvasLoaded,
-  setCanvasLoaded,
+  setWarpActive,
 }: {
   overlayVisible: boolean;
   warpActive: boolean;
-  canvasLoaded: boolean;
-  setCanvasLoaded: Dispatch<SetStateAction<boolean>>;
+  setWarpActive: Dispatch<SetStateAction<boolean>>;
 }) {
   useEffect(() => {
     disableScroll.on();
   }, []);
 
-  DefaultLoadingManager.onLoad = () => {
-    setCanvasLoaded(true);
-    console.log("Finished loading scene");
-  };
+  // TODO: add nicer loader
+
   const camera = new PerspectiveCamera();
   camera.position.set(210, 0, 0);
   camera.lookAt(getInitialPosition());
   return (
     <Suspense fallback={<div>Loading!</div>}>
-      {/* {canvasLoaded && <div>LOADER</div>} */}
       <Canvas camera={camera}>
         <Preload all />
-        {warpActive && <Warp />}
+        {warpActive && <Warp {...{ setWarpActive }} />}
         <MainSceneContents
           overlayVisible={overlayVisible}
           warpActive={warpActive}
