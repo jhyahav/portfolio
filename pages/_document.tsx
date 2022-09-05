@@ -3,7 +3,7 @@ import { introText } from "../lib/text";
 
 const about = "Jonathan Yahav - About me";
 const description =
-  "Hi, I'm Jonathan. Welcome to my portfolio site!" + introText;
+  "Hi, I'm Jonathan. Welcome to my portfolio site! " + introText;
 const icon = "/logo.png";
 
 export default function Document() {

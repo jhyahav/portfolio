@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@react-three/drei': ^9.25.3
+  '@react-three/drei': ^9.26.1
   '@react-three/fiber': ^8.6.2
   '@types/node': 18.7.14
   '@types/react': 18.0.18
@@ -21,7 +21,7 @@ specifiers:
   typewriter-effect: ^2.19.0
 
 dependencies:
-  '@react-three/drei': 9.25.3_33fe3fbx5jyxahxxwv5cvjkzl4
+  '@react-three/drei': 9.26.1_33fe3fbx5jyxahxxwv5cvjkzl4
   '@react-three/fiber': 8.6.2_ww22p6cticflcq7fk2rysgxj34
   '@types/three': 0.144.0
   disable-scroll: 0.6.0
@@ -494,8 +494,8 @@ packages:
     resolution: {integrity: sha512-n/wBRSHPqTmEd4BFWY6TeR1o/UY+3ujoqMxLjqy90CcY/ozJzDRuREL3c+pxMeTF2+B7dX33dTPCtFMX51nbxg==}
     dev: false
 
-  /@react-three/drei/9.25.3_33fe3fbx5jyxahxxwv5cvjkzl4:
-    resolution: {integrity: sha512-0fxe5jfi5aCyvI/ejnHR9OPlzCB/KTxPGBcxKbfuH7hR0bRJGCGb9Io068zFUQk17p2sTV6eSx+Mdwk0Fp/L7A==}
+  /@react-three/drei/9.26.1_33fe3fbx5jyxahxxwv5cvjkzl4:
+    resolution: {integrity: sha512-bx8nK9ZGCjCVwIh5HkMTmdTyrwwvW0ojAXfOB+E+9cjt+DvxSdmY5IiSfCnMImAOlp3s8yOEeXhVhkD7whrElQ==}
     peerDependencies:
       '@react-three/fiber': '>=8.0'
       react: '>=18.0'
