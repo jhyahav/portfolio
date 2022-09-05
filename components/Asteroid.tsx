@@ -26,12 +26,8 @@ export default function Asteroid(props: AsteroidProps) {
     }
   });
   return (
-    <Sphere
-      ref={meshRef}
-      args={[props.radius]}
-      position={props.position}
-      scale={props.scale}
-    >
+    <mesh ref={meshRef} position={props.position} scale={props.scale}>
+      <sphereGeometry args={[props.radius]} />
       <meshStandardMaterial
         color={props.color}
         map={props.colorMap}
@@ -40,6 +36,6 @@ export default function Asteroid(props: AsteroidProps) {
         visible={true}
         roughness={props.roughness}
       />
-    </Sphere>
+    </mesh>
   );
 }

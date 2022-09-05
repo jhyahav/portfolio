@@ -28,7 +28,7 @@ export default function Warp({
 
   return (
     <mesh position={camera.position.clone().lerp(getInitialPosition(), 0.1)}>
-      <planeBufferGeometry args={[2, 2]} />
+      <planeGeometry args={[2, 2]} />
       <shaderMaterial
         vertexShader={warpVertex}
         fragmentShader={warpFragment}
