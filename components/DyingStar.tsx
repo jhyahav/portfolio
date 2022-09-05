@@ -40,7 +40,7 @@ export default function DyingStar({
 
   return (
     <mesh position={position}>
-      <sphereGeometry args={[outerRadius]} />
+      <sphereBufferGeometry args={[outerRadius]} />
       <shaderMaterial
         side={BackSide}
         uniforms={uniforms}

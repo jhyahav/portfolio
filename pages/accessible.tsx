@@ -7,6 +7,12 @@ import { ImageProps } from "../components/TextComponents/ImageProps";
 import { GalleryImageProps } from "../components/TextComponents/ImageProps";
 import { useEffect } from "react";
 
+export async function getStaticProps() {
+  return {
+    props: {},
+  };
+}
+
 const Accessible: NextPage = () => {
   // Add accessible class to enable scrolling on this page
   useEffect(() => {
@@ -55,18 +61,6 @@ const Accessible: NextPage = () => {
           width={1000}
           height={1000}
         />
-        {/* <div>
-          <p>{textSections.currentTechText}</p>
-          <ImageGroup imageSources={current} width={100} height={100} />
-        </div>
-        <div>
-          <p>{textSections.otherTechText}</p>
-          <ImageGroup imageSources={other} width={100} height={100} />
-        </div>
-        <div>
-          <p>{textSections.futureTechText}</p>
-          <ImageGroup imageSources={future} width={100} height={100} />
-        </div> */}
       </main>
     </>
   );

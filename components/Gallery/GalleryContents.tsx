@@ -123,7 +123,7 @@ export default function GalleryContents({
         onPointerOver={imageProps[currentIndex].onHover}
         onPointerOut={imageProps[currentIndex].onUnhover}
       >
-        <planeGeometry args={[width, height]} />
+        <planeBufferGeometry args={[width, height]} />
         <shaderMaterial
           ref={imageMaterialRef}
           uniforms={uniforms}
@@ -132,7 +132,7 @@ export default function GalleryContents({
         />
       </mesh>
       <mesh>
-        <planeGeometry args={[width, height]} />
+        <planeBufferGeometry args={[width, height]} />
         <meshStandardMaterial
           transparent
           color={0x000000}
