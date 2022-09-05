@@ -1,4 +1,3 @@
-import { ThreeEvent } from "@react-three/fiber";
 import { useState } from "react";
 import GalleryControls from "./GalleryControls";
 import GalleryContents from "./GalleryContents";

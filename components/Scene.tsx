@@ -1,11 +1,12 @@
 import { Canvas } from "@react-three/fiber";
 import { Preload } from "@react-three/drei";
-import { DefaultLoadingManager, PerspectiveCamera } from "three";
+import { PerspectiveCamera } from "three";
 import { Dispatch, SetStateAction, Suspense, useEffect } from "react";
 import Warp from "./Warp";
 import { getInitialPosition } from "../lib/constants";
 import MainSceneContents from "./MainSceneContents";
 import disableScroll from "disable-scroll";
+import Loader from "./Loader";
 
 export default function Scene({
   overlayVisible,
@@ -20,13 +21,11 @@ export default function Scene({
     disableScroll.on();
   }, []);
 
-  // TODO: add nicer loader
-
   const camera = new PerspectiveCamera();
   camera.position.set(210, 0, 0);
   camera.lookAt(getInitialPosition());
   return (
-    <Suspense fallback={<div>Loading!</div>}>
+    <Suspense fallback={<Loader timeout={250} />}>
       <Canvas camera={camera}>
         <Preload all />
         {warpActive && <Warp {...{ setWarpActive }} />}
