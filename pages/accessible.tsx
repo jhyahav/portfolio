@@ -71,6 +71,7 @@ const Accessible: NextPage = () => {
             width={625}
             height={500}
             href="/accessible"
+            key={image.src}
           />
         ))}
         <section>
