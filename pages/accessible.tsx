@@ -63,12 +63,26 @@ const Accessible: NextPage = () => {
           height={500}
           href={"https://teafor.me/products/"}
         />
+        <h1>Other projects</h1>
+        {images.otherProjectImages.map((image) => (
+          <AccessibleSection
+            lowerText={image.description}
+            imageSources={[image.src]}
+            width={625}
+            height={500}
+            href="/accessible"
+          />
+        ))}
+        <section>
+          <h2>{textSections.hobbiesText}</h2>
+        </section>
       </main>
     </>
   );
 };
 
 //TODO: complete Accessible page.
+// TODO: other projects: add proper hrefs
 
 export default Accessible;
 
@@ -80,7 +94,7 @@ const AccessibleSection = ({
   height,
   href,
 }: {
-  text: string;
+  text?: string;
   lowerText?: string;
   imageSources?: string[];
   width?: number;
@@ -88,8 +102,8 @@ const AccessibleSection = ({
   href?: string;
 }) => {
   return (
-    <section key={text}>
-      <h2>{text}</h2>
+    <section key={text ? text : lowerText}>
+      {text && <h2>{text}</h2>}
       {imageSources &&
         width &&
         height &&
