@@ -6,6 +6,7 @@ import * as images from "../components/TextComponents/ImageProps";
 import { ImageProps } from "../components/TextComponents/ImageProps";
 import { GalleryImageProps } from "../components/TextComponents/ImageProps";
 import { useEffect } from "react";
+import Link from "next/link";
 
 export async function getStaticProps() {
   return {
@@ -35,7 +36,7 @@ const Accessible: NextPage = () => {
       </Head>
       <main>
         <h1>Hi, I&apos;m Jonathan.</h1>
-        <p>{textSections.introText}</p>
+        <h2>{textSections.introText}</h2>
         <AccessibleSection
           text={textSections.currentTechText}
           imageSources={current}
@@ -58,8 +59,9 @@ const Accessible: NextPage = () => {
           text={textSections.teaTextUpper}
           lowerText={textSections.teaTextLower}
           imageSources={tea}
-          width={1000}
-          height={1000}
+          width={1076.5}
+          height={500}
+          href={"https://teafor.me/products/"}
         />
       </main>
     </>
@@ -76,20 +78,38 @@ const AccessibleSection = ({
   imageSources,
   width,
   height,
+  href,
 }: {
   text: string;
   lowerText?: string;
   imageSources?: string[];
   width?: number;
   height?: number;
+  href?: string;
 }) => {
   return (
     <section key={text}>
-      <p>{text}</p>
-      {imageSources && width && height && (
-        <ImageGroup imageSources={imageSources} width={width} height={height} />
-      )}
-      {lowerText && <p>{lowerText}</p>}
+      <h2>{text}</h2>
+      {imageSources &&
+        width &&
+        height &&
+        (imageSources.length > 1 ? (
+          <ImageGroup
+            imageSources={imageSources}
+            width={width}
+            height={height}
+          />
+        ) : href ? (
+          <Link href={href}>
+            <Image
+              className="link"
+              src={imageSources[0]}
+              alt={getFileName(imageSources[0])}
+              {...{ width, height }}
+            />
+          </Link>
+        ) : null)}
+      {lowerText && <h3>{lowerText}</h3>}
     </section>
   );
 };
@@ -104,16 +124,18 @@ const ImageGroup = ({
   imageSources: string[];
 }) => {
   return (
-    <>
+    <div className="image-container">
       {imageSources.map((src) => (
         <Image {...{ src, width, height }} alt={getFileName(src)} key={src} />
       ))}
-    </>
+    </div>
   );
 };
 
 const getSources = (imageProps: ImageProps[] | GalleryImageProps[]) =>
-  imageProps.map((image) => image.src);
+  imageProps.map((image) =>
+    image.src === "/Nextjs.svg" ? "/Nextjs_white.svg" : image.src
+  );
 
 const getFileName = (path: string) => {
   const match = path.match(/([0-z])\w+/);

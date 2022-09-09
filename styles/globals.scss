@@ -11,6 +11,33 @@ body {
 
 .accessible {
   overflow: auto;
+  main {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    * {
+      font-weight: normal;
+    }
+
+    section {
+      width: 80%;
+    }
+
+    .link {
+      cursor: pointer;
+    }
+
+    .image-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-around;
+      width: 100%;
+    }
+  }
 }
 
 a {
