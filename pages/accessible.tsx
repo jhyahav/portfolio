@@ -21,12 +21,11 @@ const Accessible: NextPage = () => {
   });
 
   // destructure imageProp arrays and take their respective sources
-  const [current, other, future, tea, otherProjects, contact] = [
+  const [current, other, future, tea, contact] = [
     images.currentImages,
     images.otherImages,
     images.futureImages,
     images.teaImages,
-    images.otherProjectImages,
     images.contactImages,
   ].map((section) => getSources(section));
   return (
@@ -77,13 +76,19 @@ const Accessible: NextPage = () => {
         <section>
           <h2>{textSections.hobbiesText}</h2>
         </section>
+        <AccessibleSection
+          text={textSections.contactText}
+          imageSources={contact}
+          width={150}
+          height={150}
+          last
+        />
       </main>
     </>
   );
 };
 
 //TODO: complete Accessible page.
-// TODO: other projects: add proper hrefs
 
 export default Accessible;
 
@@ -94,6 +99,7 @@ const AccessibleSection = ({
   width,
   height,
   href,
+  last = false,
 }: {
   text?: string;
   lowerText?: string;
@@ -101,6 +107,7 @@ const AccessibleSection = ({
   width?: number;
   height?: number;
   href?: string;
+  last?: boolean;
 }) => {
   return (
     <section key={text ? text : lowerText}>
@@ -113,6 +120,7 @@ const AccessibleSection = ({
             imageSources={imageSources}
             width={width}
             height={height}
+            last={last}
           />
         ) : href ? (
           <Link href={href} passHref>
@@ -135,13 +143,15 @@ const ImageGroup = ({
   width,
   height,
   imageSources,
+  last = false,
 }: {
   width: number;
   height: number;
   imageSources: string[];
+  last?: boolean;
 }) => {
   return (
-    <div className="image-container">
+    <div className={last ? "image-container-last" : "image-container"}>
       {imageSources.map((src) => (
         <Image {...{ src, width, height }} alt={getFileName(src)} key={src} />
       ))}

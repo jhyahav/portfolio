@@ -37,6 +37,9 @@ body {
       align-items: center;
       justify-content: space-around;
       width: 100%;
+      &-last {
+        margin-bottom: 2rem;
+      }
     }
   }
 }
