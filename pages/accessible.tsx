@@ -70,7 +70,7 @@ const Accessible: NextPage = () => {
             imageSources={[image.src]}
             width={625}
             height={500}
-            href="/accessible"
+            href={image.href}
             key={image.src}
           />
         ))}
@@ -115,13 +115,15 @@ const AccessibleSection = ({
             height={height}
           />
         ) : href ? (
-          <Link href={href}>
-            <Image
-              className="link"
-              src={imageSources[0]}
-              alt={getFileName(imageSources[0])}
-              {...{ width, height }}
-            />
+          <Link href={href} passHref>
+            <a target={"_blank"}>
+              <Image
+                className="link"
+                src={imageSources[0]}
+                alt={getFileName(imageSources[0])}
+                {...{ width, height }}
+              />
+            </a>
           </Link>
         ) : null)}
       {lowerText && <h3>{lowerText}</h3>}

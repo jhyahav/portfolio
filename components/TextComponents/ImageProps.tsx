@@ -28,6 +28,7 @@ export interface GalleryImageProps {
   onClick?: (event: ThreeEvent<MouseEvent>) => void;
   onHover?: (event: ThreeEvent<PointerEvent>) => void;
   onUnhover?: (event: ThreeEvent<PointerEvent>) => void;
+  href?: string;
 }
 
 export const currentImages: ImageProps[] = [
@@ -131,22 +132,26 @@ export const otherProjectImages: GalleryImageProps[] = [
     src: "/coacss.png",
     onClick: () => window.open("https://github.com/jhyahav/coacss", "_blank"),
     description: coacssText,
+    href: "https://github.com/jhyahav/coacss",
   },
   {
     src: "/blog_post.png",
     onClick: () => window.open("https://github.com/jhyahav/coacss", "_blank"),
     description: blogPostText,
+    href: "https://github.com/jhyahav/coacss",
   },
   {
     src: "/jchat.png",
     onClick: () => window.open("https://github.com/jhyahav/j-chat", "_blank"),
     description: jchatText,
+    href: "https://github.com/jhyahav/j-chat",
   },
   {
     src: "/screenshot2.png",
     onClick: () =>
       window.open("https://github.com/jhyahav/portfolio", "_blank"),
     description: portfolioText,
+    href: "https://github.com/jhyahav/portfolio",
   },
   {
     src: "/avl.png",
