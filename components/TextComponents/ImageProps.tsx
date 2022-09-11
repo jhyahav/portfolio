@@ -156,6 +156,7 @@ export const otherProjectImages: GalleryImageProps[] = [
   {
     src: "/avl.png",
     description: smallerProjectsText,
+    href: "/accessible",
   },
 ];
 
