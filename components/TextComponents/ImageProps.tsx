@@ -20,6 +20,7 @@ export interface ImageProps {
   onClick?: (event: ThreeEvent<MouseEvent>) => void;
   onHover?: (event: ThreeEvent<PointerEvent>) => void;
   onUnhover?: (event: ThreeEvent<PointerEvent>) => void;
+  href?: string;
 }
 
 export interface GalleryImageProps {
@@ -165,6 +166,7 @@ export const contactImages: ImageProps[] = [
     src: "/LinkedIn.png",
     scale: [40, 40, 1],
     relativePosition: new Vector3(-30, -25, 0),
+    href: "https://www.linkedin.com/in/jhyahav/",
     onClick: () =>
       window.open("https://www.linkedin.com/in/jhyahav/", "_blank"),
     ...hoverProps,
@@ -173,6 +175,7 @@ export const contactImages: ImageProps[] = [
     src: "/GitHub.svg",
     scale: [40, 40, 1],
     relativePosition: new Vector3(30, -25, 0),
+    href: "https://github.com/jhyahav",
     onClick: () => window.open("https://github.com/jhyahav", "_blank"),
     ...hoverProps,
   },
