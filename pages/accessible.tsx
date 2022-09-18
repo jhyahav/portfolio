@@ -81,7 +81,7 @@ const Accessible: NextPage = () => {
           <div className="image-container last">
             {images.contactImages.map((image) => {
               return (
-                <Link href={image.href!} passHref>
+                <Link href={image.href!} passHref key={image.src}>
                   <a target={"_blank"}>
                     <Image
                       className="link"
