@@ -33,7 +33,7 @@ export default function Planet({
   return (
     <group position={position}>
       <mesh ref={planetRef}>
-        <sphereBufferGeometry args={[radius]} />
+        <sphereGeometry args={[radius]} />
         <meshStandardMaterial
           map={colorMap}
           displacementMap={displacementMap}
