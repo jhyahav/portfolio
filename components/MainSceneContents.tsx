@@ -1,7 +1,7 @@
 import { ScrollControls, Stars } from "@react-three/drei";
 import Path from "../components/Path";
 import DyingStar from "../components/DyingStar";
-import SpaceStation from "../components/SpaceStation";
+// import SpaceStation from "../components/SpaceStation";
 import { Vector3 } from "three";
 import SceneLights from "../components/SceneLights";
 import ScrollTip from "./TextComponents/ScrollTip";
@@ -29,7 +29,7 @@ export default function MainSceneContents({
         )}
         <ScrollTip />
         <Planets />
-        <SpaceStation scale={0.125} launched={enabled} />
+        {/* <SpaceStation scale={0.125} launched={enabled} /> */}
         <AsteroidBelt />
         <ImageComponents />
         <ExperienceAndHobbies />

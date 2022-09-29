@@ -56,7 +56,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
   - [Main Sequence Star](https://www.shadertoy.com/view/4dXGR4) by flight404
   - [Warp Speed 2](https://www.shadertoy.com/view/4tjSDt) by David Hoskins
 - Camera movement path based on curve from [Three.js examples](https://github.com/mrdoob/three.js/blob/master/examples/jsm/curves/CurveExtras.js).
-- [3D model of ISS](https://solarsystem.nasa.gov/resources/2378/international-space-station-3d-model/) by NASA
+<!-- - [3D model of ISS](https://solarsystem.nasa.gov/resources/2378/international-space-station-3d-model/) by NASA -->
 - [GLTF -> React Three Fiber](https://gltf.pmnd.rs/)
 - Favicon and logo created with [favicon.io](https://favicon.io/).
 - Some planet color maps were taken from [Solar System Scope](https://www.solarsystemscope.com/textures/).
