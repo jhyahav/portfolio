@@ -120,7 +120,7 @@ export const futureImages: ImageProps[] = [
 
 export const teaImages: ImageProps[] = [
   {
-    src: "/teaforme.png",
+    src: "/teaforme.jpg",
     scale: [110, 50, 1],
     relativePosition: new Vector3(0, 0, -1),
     onClick: () => window.open("https://teafor.me/products/", "_blank"),
