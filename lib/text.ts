@@ -1,22 +1,23 @@
 export const introText =
-  "I'm a computer science student at Tel Aviv University with a passion for web development, problem solving and learning new things.";
+  "I'm a frontend developer at Millennium, with professional experience turning complex requirements into intuitive user interfaces.";
 
 export const currentTechText = "Tech I love";
 
-export const otherTechText = "Other languages I'm familiar with";
+export const otherTechText = "More languages I'm familiar with";
 
 export const futureTechText = "Tech I'd love to learn";
 
 export const teaTextUpper =
-  "My main project at the moment (besides studying) is teafor.me:";
+  "Outside of work, my main personal project is teafor.me:";
 
 export const teaTextLower =
-  "Built responsively with Next.js, Firebase, Google Cloud Functions, and Puppeteer, it makes browsing and comparing specialty tea from niche vendors effortless.";
+  "Built responsively with Next.js, Firebase, Google Cloud Functions, and Puppeteer, with styles written from scratch, it makes browsing and comparing specialty tea from niche vendors effortless. It has garnered over 7000 pageviews since its launch.";
 
-export const otherProjectsText = "Other projects";
+export const otherProjectsText = "Personal projects";
 
-export const hobbiesText = `I speak English and Hebrew natively. I've been learning German for eight years, and I have a basic grasp of Portuguese. I also have an extensive background in tech analysis, through which I've honed my creativity and my research, presentation and technical writing skills.
-Aside from computer science, I'm interested in medicine, history, and philosophy. In my free time, I enjoy reading, working out, cooking, playing piano, tasting tea & wine, and traveling.`;
+export const hobbiesText = `I have a BSc in Computer Science from Tel Aviv University, one of the top universities in Israel.
+I speak English and Hebrew natively. I'm fluent in German, which I've been learning for ten years, and I have a basic grasp of Portuguese. I also have an extensive background in tech analysis, through which I've honed my creativity and my research, presentation and technical writing skills.
+Aside from computer science, I'm interested in medicine, history, and philosophy.`;
 
 export const contactText = `Want to find out more and
 keep up with future projects? 
