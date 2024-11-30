@@ -173,5 +173,5 @@ const getSources = (imageProps: ImageProps[] | GalleryImageProps[]) =>
 
 const getFileName = (path: string) => {
   const match = path.match(/([0-z])\w+/);
-  return match ? match[0] : undefined;
+  return match ? match[0] : "";
 };
