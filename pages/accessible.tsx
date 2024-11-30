@@ -81,16 +81,14 @@ const Accessible: NextPage = () => {
           <div className="image-container last">
             {images.contactImages.map((image) => {
               return (
-                <Link href={image.href!} passHref key={image.src}>
-                  <a target={"_blank"}>
-                    <Image
-                      className="link"
-                      src={image.src}
-                      alt={getFileName(image.src)}
-                      width={150}
-                      height={150}
-                    />
-                  </a>
+                <Link href={image.href!} key={image.src} target="_blank">
+                  <Image
+                    className="link"
+                    src={image.src}
+                    alt={getFileName(image.src)}
+                    width={150}
+                    height={150}
+                  />
                 </Link>
               );
             })}
@@ -134,15 +132,13 @@ const AccessibleSection = ({
             last={last}
           />
         ) : href ? (
-          <Link href={href} passHref>
-            <a target={"_blank"}>
-              <Image
-                className="link"
-                src={imageSources[0]}
-                alt={getFileName(imageSources[0])}
-                {...{ width, height }}
-              />
-            </a>
+          <Link href={href} target="_blank">
+            <Image
+              className="link"
+              src={imageSources[0]}
+              alt={getFileName(imageSources[0])}
+              {...{ width, height }}
+            />
           </Link>
         ) : null)}
       {lowerText && <h3>{lowerText}</h3>}

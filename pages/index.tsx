@@ -3,6 +3,7 @@ import Head from "next/head";
 import { useState } from "react";
 import LaunchOverlay from "../components/LaunchOverlay";
 import Scene from "../components/Scene";
+import { Analytics } from "@vercel/analytics/react";
 
 export async function getStaticProps() {
   return {
@@ -16,6 +17,7 @@ const Home: NextPage = () => {
 
   return (
     <>
+      <Analytics />
       <Head>
         <title>Jonathan Yahav - About me</title>
         <meta
