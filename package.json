@@ -14,7 +14,7 @@
     "@types/three": "^0.144.0",
     "@vercel/analytics": "^1.4.1",
     "disable-scroll": "^0.6.0",
-    "next": "15.0.3",
+    "next": "15.0.7",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-loader-spinner": "^5.3.3",
